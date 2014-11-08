@@ -2,7 +2,7 @@
 #List all databases
 
 #Delete asimps53tadb if it exists
-DROP DATABASE IF EXISTS asimps53db;
+DROP DATABASE IF EXISTS asimps53tadb;
 
 #Create a new asimps53tadb database
 CREATE DATABASE asimps53tadb;
