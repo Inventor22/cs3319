@@ -14,12 +14,17 @@ USE asimps53tadb;
 SHOW TABLES;
 
 #Create tables
+CREATE TABLE prof(
+	westernID varchar(8) NOT NULL UNIQUE, 
+	fname varchar(30), 
+	lname varchar(30), 
+	PRIMARY KEY (westernID));
 CREATE TABLE ta(
 	westernID varchar(8), 
 	superID varchar(8) NOT NULL, 
 	fname varchar(30) NOT NULL, 
 	lname varchar(30) NOT NULL, 
-	#sn integer(9) NOT NULL UNIQUE, 
+	sn integer(9) NOT NULL UNIQUE, 
 	type varchar(7) NOT NULL,
 	imgPath varchar(255),
 	UNIQUE (westernID),
@@ -36,11 +41,6 @@ CREATE TABLE courseInstance(
 	studentCount integer NOT NULL, 
 	FOREIGN KEY (courseCode) REFERENCES course(coureseCode),
 	PRIMARY KEY (courseCode, year, term));
-CREATE TABLE prof(
-	westernID varchar(8) NOT NULL UNIQUE, 
-	fname varchar(30), 
-	lname varchar(30), 
-	PRIMARY KEY (westernID));
 
 CREATE TABLE assignedTo(
 	taID varchar(8) NOT NULL, 
