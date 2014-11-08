@@ -31,15 +31,15 @@ CREATE TABLE ta(
 	FOREIGN KEY (superID) REFERENCES prof(westernID),
 	PRIMARY KEY (westernID));
 CREATE TABLE course(
-	courseCode varchar(6) NOT NULL, 
+	courseNum varchar(6) NOT NULL, 
 	cname varchar(30) NOT NULL, 
-	PRIMARY KEY (courseCode));
+	PRIMARY KEY (courseNum));
 CREATE TABLE courseInstance(
 	courseCode varchar(6) NOT NULL, 
 	year varChar(4) NOT NULL, 
 	term varchar(6) NOT NULL, 
 	studentCount integer NOT NULL, 
-	FOREIGN KEY (courseCode) REFERENCES course(coureseCode),
+	FOREIGN KEY (courseCode) REFERENCES course(coureseNum),
 	PRIMARY KEY (courseCode, year, term));
 
 CREATE TABLE assignedTo(
