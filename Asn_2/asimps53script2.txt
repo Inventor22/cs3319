@@ -3,7 +3,7 @@
 USE asimps53tadb;
 
 #Load from file
-LOAD DATA INFILE 'fall2014data.txt' INTO TABLE prof
+LOAD DATA INFILE './fall2014data.txt' INTO TABLE prof
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\r\n';
 
