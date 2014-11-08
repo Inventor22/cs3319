@@ -23,7 +23,7 @@ CREATE TABLE ta(
 	fname varchar(30) NOT NULL, 
 	lname varchar(30) NOT NULL, 
 	sn integer(9) NOT NULL UNIQUE, 
-	westernID varchar(8) NOT NULL,
+	westernID varchar(8) NOT NULL UNIQUE,
 	type varchar(7) NOT NULL,
 	superID varchar(8) NOT NULL, 
 	imgPath varchar(255),
