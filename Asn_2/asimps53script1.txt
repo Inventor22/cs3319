@@ -15,13 +15,14 @@ SHOW TABLES;
 
 #Create tables
 CREATE TABLE ta(
-	westernID varchar(8) NOT NULL UNIQUE, 
+	westernID varchar(8), 
 	superID varchar(8) NOT NULL, 
 	fname varchar(30) NOT NULL, 
 	lname varchar(30) NOT NULL, 
 	sn integer(9) NOT NULL UNIQUE, 
 	type varchar(7) NOT NULL,
 	imgPath varchar(255),
+	UNIQUE (westernID),
 	FOREIGN KEY (superID) REFERENCES prof(westernID),
 	PRIMARY KEY (westernID));
 CREATE TABLE course(
