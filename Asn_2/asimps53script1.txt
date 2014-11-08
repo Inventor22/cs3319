@@ -20,7 +20,7 @@ CREATE TABLE prof(
 	lname varchar(30), 
 	PRIMARY KEY (westernID));
 CREATE TABLE ta(
-	westernID varchar(8), 
+	westernID varchar(8) NOT NULL,
 	superID varchar(8) NOT NULL, 
 	fname varchar(30) NOT NULL, 
 	lname varchar(30) NOT NULL, 
@@ -31,15 +31,15 @@ CREATE TABLE ta(
 	FOREIGN KEY (superID) REFERENCES prof(westernID),
 	PRIMARY KEY (westernID));
 CREATE TABLE course(
-	courseNum varchar(6) NOT NULL, 
+	courseCode varchar(6) NOT NULL UNIQUE, 
 	cname varchar(30) NOT NULL, 
-	PRIMARY KEY (courseNum));
+	PRIMARY KEY (courseCode));
 CREATE TABLE courseInstance(
 	courseCode varchar(6) NOT NULL, 
 	year varChar(4) NOT NULL, 
 	term varchar(6) NOT NULL, 
 	studentCount integer NOT NULL, 
-	FOREIGN KEY (courseCode) REFERENCES course(coureseNum),
+	FOREIGN KEY (courseCode) REFERENCES course(coureseCode),
 	PRIMARY KEY (courseCode, year, term));
 
 CREATE TABLE assignedTo(
