@@ -48,9 +48,9 @@ CREATE TABLE assignedTo(
 	year int(4) NOT NULL,
 	courseCode varchar(6) NOT NULL, 
 	FOREIGN KEY (taID) REFERENCES ta(westernID),
-	FOREIGN KEY (term) REFERENCES courseInstance(term),
-	FOREIGN KEY (year) REFERENCES courseInstance(year),
-	FOREIGN KEY (courseCode) REFERENCES course(courseCode),
+	FOREIGN KEY (term, year, courseCode) REFERENCES courseInstance(term, year, courseCode),
+	#FOREIGN KEY (year) REFERENCES courseInstance(year),
+	#FOREIGN KEY (courseCode) REFERENCES course(courseCode),
 	PRIMARY KEY (taID, courseCode));
 CREATE TABLE coSupervisedBy(
 	taID varchar(8) NOT NULL, 
