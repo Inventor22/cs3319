@@ -1,0 +1,15 @@
+SHOW databases;
+DROP DATABASE IF EXISTS vetdb;
+CREATE DATABASE vetdb;
+USE vetdb;
+SHOW TABLES;
+CREATE TABLE owner (firstname VARCHAR(20), lastname VARCHAR(20), ownerid INT NOT NULL, PRIMARY KEY (ownerid));
+CREATE TABLE pet (name VARCHAR(20), species VARCHAR(20), sex CHAR(1), birth DATE, death DATE, ownerid INT NOT NULL, FOREIGN
+KEY (ownerid) REFERENCES owner(ownerid));
+SHOW TABLES;
+INSERT INTO owner (firstname, lastname, ownerid) VALUES ("Laura","Reid",1);
+INSERT INTO owner (firstname, lastname, ownerid) VALUES ("Mandy", "Webster",2);
+INSERT INTO pet (name, species, sex, birth, ownerid) VALUES ("Waffles", "Dog","M","2010-09-12",1);
+LOAD DATA INFILE '/tmp/somedata.csv' INTO TABLE owner FIELDS TERMINATED BY ',';
+SELECT * from owner;
+SELECT * from pet;

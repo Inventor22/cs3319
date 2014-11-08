@@ -1,0 +1,174 @@
+Assignment 2
+Purpose:
+To give you practice:
+
+    drawing ER diagrams
+    converting an ER diagram to a relational database
+    creating a database using SQL
+    creating tables using SQL
+    inserting, modifying and deleting data from tables using SQL
+    doing a bulk load of a table using a comma separated file
+
+The Problem:
+
+The Computer Science instructors at Western are having a hard time keeping their teaching assistants (usually the departments grad students) straight and would like to have a small application that keeps track of the teaching assistants name and image and the course he/she has been has been a teaching assistant for.  
+
+In assignment 3 you will write the application to solve the above problem. In this assignment you will create the database that will be used as the backend database for assignment 3.
+
+Your database will need to keep track of the following information:  
+
+    For the teaching assistants, store the:
+        first name (up to 30 characters, must have at least 1)
+        the last name (up to 30 characters, must have at least 1)
+        the student number (unique - 9 digits)
+        the Western user id (which will be unique, 2 to 8 characters, make this the primary key)
+        whether the t.a. is a PhD student or a Masters student
+        an image of the t.a. (NOTE: you don't have to store the images in the database, you could store a path to a file on your virtual machine, or a url location, or you could store the image as a blob in the database (if you want), this is up to you, can be null initially).
+     For the course, store the
+        course number, it will always be the characters CS and then 4 digits (this field must be unique).  
+        the course name.  (up to 30 characters), can be empty
+    For the instructors/professors, store the:
+        first name (up to 30 characters, must have at least 1)
+        last name (up to 30 characters, must have at least 1)
+        Western user id (which will be unique, 2 to 8 characters)
+    You will need to keep track of which t.a.s have which professors as their graduate supervisors (head supervisor and co-supervisor)
+        NOTE: a t.a. must have only 1 head supervisor but can have 0 or more co-supervisors.  
+        Some profs don't supervisor anyone (neither head nor co-supervise)
+    You will also need to keep track of which courses a t.a. has been assigned to and for which year and term and how many students were enrolled in the course that term. Thus, perhaps the t.a. Bob Smith was assigned to the course CS1033 for the Fall 2014 term and there were 721 students then.
+        There are 3 terms: Fall, Spring and Summer.  
+        A t.a. can be a teaching assistant for many courses and a course can have many teaching assistants but might have 0 teaching assistants. 
+        A t.a. can also be a t.a. for more than 1 course, but once he/she has been assigned a course, they wont get that course again (that way you dont have to include the year/term as part of the key). 
+        a t.a. might not have any courses during a given year/term.
+
+Instructions:
+
+There are 2 parts for this assignment. In part 1 you will draw an ER diagram and in part 2 you will create the database on your virtual machine using MySQL.
+Part 1:
+
+For the above scenario, draw an ER diagram (the ER diagram can be hand-drawn).  Then take a picture of the diagram or scan in the diagram and save the file as yourwesternuserid.jpg (or .pdf, or .gif). You can just show the total or partial participation using the single/double lines. Make sure you indicate the primary key and the cardinality. 
+Part 2:
+
+Create the following 4 script files (more details to follow):
+
+    File 1: Delete the database and create a new database and create the tables
+    File 2: Insert some data and update the data
+    File 3: Query the data
+    File 4: Delete some data, add a constraint, add a view
+
+HINTS:
+
+    You might want to use WinSCP or Filezilla, to ftp back and forth your text file with your commands from your home machine to the virtual machine if you are more comfortable with Notepad then with Nano or EMACS or VI. 
+
+File 1 - Creation
+
+    List all the current databases
+    Delete the database called yourwesternuseridtadb if it exists
+    Create a database called yourwesternuseridtadb
+    Select (use) that database
+    List all the tables (should be none initially)
+    Create the tables you need with the appropriate types and keys, foreign keys.  Make sure that if an professor/instructor is deleted and he/she is the head supervisor for a t.a., then the professor can NOT be deleted until that t.a. is assigned another head supervisor. 
+    List the tables again
+    Call this script: yourwesternuseridscript1.txt
+    After you have the script working, save the output from it using the following command:
+    sudo mysql < yourwesternuseridscript1.txt --verbose > yourwesternuseridoutputscript1.txt 2>&1
+     
+
+File 2 - Insertion and Modification
+
+    Using the LOAD DATA INFILE ... mysql command (you will need to google to see the syntax for this command), load the following data into the professor/instructor table:  http://www.csd.uwo.ca/~lreid/cs3319/assignments/assignment2/fall2014data.txt
+        NOTE: for this command, you will have to copy the above datafile to the /tmp directory on your virtual machine AND you will have to make mysql the owner of the data text file using the command:  sudo chown mysql /tmp/fall2014data.txt
+        Insert yourself as an instructor also
+        Show everything in the instructor table
+    Into the t.a. table, load the following data using the SQL INSERT command:
+        Homer, Simpson, 250011111,hsimpson,Masters  -- (Head Supervisor is Laura)
+        Marge, Simpson, 250011112,msimpson,Masters  -- (Head Supervisor is Marc Moreno Maza)
+        Lisa, Simpson,250011113,lsimpson,PhD  -- (Head Supervisor is Laura)
+        Maggie,Simpson,250011114,msimpso1,PhD  -- (Head Supervisor is Laura)
+        Ned,Flanders, 250000666,nflander,PhD  -- (Head Supervisor is Mike Katchabaw)
+        Todd, Flanders,250000667,tflander,Masters  -- (Head Supervisor is Mike Bauer)
+        Monty, Burns,250000001,mburns,PhD  -- (Head Supervisor is Doug Vancise)
+        Waylan,Smithers,250022222,wsmither,PhD  -- (Head Supervisor is Mike Bauer)
+        Insert your favourite cartoon character as a t.a.
+        Show all the rows in the t.a. table
+    Into the course table, insert the following data using the SQL INSERT command:
+        CS1026, Intro to Programming
+        CS1033, Multimedia and Communications
+        CS1032, Info Systems and Design
+        CS2212, Intro to Software Engineering
+        CS3319, Intro to Databases
+        CS4411, Advanced Databases
+        CS2210, Data Structures
+        CS2208, Computer Organization
+        CS2209, Logic
+        CS2211, Software Tools
+        CS3357, Networks
+        Show all the rows in the courses table
+    Using your keys and foreign keys store the following information (you can do this at the same time as your insert command if you want):
+        Homer Simpson has co supervisor(s) of: Mark Daley and Mike Bauer
+        Monty Burns has co supervisor(s) of: Mark Daley and Doug Vancise
+        Maggie Simpson has co supervisor(s) of: Mike Bauer, Sylvia Osborn and Mark Perry
+        Lisa Simpson has co supervisor(s) of:  Laura Reid
+    Using your keys and foreign keys store the following information:
+        In Fall of 2014, Homer, Todd and Marge were all t.a.s for cs1033
+        In Spring of 2013, Homer, Todd, Waylan and Monty were all t.a.s for CS3357
+        In Fall of 2013, Ned and Lisa were all t.a.s for CS1033
+        In Fall of 2014, Monty was a t.a. for cs3319
+        In Fall of 2014, Lisa and Maggie were t.a.s for cs1026
+        In Summer of 2014, Waylan and Marge were t.a.s for cs1026 
+    Change/Modify Todd's first name to be Rod and show the table after completing this. 
+    Change Waylan's head supervisor from Dr. Bauer to Dr. Perry and show the table after completing this. 
+    Change/Modify cs1026, Fall,2014 t.a.s to be the t.a.s for Fall 2012 and show the table after completing this. 
+    Call this script: yourwesternuseridscript2.txt
+    After you have the script working, save the output from it using the following command:
+    sudo mysql < yourwesternuseridscript2.txt --verbose > yourwesternuseridoutputscript2.txt  2>&1
+
+File 3 - Queries
+
+    Show the last name of all professors
+    Show the first and last name of all students who have a head supervisor with the first name "Mike"
+    List all the t.a.s firstname, lastname, type of grad  of the t.a.s who are doing a PhD in order by the t.a.s first name
+    List all second year courses (all fields, second year courses start with CS2..)
+    List the firstname of the t.a and the name of the course they were a teaching assistant for any t.a.s who were a teaching assistant for a course given in the Fall
+    List the firstname of the teaching assistant and the first and last name of the teaching assistants head supervisor.
+    List the first and last name of any instructors that don't head supevisor anyone
+    List the first and last name of any instructors who dont head OR co supervise anyone
+    Count the number of teaching assistants who are PhD student, display that number
+    List the course number and course name and their t.a.s first and last names if they have a t.a. for any first year courses, if they didnt have a t.a. just put null for these fields
+    Find the total number of teaching assistants used for each year, list the year and the count for that year.
+    List any year that had less than 5 teaching assistants that year, you just need to list the year, not the count.
+    List the first name of any students that Doug Vancise either head supervises or co-supervises
+    Call this script: yourwesternuseridscript3.txt
+    After you have the script working, save the output from it using the following command:
+    sudo mysql < yourwesternuseridscript3.txt --verbose > yourwesternuseridoutputscript3.txt  2>&1
+
+File 4 - Deletions/Views
+
+    Create a view that shows the t.a's first name, last name and all the courses number, year and term that the t.a. did, then show all the rows in this view
+    Delete any instructor with the first name of "Hanan"
+    Delete the instructor with the first name Doug and last name  Vancise. NOTE: if you can't delete him, show what you had to do in order to delete him
+    BONUS: Unfortunately CHECK CONSTRAINTS don't work in MySQL, but you can use a trigger to make sure that the year is the year is always after 1999 but before 2030 (if they try to see it higher than 2030, make it 2029, if they try to set it lower than 2000, set it to 2000). Figure out how to write a trigger (use google) and then prove that it works and you will get a bonus 2% added to your mark out of 100 for this assignment.
+    Call this script: yourwesternuseridscript4.txt
+        NOTE: the script will break/stop executing when you hit a line that can't be executed, if this happens make 2 scripts: script4a.txt and script4b.txt but make sure  you show everything you tried
+        However if you put 2>&1 at end of the unix command, it will redirect error output to the script as well, so this might save you from having to create 2 files)
+    After you have the script working, save the output from it using the following command:
+    sudo mysql < yourwesternuseridscript4a.txt --verbose >  yourwesternuseridoutputscript4a.txt  2>&1
+    sudo mysql < yourwesternuseridscript4b.txt --verbose >  yourwesternuseridoutputscript4b.txt  2>&1
+    OR (if you can get the errors redirected, you can use this command with -f to force the continuation of the script)
+    sudo mysql -f < yourwesternuseridscript4.txt --verbose >  yourwesternuseridoutputscript4.txt  2>&1
+
+Notes:
+
+    Here is a sample script file for mysql -->  http://www.csd.uwo.ca/~lreid/cs3319/assignments/assignment2/samplescriptmysql.txt
+    To run the script, you would type this:  
+    sudo mysql < samplescriptmysql.txt --verbose > outputfromscript.txt  2>&1
+     
+    Do the steps (inserts, deletes, etc...) in the order given
+    For any delete or update, show the table before and after you modified it
+
+Handing in the Assignment
+
+You are required to submit the following files via Owl:
+
+    your ER diagram (named yourwesternid.jpg/.pdf/.gif)
+    your 4 or 5 script files
+    your 4 or 5 files containing the output from the scripts.

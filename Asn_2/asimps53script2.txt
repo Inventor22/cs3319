@@ -1,0 +1,11 @@
+
+#Insert some data
+INSERT INTO ta values("bsimps12", "Bart", "Simpson", "123456789", "Masters");
+INSERT INTO ta values("m12", "Milhouse", "Simpson", "234567890", "Masters");
+INSERT INTO ta values("lsimps13", "Lisa", "Simpson", "345678912", "PhD");
+INSERT INTO ta values("lsimps13", "Lisa", "Simpson", "456789123", "PhD");
+INSERT INTO prof values("hsimps3", "Homer", "Simpson");
+INSERT INTO prof values("mburns", "Montgomery", "Burns");
+INSERT INTO prof values("hsimps13", "Homer", "Simpson");
+
+#Update data

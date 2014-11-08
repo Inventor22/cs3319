@@ -1,0 +1,58 @@
+
+#List all databases
+
+#Delete asimps53tadb if it exists
+DROP DATABASE IF EXISTS asimps53db;
+
+#Create a new asimps53tadb database
+CREATE DATABASE asimps53tadb;
+
+#Select database
+USE asimps53tadb;
+
+#List all tables - should be none
+SHOW TABLES;
+
+#Create tables
+CREATE TABLE ta(
+	westernID varchar(8) NOT NULL UNIQUE, 
+	superID varchar(8) NOT NULL, 
+	fname varchar(30) NOT NULL, 
+	lname varchar(30) NOT NULL, 
+	sn integer(9) NOT NULL UNIQUE, 
+	type varchar(7) NOT NULL,
+	imgPath varchar(255),
+	FOREIGN KEY (superID) REFERENCES prof(westernID),
+	PRIMARY KEY (westernID));
+CREATE TABLE course(
+	courseCode varchar(6) NOT NULL, 
+	cname varchar(30) NOT NULL, 
+	PRIMARY KEY (courseCode));
+CREATE TABLE courseInstance(
+	courseCode varchar(6) NOT NULL, 
+	year varChar(4) NOT NULL, 
+	term varchar(6) NOT NULL, 
+	studentCount integer NOT NULL, 
+	FOREIGN KEY (courseCode) REFERENCES course(coureseCode),
+	PRIMARY KEY (courseCode, year, term));
+CREATE TABLE prof(
+	westernID varchar(8) NOT NULL UNIQUE, 
+	fname varchar(30), 
+	lname varchar(30), 
+	PRIMARY KEY (westernID));
+
+CREATE TABLE assignedTo(
+	taID varchar(8) NOT NULL, 
+	courseCode varchar(6) NOT NULL, 
+	FOREIGN KEY (taID) REFERENCES ta(westernID),
+	FOREIGN KEY (courseCode) REFERENCES courseInstance(courseCode),
+	PRIMARY KEY (taID, courseCode));
+CREATE TABLE coSupervisedBy(
+	taID varchar(8) NOT NULL, 
+	profID varchar(8) NOT NULL, 
+	FOREIGN KEY taID REFERENCES ta(westernID),
+	FOREIGN KEY profID REFERENCES prof(westernID),
+	PRIMARY KEY (taID, profID));
+
+#List all tables
+SHOW TABLES;
