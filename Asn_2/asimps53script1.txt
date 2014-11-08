@@ -39,7 +39,7 @@ CREATE TABLE courseInstance(
 	year int(4) NOT NULL, 
 	courseCode varchar(6) NOT NULL,  
 	studentCount integer NOT NULL, 
-	FOREIGN KEY (courseCode) REFERENCES course(coureseCode),
+	FOREIGN KEY (courseCode) REFERENCES course(courseCode),
 	PRIMARY KEY (term, year, courseCode));
 
 CREATE TABLE assignedTo(
