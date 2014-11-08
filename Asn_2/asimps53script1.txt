@@ -15,9 +15,9 @@ SHOW TABLES;
 
 #Create tables
 CREATE TABLE prof(
-	westernID varchar(8) NOT NULL UNIQUE, 
 	fname varchar(30), 
 	lname varchar(30), 
+	westernID varchar(8) NOT NULL UNIQUE, 
 	PRIMARY KEY (westernID));
 CREATE TABLE ta(
 	westernID varchar(8) NOT NULL,
