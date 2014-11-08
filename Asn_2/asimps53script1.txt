@@ -19,7 +19,7 @@ CREATE TABLE ta(
 	superID varchar(8) NOT NULL, 
 	fname varchar(30) NOT NULL, 
 	lname varchar(30) NOT NULL, 
-	sn integer(9) NOT NULL UNIQUE, 
+	#sn integer(9) NOT NULL UNIQUE, 
 	type varchar(7) NOT NULL,
 	imgPath varchar(255),
 	UNIQUE (westernID),
