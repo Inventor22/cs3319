@@ -5,7 +5,7 @@ USE asimps53tadb;
 #Load from file
 LOAD DATA INFILE '/tmp/fall2014data.txt' INTO TABLE prof
 FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\r\n';
+LINES TERMINATED BY '\n';
 
 #Insert some data
 #INSERT INTO ta values("bsimps12", "Bart", "Simpson", "123456789", "Masters");
