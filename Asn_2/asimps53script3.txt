@@ -39,7 +39,7 @@ SELECT fname, lname FROM prof WHERE westernID NOT IN (SELECT DISTINCT superID FR
 
 # 8 - List the first and last name of any instructors that don't supervise or cosupervise anyone
 SELECT fname, lname FROM prof WHERE westernID NOT IN (SELECT DISTINCT superID FROM ta UNION \
-	(SELECT profID FROM coSupervises));
+	(SELECT profID FROM coSupervisedBy));
 
 # 9 - Count the number of teaching assistants who are PhD students and display the number
 SELECT count(*) FROM ta WHERE type="PhD";
