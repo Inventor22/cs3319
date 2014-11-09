@@ -23,7 +23,7 @@ INSERT INTO ta values("Homer", "Simpson", "250011111", "hsimpson","Masters","lre
 INSERT INTO ta values("Marge", "Simpson", "250011112", "msimpson","Masters", "mmm", "");
 INSERT INTO ta values("Lisa", "Simpson", "250011113", "lsimpson", "PhD", "lreid2", "");
 INSERT INTO ta values("Maggie", "Simpson", "250011114", "msimpso1", "PhD", "lreid2", "");
-INSERT INTO ta values("Ned", "Flanders", "250000666", "nflander", "PhD", "mkatcchab", "");
+INSERT INTO ta values("Ned", "Flanders", "250000666", "nflander", "PhD", "mkatchab", "");
 INSERT INTO ta values("Todd", "Flanders", "250000667", "tflander", "Masters", "mbauer", "");
 INSERT INTO ta values("Monty", "Burns", "250000001", "mburns", "PhD", "dvancise", "");
 INSERT INTO ta values("Waylan", "Smithers", "250022222", "wsmither", "PhD", "mbauer", "");
