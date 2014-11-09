@@ -28,7 +28,7 @@ SELECT cname FROM course WHERE courseCode LIKE 'CS2%';
 
 # 5 - List the first name of a TA and the name of the course they were a teaching assistant for
 # for any TA's who were a teaching assistant for a course in the fall term
-SELECT fname FROM ta WHERE westernID IN (SELECT DISTINCT taID FROM assingedTo WHERE term="Fall");
+SELECT fname FROM ta WHERE westernID IN (SELECT DISTINCT taID FROM assignedTo WHERE term="Fall");
 
 # 6 - List the first name and last name of the teaching assistant and the first and last name of
 # the teaching assistant's head supervisor
