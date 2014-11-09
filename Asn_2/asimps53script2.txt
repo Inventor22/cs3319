@@ -92,6 +92,8 @@ UPDATE ta SET superID="mperry" WHERE fname="Waylan";
 SELECT * FROM ta;
 
 #Change the CS1026, Fall, 2014 ta's to be ta's for the Fall, 2012 instance, then show the updated table
+#This instance doesn't exist, so create it first
+INSERT INTO courseInstance values("Fall", "2012", "CS1026", "3");
 UPDATE assignedTo SET year="2012" WHERE term="Fall" and year="2014" and courseCode="CS1026";
 SELECT * FROM assignedTo;
 
