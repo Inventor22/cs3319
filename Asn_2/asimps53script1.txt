@@ -55,8 +55,8 @@ CREATE TABLE assignedTo(
 CREATE TABLE coSupervisedBy(
 	taID varchar(8) NOT NULL, 
 	profID varchar(8) NOT NULL, 
-	FOREIGN KEY taID REFERENCES ta(westernID),
-	FOREIGN KEY profID REFERENCES prof(westernID),
+	FOREIGN KEY (taID) REFERENCES ta(westernID),
+	FOREIGN KEY (profID) REFERENCES prof(westernID),
 	PRIMARY KEY (taID, profID));
 
 #List all tables (empty)
