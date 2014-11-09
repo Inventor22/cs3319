@@ -1,4 +1,15 @@
 
+#*************************************************
+#  Script 1
+#
+#  Andrew Simpson - asimps53@uwo.ca - 250 633 280 
+#  Submission Deadline: November 10, 2014
+#
+#  Just follows steps for script 1 as per the
+#  assignment.  Just sets up and lists tables.
+#
+#*************************************************
+
 #List all databases
 
 #Delete asimps53tadb if it exists

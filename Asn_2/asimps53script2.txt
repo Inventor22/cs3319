@@ -4,6 +4,12 @@
 #
 #  Andrew Simpson - asimps53@uwo.ca - 250 633 280 
 #  Submission Deadline: November 10, 2014
+#
+#  Just follows steps for script 2 as per the
+#  assignment.  Mostly inserting data. Some
+#  queries and modifications at the end.
+#
+#*************************************************
 
 #Select database
 USE asimps53tadb;

@@ -1,0 +1,65 @@
+
+#*************************************************
+#  Script 3
+#
+#  Andrew Simpson - asimps53@uwo.ca - 250 633 280 
+#  Submission Deadline: November 10, 2014
+#
+#  Just follows steps for script 2 as per the
+#  assignment.  Mostly inserting data. Some
+#  queries and modifications at the end.
+#
+#*************************************************
+
+# 1 - Show the last name of all professors
+SELECT lname FROM prof;
+
+# 2 - Show the first and last name of all students who have 
+# a head supervisor with the first name "Mike"
+SELECT fname, lname FROM ta WHERE superID IN (SELECT DISTINCT westernID FROM prof WHERE fname="Mike");
+
+# 3 - List first name, last name, and type of grad of the TA's who are doing  aPhD and order by first name
+SELECT fname, lname, type FROM ta WHERE type="PhD" ORDER BY fname;
+
+# 4 - List all second year courses
+SELECT cname FROM course WHERE courseCode LIKE 'CS2%';
+
+# 5 - List the first name of a TA and the name of the course they were a teaching assistant for
+# for any TA's who were a teaching assistant for a course in the fall term
+SELECT fname FROM ta WHERE westernID IN (SELECT DISTINCT taID FROM assingedTo WHERE term="Fall");
+
+# 6 - List the first name and last name of the teaching assistant and the first and last name of
+# the teaching assistant's head supervisor
+SELECT T.fname, P.fname, P.lname FROM ta as T, prof as P WHERE T.superID=P.westernID;
+
+# 7 - List the first and last name of any instructors that don't supervise anyone
+SELECT fname, lname FROM prof WHERE westernID EXCEPT (SELECT DISTINCT superID FROM ta);
+
+# 8 - List the first and last name of any instructors that don't supervise or cosupervise anyone
+SELECT fname, lname FROM prof WHERE westernID EXCEPT (SELECT DISTINCT superID FROM ta UNION \
+	(SELECT profID FROM coSupervises));
+
+# 9 - Count the number of teaching assistants who are PhD students and display the number
+SELECT count(*) FROM ta WHERE type="PhD";
+
+# 10 - List the course number and course name and their TA's first and last names if they have a TA 
+# for any first year courses. If they don;t have a TA, just put NULL for those fields.
+SELECT courseCode, cname, fname, lname FROM (SELECT * FROM assignedTo WHERE courseCode LIKE 'CS1%') \
+	LEFT OUTER JOIN ta ON assignedTo.taID=ta.westernID;
+
+# 11 - Find the total number of teaching assistants used for each year, list the year and the count for 
+# that year. I assume that each TA only counts once per year.
+SELECT year, count(*) FROM (SELECT DISTINCT year, taID FROM assignedTo) GROUP BY year;
+
+# 12 - List any year that had less than 5 teaching assistants that year.
+SELECT year FROM (SELECT year, count(*) FROM (SELECT DISTINCT year, taID FROM assignedTo) GROUP BY year) \ 
+	WHERE count(*) < 5;
+
+# 13 - List the first name of any students that Doug Vancise either head supervises or co-supervises.
+SELECT DISTINCT fname FROM \ 
+	(SELECT fname FROM ta WHERE superID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise")) \ 
+	UNION \
+	(SELECT fname FROM ta WHERE westernID IN (SELECT taID FROM coSupervisedBy WHERE profID IN \ 
+		(SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise")));
+
+# Done
