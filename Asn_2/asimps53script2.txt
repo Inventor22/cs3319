@@ -54,7 +54,6 @@ INSERT INTO coSupervisedBy values("mburns", "mdaley");
 INSERT INTO coSupervisedBy values("mburns", "dvancise");
 INSERT INTO coSupervisedBy values("msimpso1", "mbauer");
 INSERT INTO coSupervisedBy values("msimpso1", "sosborn");
-INSERT INTO coSupervisedBy values("msimpso1", "mbauer");
 INSERT INTO coSupervisedBy values("msimpso1", "mperry");
 INSERT INTO coSupervisedBy values("lsimpson", "lreid2");
 
