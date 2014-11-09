@@ -92,7 +92,7 @@ UPDATE ta SET superID="mperry" WHERE fname="Waylan";
 SELECT * FROM ta;
 
 #Change the CS1026, Fall, 2014 ta's to be ta's for the Fall, 2014 instance, then show the updated table
-UPDATE assignedTo SET year="2014" WHERE term="Fall" and year="2014" and cname="CS1026";
+UPDATE assignedTo SET year="2014" WHERE term="Fall" and year="2014" and courseCode="CS1026";
 SELECT * FROM assignedTo;
 
 #Done!
