@@ -58,7 +58,7 @@ SELECT temp.courseCode, course.cname, ta.fname, ta.lname
 SELECT year, count(*) FROM (SELECT DISTINCT year, taID FROM assignedTo) as temp GROUP BY year;
 
 # 12 - List any year that had less than 5 teaching assistants that year.
-SELECT year FROM (SELECT year, count(*) FROM (SELECT DISTINCT year, taID FROM assignedTo) GROUP BY year) as temp
+SELECT year FROM (SELECT year, count(*) FROM (SELECT DISTINCT year, taID FROM assignedTo) GROUP BY year as temp) as temp
 	WHERE count(*) < 5;
 
 # 13 - List the first name of any students that Doug Vancise either head supervises or co-supervises.
