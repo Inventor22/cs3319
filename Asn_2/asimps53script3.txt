@@ -46,9 +46,10 @@ SELECT count(*) FROM ta WHERE type="PhD";
 
 # 10 - List the course number and course name and their TA's first and last names if they have a TA 
 # for any first year courses. If they don;t have a TA, just put NULL for those fields.
-SELECT A.courseCode, A.cname, ta.fname, ta.lname FROM \
-	(SELECT * FROM assignedTo WHERE courseCode LIKE 'CS1%') as A \
-	LEFT OUTER JOIN ta ON A.taID=ta.westernID;
+SELECT temp.courseCode, temp.cname, ta.fname, ta.lname 
+	FROM (SELECT * FROM assignedTo WHERE courseCode LIKE 'CS1%') as temp 
+		LEFT OUTER JOIN ta 
+			ON temp.taID=ta.westernID;
 
 # 11 - Find the total number of teaching assistants used for each year, list the year and the count for 
 # that year. I assume that each TA only counts once per year.
