@@ -1,4 +1,10 @@
 
+#*************************************************
+#  Script 2
+#
+#  Andrew Simpson - asimps53@uwo.ca - 250 633 280 
+#  Submission Deadline: November 10, 2014
+
 #Select database
 USE asimps53tadb;
 
@@ -10,7 +16,7 @@ LINES TERMINATED BY '\n';
 #Insert myself as a prof
 INSERT INTO prof values("Andrew", "Simpson" , "asimps53");
 
-SHOW TABLE prof;
+SELECT * FROM prof;
 
 #Insert some ta data
 INSERT INTO ta values("Homer", "Simpson", "250011111", "hsimpson","Masters","lreid2");
@@ -24,7 +30,7 @@ INSERT INTO ta values("Waylan", "Smithers", "250022222", "wsmither", "PhD", "mba
 #Insert Spike Spiegel from Cowboy Bebop, my favourite anime character.
 INSERT INTO ta values("Spike", "Spiegel", "250033333", "sspiegel", "Masters", "asimps53");
 
-SHOW TABLE ta;
+SELECT * FROM ta;
 
 #Insert some course data
 INSERT INTO course values("CS1026", "Intro to Programming");
@@ -39,7 +45,7 @@ INSERT INTO course values("CS2209", "Logic");
 INSERT INTO course values("CS2211", "Software Tools");
 INSERT INTO course values("CS3357", "Networks");
 
-SHOW TABLE course;
+SELECT * FROM course;
 
 #Set up co-supervisors
 INSERT INTO coSupervisedBy values("hsimpson", "mdaley");
@@ -80,14 +86,14 @@ INSERT INTO assignedTo values("msimpson", "Summer", "2014", "CS1026");
 
 #Change Todd's first name to Rod, then show update
 UPDATE ta SET fname="Rod" WHERE fname="Todd";
-SHOW TABLE ta;
+SELECT * FROM ta;
 
 #Change Waylan's head supervisor from Dr. Bauer to Dr. Perry, then show update
 UPDATE ta SET superID="mperry" WHERE fname="Waylan";
-SHOW TABLE ta;
+SELECT * FROM ta;
 
 #Change the CS1026, Fall, 2014 ta's to be ta's for the Fall, 2014 instance, then show the updated table
 UPDATE assignedTo SET year="2014" WHERE term="Fall" and year="2014" and cname="CS1026";
-SHOW TABLE assignedTo;
+SELECT * FROM assignedTo;
 
 #Done!
