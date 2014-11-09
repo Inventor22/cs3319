@@ -11,6 +11,8 @@
 #
 #*************************************************
 
+USE asimps53tadb;
+
 # 1 - Show the last name of all professors
 SELECT lname FROM prof;
 
