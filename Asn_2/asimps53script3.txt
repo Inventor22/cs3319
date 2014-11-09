@@ -35,7 +35,7 @@ SELECT fname FROM ta WHERE westernID IN (SELECT DISTINCT taID FROM assignedTo WH
 SELECT T.fname, P.fname, P.lname FROM ta as T, prof as P WHERE T.superID=P.westernID;
 
 # 7 - List the first and last name of any instructors that don't supervise anyone
-SELECT fname, lname FROM prof WHERE westernID EXCEPT (SELECT DISTINCT superID FROM ta);
+SELECT fname, lname FROM prof WHERE westernID NOT IN (SELECT DISTINCT superID FROM ta);
 
 # 8 - List the first and last name of any instructors that don't supervise or cosupervise anyone
 SELECT fname, lname FROM prof WHERE westernID EXCEPT (SELECT DISTINCT superID FROM ta UNION \
