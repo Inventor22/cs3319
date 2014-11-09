@@ -55,7 +55,7 @@ SELECT temp.courseCode, course.cname, ta.fname, ta.lname
 
 # 11 - Find the total number of teaching assistants used for each year, list the year and the count for 
 # that year. I assume that each TA only counts once per year.
-SELECT year, count(*) FROM (SELECT DISTINCT year, taID FROM assignedTo) GROUP BY year;
+SELECT year, count(*) FROM (SELECT DISTINCT year, taID FROM assignedTo) as temp GROUP BY year;
 
 # 12 - List any year that had less than 5 teaching assistants that year.
 SELECT year FROM (SELECT year, count(*) FROM (SELECT DISTINCT year, taID FROM assignedTo) GROUP BY year) \ 
