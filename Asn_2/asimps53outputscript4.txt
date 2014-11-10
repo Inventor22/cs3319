@@ -1,4 +1,4 @@
-ERROR 1064 (42000) at line 45: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 10
+ERROR 1064 (42000) at line 52: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 10
 --------------
 CREATE VIEW taCourseView AS
 SELECT ta.fname, ta.lname, assignedTo.courseCode, assignedTo.year, assignedTo.term
@@ -28,9 +28,46 @@ Rod	Flanders	CS3357	2013	Spring
 Waylan	Smithers	CS1026	2014	Summer
 Waylan	Smithers	CS3357	2013	Spring
 --------------
+SELECT * FROM prof
+--------------
+
+fname	lname	westernID
+Andrew	Simpson	asimps53
+Bob	Mercer	bmercer
+Charles	Ling	cling
+Doug	Vancise	dvancise
+Hanan	Lutfiyya	hlutfiyy
+John	Barron	jbarron
+Laura	Reid	lreid2
+Mike	Bauer	mbauer
+Mark	Daley	mdaley
+Mike	Katchabaw	mkatchab
+Marc	Moreno Maza	mmm
+Mark	Perry	mperry
+Nazim	Madhavji	nmadhav
+Sylvia	Osborn	sosborn
+--------------
 DELETE FROM prof WHERE fname="Hanan"
 --------------
 
+--------------
+SELECT * FROM prof
+--------------
+
+fname	lname	westernID
+Andrew	Simpson	asimps53
+Bob	Mercer	bmercer
+Charles	Ling	cling
+Doug	Vancise	dvancise
+John	Barron	jbarron
+Laura	Reid	lreid2
+Mike	Bauer	mbauer
+Mark	Daley	mdaley
+Mike	Katchabaw	mkatchab
+Marc	Moreno Maza	mmm
+Mark	Perry	mperry
+Nazim	Madhavji	nmadhav
+Sylvia	Osborn	sosborn
 --------------
 DELETE FROM coSupervisedBy 
 	WHERE profID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise")
@@ -46,6 +83,23 @@ DELETE FROM prof
 	WHERE fname="Doug" and lname="Vancise"
 --------------
 
+--------------
+SELECT * FROM prof
+--------------
+
+fname	lname	westernID
+Andrew	Simpson	asimps53
+Bob	Mercer	bmercer
+Charles	Ling	cling
+John	Barron	jbarron
+Laura	Reid	lreid2
+Mike	Bauer	mbauer
+Mark	Daley	mdaley
+Mike	Katchabaw	mkatchab
+Marc	Moreno Maza	mmm
+Mark	Perry	mperry
+Nazim	Madhavji	nmadhav
+Sylvia	Osborn	sosborn
 --------------
 CREATE TRIGGER check_date_in 
 BEFORE INSERT 
