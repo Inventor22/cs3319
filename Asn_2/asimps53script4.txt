@@ -40,6 +40,7 @@ DELETE FROM prof
 
 # 4 - BONUS
 # Do not allow course instances to be created with a year before 2000 or after 2029.
+delimiter //
 CREATE TRIGGER check_date_in BEFORE INSERT ON courseInstance
 FOR EACH ROW
 BEGIN
@@ -48,7 +49,7 @@ BEGIN
 	ELSE IF NEW.year < 2000 THEN
 		SET NEW.year = 2000;
 	END IF;
-END;
+END;//
 CREATE TRIGGER check_date_up BEFORE UPDATE ON courseInstance
 FOR EACH ROW
 BEGIN
@@ -58,6 +59,7 @@ BEGIN
 		SET NEW.year = 2000;
 	END IF;
 END;
+delimiter ;
 # Demonstrating that it works.
 INSERT INTO courseInstance values("Fall", 2035, "CS1033", 65000);
 INSERT INTO courseInstance values("Fall", 1845, "CS1033", 0);
