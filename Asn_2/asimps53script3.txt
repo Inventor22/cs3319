@@ -62,10 +62,10 @@ SELECT year FROM (SELECT DISTINCT year, taID FROM assignedTo) as temp GROUP BY y
 
 # 13 - List the first name of any students that Doug Vancise either head supervises or co-supervises.
 SELECT fname FROM ta 
-WHERE superID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise") as temp2
+WHERE superID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise")
 UNION
 SELECT fname FROM ta 
 WHERE westernID IN (SELECT taID FROM coSupervisedBy WHERE profID IN
-	(SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise")) as temp5;
+	(SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise"));
 
 # Done
