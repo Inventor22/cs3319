@@ -50,6 +50,8 @@ BEGIN
 		SET NEW.year = 2000;
 	END IF;
 END;//
+delimiter ;
+delimiter //
 CREATE TRIGGER check_date_up BEFORE UPDATE ON courseInstance
 FOR EACH ROW
 BEGIN
