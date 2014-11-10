@@ -40,8 +40,7 @@ DELETE FROM prof
 
 # 4 - BONUS
 # Do not allow course instances to be created with a year before 2000 or after 2029.
-DELIMITER 
-|
+DELIMITER |
 CREATE TRIGGER check_date_in 
 BEFORE INSERT 
 ON courseInstance
