@@ -18,14 +18,13 @@ SELECT lname FROM prof;
 
 # 2 - Show the first and last name of all students who have 
 # a head supervisor with the first name "Mike"
-SELECT DISTINCT westernID FROM prof WHERE fname="Mike";
 SELECT fname, lname FROM ta WHERE superID IN (SELECT DISTINCT westernID FROM prof WHERE fname="Mike");
 
-# 3 - List first name, last name, and type of grad of the TA's who are doing  aPhD and order by first name
+# 3 - List first name, last name, and type of grad of the TA's who are doing a PhD and order by first name
 SELECT fname, lname, type FROM ta WHERE type="PhD" ORDER BY fname;
 
 # 4 - List all second year courses
-SELECT cname FROM course WHERE courseCode LIKE 'CS2%';
+SELECT * FROM course WHERE courseCode LIKE 'CS2%';
 
 # 5 - List the first name of a TA and the name of the course they were a teaching assistant for
 # for any TA's who were a teaching assistant for a course in the fall term
