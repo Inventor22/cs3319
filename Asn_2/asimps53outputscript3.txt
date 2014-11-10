@@ -1,0 +1,146 @@
+--------------
+SELECT lname FROM prof
+--------------
+
+lname
+Simpson
+Mercer
+Ling
+Vancise
+Lutfiyya
+Barron
+Reid
+Bauer
+Daley
+Katchabaw
+Moreno Maza
+Perry
+Madhavji
+Osborn
+--------------
+SELECT fname, lname FROM ta WHERE superID IN (SELECT DISTINCT westernID FROM prof WHERE fname="Mike")
+--------------
+
+fname	lname
+Ned	Flanders
+Rod	Flanders
+--------------
+SELECT fname, lname, type FROM ta WHERE type="PhD" ORDER BY fname
+--------------
+
+fname	lname	type
+Lisa	Simpson	PhD
+Maggie	Simpson	PhD
+Monty	Burns	PhD
+Ned	Flanders	PhD
+Waylan	Smithers	PhD
+--------------
+SELECT * FROM course WHERE courseCode LIKE 'CS2%'
+--------------
+
+courseCode	cname
+CS2208	Computer Organization
+CS2209	Logic
+CS2210	Data Structures
+CS2211	Software Tools
+CS2212	Intro to Software Engineering
+--------------
+SELECT fname FROM ta WHERE westernID IN (SELECT DISTINCT taID FROM assignedTo WHERE term="Fall")
+--------------
+
+fname
+Homer
+Lisa
+Monty
+Maggie
+Marge
+Ned
+Rod
+--------------
+SELECT T.fname, P.fname, P.lname FROM ta as T, prof as P WHERE T.superID=P.westernID
+--------------
+
+fname	fname	lname
+Homer	Laura	Reid
+Lisa	Laura	Reid
+Monty	Doug	Vancise
+Maggie	Laura	Reid
+Marge	Marc	Moreno Maza
+Ned	Mike	Katchabaw
+Spike	Andrew	Simpson
+Rod	Mike	Bauer
+Waylan	Mark	Perry
+--------------
+SELECT fname, lname FROM prof WHERE westernID NOT IN (SELECT DISTINCT superID FROM ta)
+--------------
+
+fname	lname
+Bob	Mercer
+Charles	Ling
+Hanan	Lutfiyya
+John	Barron
+Mark	Daley
+Nazim	Madhavji
+Sylvia	Osborn
+--------------
+SELECT fname, lname FROM prof WHERE westernID NOT IN (SELECT DISTINCT superID FROM ta UNION 
+	(SELECT profID FROM coSupervisedBy))
+--------------
+
+fname	lname
+Bob	Mercer
+Charles	Ling
+Hanan	Lutfiyya
+John	Barron
+Nazim	Madhavji
+--------------
+SELECT count(*) FROM ta WHERE type="PhD"
+--------------
+
+count(*)
+5
+--------------
+SELECT temp.courseCode, temp.cname, ta.fname, ta.lname 
+	FROM (SELECT * FROM course WHERE courseCode LIKE 'CS1%') as temp 
+		LEFT JOIN assignedTo
+			ON assignedTo.courseCode=temp.courseCode
+		LEFT OUTER JOIN ta 
+			ON assignedTo.taID=ta.westernID
+--------------
+
+courseCode	cname	fname	lname
+CS1026	Intro to Programming	Lisa	Simpson
+CS1026	Intro to Programming	Maggie	Simpson
+CS1026	Intro to Programming	Marge	Simpson
+CS1026	Intro to Programming	Waylan	Smithers
+CS1032	Info Systems and Design	NULL	NULL
+CS1033	Multimedia and Communications	Lisa	Simpson
+CS1033	Multimedia and Communications	Ned	Flanders
+CS1033	Multimedia and Communications	Homer	Simpson
+CS1033	Multimedia and Communications	Marge	Simpson
+CS1033	Multimedia and Communications	Rod	Flanders
+--------------
+SELECT year, count(*) FROM (SELECT DISTINCT year, taID FROM assignedTo) as temp GROUP BY year
+--------------
+
+year	count(*)
+2012	2
+2013	6
+2014	5
+--------------
+SELECT year FROM (SELECT DISTINCT year, taID FROM assignedTo) as temp GROUP BY year HAVING count(*) < 5
+--------------
+
+year
+2012
+--------------
+SELECT fname FROM ta 
+WHERE superID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise")
+UNION
+SELECT fname FROM ta 
+WHERE westernID IN (SELECT taID FROM coSupervisedBy WHERE profID IN
+	(SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise"))
+--------------
+
+fname
+Monty

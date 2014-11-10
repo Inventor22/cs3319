@@ -1,0 +1,314 @@
+--------------
+LOAD DATA INFILE '/tmp/fall2014data.txt' INTO TABLE prof
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+--------------
+
+--------------
+INSERT INTO prof values("Andrew", "Simpson" , "asimps53")
+--------------
+
+--------------
+SELECT * FROM prof
+--------------
+
+fname	lname	westernID
+Andrew	Simpson	asimps53
+Bob	Mercer	bmercer
+Charles	Ling	cling
+Doug	Vancise	dvancise
+Hanan	Lutfiyya	hlutfiyy
+John	Barron	jbarron
+Laura	Reid	lreid2
+Mike	Bauer	mbauer
+Mark	Daley	mdaley
+Mike	Katchabaw	mkatchab
+Marc	Moreno Maza	mmm
+Mark	Perry	mperry
+Nazim	Madhavji	nmadhav
+Sylvia	Osborn	sosborn
+--------------
+INSERT INTO ta values("Homer", "Simpson", "250011111", "hsimpson","Masters","lreid2", "")
+--------------
+
+--------------
+INSERT INTO ta values("Marge", "Simpson", "250011112", "msimpson","Masters", "mmm", "")
+--------------
+
+--------------
+INSERT INTO ta values("Lisa", "Simpson", "250011113", "lsimpson", "PhD", "lreid2", "")
+--------------
+
+--------------
+INSERT INTO ta values("Maggie", "Simpson", "250011114", "msimpso1", "PhD", "lreid2", "")
+--------------
+
+--------------
+INSERT INTO ta values("Ned", "Flanders", "250000666", "nflander", "PhD", "mkatchab", "")
+--------------
+
+--------------
+INSERT INTO ta values("Todd", "Flanders", "250000667", "tflander", "Masters", "mbauer", "")
+--------------
+
+--------------
+INSERT INTO ta values("Monty", "Burns", "250000001", "mburns", "PhD", "dvancise", "")
+--------------
+
+--------------
+INSERT INTO ta values("Waylan", "Smithers", "250022222", "wsmither", "PhD", "mbauer", "")
+--------------
+
+--------------
+INSERT INTO ta values("Spike", "Spiegel", "250033333", "sspiegel", "Masters", "asimps53", "")
+--------------
+
+--------------
+SELECT * FROM ta
+--------------
+
+fname	lname	sn	westernID	type	superID	imgPath
+Homer	Simpson	250011111	hsimpson	Masters	lreid2	
+Lisa	Simpson	250011113	lsimpson	PhD	lreid2	
+Monty	Burns	250000001	mburns	PhD	dvancise	
+Maggie	Simpson	250011114	msimpso1	PhD	lreid2	
+Marge	Simpson	250011112	msimpson	Masters	mmm	
+Ned	Flanders	250000666	nflander	PhD	mkatchab	
+Spike	Spiegel	250033333	sspiegel	Masters	asimps53	
+Todd	Flanders	250000667	tflander	Masters	mbauer	
+Waylan	Smithers	250022222	wsmither	PhD	mbauer	
+--------------
+INSERT INTO course values("CS1026", "Intro to Programming")
+--------------
+
+--------------
+INSERT INTO course values("CS1033", "Multimedia and Communications")
+--------------
+
+--------------
+INSERT INTO course values("CS1032", "Info Systems and Design")
+--------------
+
+--------------
+INSERT INTO course values("CS2212", "Intro to Software Engineering")
+--------------
+
+--------------
+INSERT INTO course values("CS3319", "Intro to Databases")
+--------------
+
+--------------
+INSERT INTO course values("CS4411", "Advanced Databases")
+--------------
+
+--------------
+INSERT INTO course values("CS2210", "Data Structures")
+--------------
+
+--------------
+INSERT INTO course values("CS2208", "Computer Organization")
+--------------
+
+--------------
+INSERT INTO course values("CS2209", "Logic")
+--------------
+
+--------------
+INSERT INTO course values("CS2211", "Software Tools")
+--------------
+
+--------------
+INSERT INTO course values("CS3357", "Networks")
+--------------
+
+--------------
+SELECT * FROM course
+--------------
+
+courseCode	cname
+CS1026	Intro to Programming
+CS1032	Info Systems and Design
+CS1033	Multimedia and Communications
+CS2208	Computer Organization
+CS2209	Logic
+CS2210	Data Structures
+CS2211	Software Tools
+CS2212	Intro to Software Engineering
+CS3319	Intro to Databases
+CS3357	Networks
+CS4411	Advanced Databases
+--------------
+INSERT INTO coSupervisedBy values("hsimpson", "mdaley")
+--------------
+
+--------------
+INSERT INTO coSupervisedBy values("hsimpson", "mbauer")
+--------------
+
+--------------
+INSERT INTO coSupervisedBy values("mburns", "mdaley")
+--------------
+
+--------------
+INSERT INTO coSupervisedBy values("mburns", "dvancise")
+--------------
+
+--------------
+INSERT INTO coSupervisedBy values("msimpso1", "mbauer")
+--------------
+
+--------------
+INSERT INTO coSupervisedBy values("msimpso1", "sosborn")
+--------------
+
+--------------
+INSERT INTO coSupervisedBy values("msimpso1", "mperry")
+--------------
+
+--------------
+INSERT INTO coSupervisedBy values("lsimpson", "lreid2")
+--------------
+
+--------------
+INSERT INTO courseInstance values("Fall", 2014, "CS1033", 55)
+--------------
+
+--------------
+INSERT INTO courseInstance values("Spring", 2013, "CS3357", 38)
+--------------
+
+--------------
+INSERT INTO courseInstance values("Fall", 2013, "CS1033", 51)
+--------------
+
+--------------
+INSERT INTO courseInstance values("Fall", 2014, "CS3319", 45)
+--------------
+
+--------------
+INSERT INTO courseInstance values("Fall", 2014, "CS1026", 78)
+--------------
+
+--------------
+INSERT INTO courseInstance values("Summer", 2014, "CS1026", 15)
+--------------
+
+--------------
+INSERT INTO assignedTo values("hsimpson", "Fall", 2014, "CS1033")
+--------------
+
+--------------
+INSERT INTO assignedTo values("tflander", "Fall", 2014, "CS1033")
+--------------
+
+--------------
+INSERT INTO assignedTo values("msimpson", "Fall", 2014, "CS1033")
+--------------
+
+--------------
+INSERT INTO assignedTo values("hsimpson", "Spring", 2013, "CS3357")
+--------------
+
+--------------
+INSERT INTO assignedTo values("tflander", "Spring", 2013, "CS3357")
+--------------
+
+--------------
+INSERT INTO assignedTo values("wsmither", "Spring", 2013, "CS3357")
+--------------
+
+--------------
+INSERT INTO assignedTo values("mburns", "Spring", 2013, "CS3357")
+--------------
+
+--------------
+INSERT INTO assignedTo values("nflander", "Fall", 2013, "CS1033")
+--------------
+
+--------------
+INSERT INTO assignedTo values("lsimpson", "Fall", 2013, "CS1033")
+--------------
+
+--------------
+INSERT INTO assignedTo values("mburns", "Fall", 2014, "CS3319")
+--------------
+
+--------------
+INSERT INTO assignedTo values("lsimpson", "Fall", 2014, "CS1026")
+--------------
+
+--------------
+INSERT INTO assignedTo values("msimpso1", "Fall", 2014, "CS1026")
+--------------
+
+--------------
+INSERT INTO assignedTo values("wsmither", "Summer", 2014, "CS1026")
+--------------
+
+--------------
+INSERT INTO assignedTo values("msimpson", "Summer", 2014, "CS1026")
+--------------
+
+--------------
+UPDATE ta SET fname="Rod" WHERE fname="Todd"
+--------------
+
+--------------
+SELECT * FROM ta
+--------------
+
+fname	lname	sn	westernID	type	superID	imgPath
+Homer	Simpson	250011111	hsimpson	Masters	lreid2	
+Lisa	Simpson	250011113	lsimpson	PhD	lreid2	
+Monty	Burns	250000001	mburns	PhD	dvancise	
+Maggie	Simpson	250011114	msimpso1	PhD	lreid2	
+Marge	Simpson	250011112	msimpson	Masters	mmm	
+Ned	Flanders	250000666	nflander	PhD	mkatchab	
+Spike	Spiegel	250033333	sspiegel	Masters	asimps53	
+Rod	Flanders	250000667	tflander	Masters	mbauer	
+Waylan	Smithers	250022222	wsmither	PhD	mbauer	
+--------------
+UPDATE ta SET superID="mperry" WHERE fname="Waylan"
+--------------
+
+--------------
+SELECT * FROM ta
+--------------
+
+fname	lname	sn	westernID	type	superID	imgPath
+Homer	Simpson	250011111	hsimpson	Masters	lreid2	
+Lisa	Simpson	250011113	lsimpson	PhD	lreid2	
+Monty	Burns	250000001	mburns	PhD	dvancise	
+Maggie	Simpson	250011114	msimpso1	PhD	lreid2	
+Marge	Simpson	250011112	msimpson	Masters	mmm	
+Ned	Flanders	250000666	nflander	PhD	mkatchab	
+Spike	Spiegel	250033333	sspiegel	Masters	asimps53	
+Rod	Flanders	250000667	tflander	Masters	mbauer	
+Waylan	Smithers	250022222	wsmither	PhD	mperry	
+--------------
+INSERT INTO courseInstance values("Fall", 2012, "CS1026", 3)
+--------------
+
+--------------
+UPDATE assignedTo SET year=2012 WHERE term="Fall" and year=2014 and courseCode="CS1026"
+--------------
+
+--------------
+SELECT * FROM assignedTo
+--------------
+
+taID	term	year	courseCode
+lsimpson	Fall	2012	CS1026
+msimpso1	Fall	2012	CS1026
+lsimpson	Fall	2013	CS1033
+nflander	Fall	2013	CS1033
+hsimpson	Fall	2014	CS1033
+msimpson	Fall	2014	CS1033
+tflander	Fall	2014	CS1033
+mburns	Fall	2014	CS3319
+hsimpson	Spring	2013	CS3357
+mburns	Spring	2013	CS3357
+tflander	Spring	2013	CS3357
+wsmither	Spring	2013	CS3357
+msimpson	Summer	2014	CS1026
+wsmither	Summer	2014	CS1026

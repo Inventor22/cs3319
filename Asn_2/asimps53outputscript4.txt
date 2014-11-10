@@ -1,0 +1,61 @@
+ERROR 1064 (42000) at line 45: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 10
+--------------
+CREATE VIEW taCourseView AS
+SELECT ta.fname, ta.lname, assignedTo.courseCode, assignedTo.year, assignedTo.term
+	FROM ta
+		LEFT JOIN assignedTo
+			on assignedTo.taID=ta.westernID
+--------------
+
+--------------
+SELECT * FROM taCourseView
+--------------
+
+fname	lname	courseCode	year	term
+Homer	Simpson	CS1033	2014	Fall
+Homer	Simpson	CS3357	2013	Spring
+Lisa	Simpson	CS1026	2012	Fall
+Lisa	Simpson	CS1033	2013	Fall
+Monty	Burns	CS3319	2014	Fall
+Monty	Burns	CS3357	2013	Spring
+Maggie	Simpson	CS1026	2012	Fall
+Marge	Simpson	CS1026	2014	Summer
+Marge	Simpson	CS1033	2014	Fall
+Ned	Flanders	CS1033	2013	Fall
+Spike	Spiegel	NULL	NULL	NULL
+Rod	Flanders	CS1033	2014	Fall
+Rod	Flanders	CS3357	2013	Spring
+Waylan	Smithers	CS1026	2014	Summer
+Waylan	Smithers	CS3357	2013	Spring
+--------------
+DELETE FROM prof WHERE fname="Hanan"
+--------------
+
+--------------
+DELETE FROM coSupervisedBy 
+	WHERE profID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise")
+--------------
+
+--------------
+UPDATE ta SET superID="asimps53"
+	WHERE superID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise")
+--------------
+
+--------------
+DELETE FROM prof
+	WHERE fname="Doug" and lname="Vancise"
+--------------
+
+--------------
+CREATE TRIGGER check_date_in 
+BEFORE INSERT 
+ON courseInstance
+FOR EACH ROW
+BEGIN
+IF NEW.year > 2029 THEN
+	SET NEW.year = 2029;
+ELSE IF NEW.year < 2000 THEN
+	SET NEW.year = 2000;
+END IF;END;
+--------------
+
