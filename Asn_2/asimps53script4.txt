@@ -14,14 +14,12 @@
 USE asimps53tadb;
 
 # 1 - Create a view that shows the TA's first name, last name and all 
-# the coruse numbers, years and terms for every course they TA'ed.
+# the course numbers, years and terms for every course they TA'ed.
 CREATE VIEW taCourseView AS
-SELECT ta.fname, ta.lname, course.cname, assignedTo.year, assignedTo.term
+SELECT ta.fname, ta.lname, course.courseCode, assignedTo.year, assignedTo.term
 	FROM ta
 		LEFT JOIN assignedTo
-			on assignedTo.taID=ta.westernID
-		LEFT JOIN course
-			on assignedTo.courseCode=course.courseCode;
+			on assignedTo.taID=ta.westernID;
 # Demonstrate view
 SELECT * FROM taCourseView;
 
@@ -35,7 +33,7 @@ DELETE FROM coSupervisedBy
 	WHERE profID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise");
 # Make myself the supervisor of anyone he is the head supervisor of:
 UPDATE ta SET superID="asimps53"
-	WHERE profID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise");
+	WHERE superID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise");
 # Now delete Doug Vancise from the database:
 DELETE FROM prof
 	WHERE fname="Doug" and lname="Vancise";
