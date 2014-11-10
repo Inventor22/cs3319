@@ -48,8 +48,8 @@ IF NEW.year < 2000 THEN
 	SET NEW.year = 2000
 END IF;
 # Demonstrating that it works.
-INSERT INTO courseInstance values("Fall", "2035", "CS1033", "65000");
-INSERT INTO courseInstance values("Fall", "1845", "CS1033", "0");
+INSERT INTO courseInstance values("Fall", 2035, "CS1033", 65000);
+INSERT INTO courseInstance values("Fall", 1845, "CS1033", 0);
 # Print out the table
 SELECT * FROM courseInstance;
 

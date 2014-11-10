@@ -68,27 +68,27 @@ INSERT INTO coSupervisedBy values("lsimpson", "lreid2");
 
 # Setup ta'ing data
 # Set up course instances first
-INSERT INTO courseInstance values("Fall", "2014", "CS1033", "55");
-INSERT INTO courseInstance values("Spring", "2013", "CS3357", "38");
-INSERT INTO courseInstance values("Fall", "2013", "CS1033", "51");
-INSERT INTO courseInstance values("Fall", "2014", "CS3319", "45");
-INSERT INTO courseInstance values("Fall", "2014", "CS1026", "78");
-INSERT INTO courseInstance values("Summer", "2014", "CS1026", "15");
+INSERT INTO courseInstance values("Fall", 2014, "CS1033", 55);
+INSERT INTO courseInstance values("Spring", 2013, "CS3357", 38);
+INSERT INTO courseInstance values("Fall", 2013, "CS1033", 51);
+INSERT INTO courseInstance values("Fall", 2014, "CS3319", 45);
+INSERT INTO courseInstance values("Fall", 2014, "CS1026", 78);
+INSERT INTO courseInstance values("Summer", 2014, "CS1026", 15);
 # Now select which ta's were assigned to which courses
-INSERT INTO assignedTo values("hsimpson", "Fall", "2014", "CS1033");
-INSERT INTO assignedTo values("tflander", "Fall", "2014", "CS1033");
-INSERT INTO assignedTo values("msimpson", "Fall", "2014", "CS1033");
-INSERT INTO assignedTo values("hsimpson", "Spring", "2013", "CS3357");
-INSERT INTO assignedTo values("tflander", "Spring", "2013", "CS3357");
-INSERT INTO assignedTo values("wsmither", "Spring", "2013", "CS3357");
-INSERT INTO assignedTo values("mburns", "Spring", "2013", "CS3357");
-INSERT INTO assignedTo values("nflander", "Fall", "2013", "CS1033");
-INSERT INTO assignedTo values("lsimpson", "Fall", "2013", "CS1033");
-INSERT INTO assignedTo values("mburns", "Fall", "2014", "CS3319");
-INSERT INTO assignedTo values("lsimpson", "Fall", "2014", "CS1026");
-INSERT INTO assignedTo values("msimpso1", "Fall", "2014", "CS1026");
-INSERT INTO assignedTo values("wsmither", "Summer", "2014", "CS1026");
-INSERT INTO assignedTo values("msimpson", "Summer", "2014", "CS1026");
+INSERT INTO assignedTo values("hsimpson", "Fall", 2014, "CS1033");
+INSERT INTO assignedTo values("tflander", "Fall", 2014, "CS1033");
+INSERT INTO assignedTo values("msimpson", "Fall", 2014, "CS1033");
+INSERT INTO assignedTo values("hsimpson", "Spring", 2013, "CS3357");
+INSERT INTO assignedTo values("tflander", "Spring", 2013, "CS3357");
+INSERT INTO assignedTo values("wsmither", "Spring", 2013, "CS3357");
+INSERT INTO assignedTo values("mburns", "Spring", 2013, "CS3357");
+INSERT INTO assignedTo values("nflander", "Fall", 2013, "CS1033");
+INSERT INTO assignedTo values("lsimpson", "Fall", 2013, "CS1033");
+INSERT INTO assignedTo values("mburns", "Fall", 2014, "CS3319");
+INSERT INTO assignedTo values("lsimpson", "Fall", 2014, "CS1026");
+INSERT INTO assignedTo values("msimpso1", "Fall", 2014, "CS1026");
+INSERT INTO assignedTo values("wsmither", "Summer", 2014, "CS1026");
+INSERT INTO assignedTo values("msimpson", "Summer", 2014, "CS1026");
 
 # Update data
 
@@ -102,8 +102,8 @@ SELECT * FROM ta;
 
 # Change the CS1026, Fall, 2014 ta's to be ta's for the Fall, 2012 instance, then show the updated table
 # This instance doesn't exist, so create it first
-INSERT INTO courseInstance values("Fall", "2012", "CS1026", "3");
-UPDATE assignedTo SET year="2012" WHERE term="Fall" and year="2014" and courseCode="CS1026";
+INSERT INTO courseInstance values("Fall", 2012, "CS1026", 3);
+UPDATE assignedTo SET year=2012 WHERE term="Fall" and year=2014 and courseCode="CS1026";
 SELECT * FROM assignedTo;
 
 # Done
