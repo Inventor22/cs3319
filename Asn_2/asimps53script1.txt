@@ -10,21 +10,21 @@
 #
 #*************************************************
 
-#List all databases
+# List all databases
 
-#Delete asimps53tadb if it exists
+# Delete asimps53tadb if it exists
 DROP DATABASE IF EXISTS asimps53tadb;
 
-#Create a new asimps53tadb database
+# Create a new asimps53tadb database
 CREATE DATABASE asimps53tadb;
 
-#Select database
+# Select database
 USE asimps53tadb;
 
-#List all tables - should be none
+# List all tables - should be none
 SHOW TABLES;
 
-#Create tables
+# Create tables
 CREATE TABLE prof(
 	fname varchar(30), 
 	lname varchar(30), 
@@ -70,5 +70,7 @@ CREATE TABLE coSupervisedBy(
 	FOREIGN KEY (profID) REFERENCES prof(westernID),
 	PRIMARY KEY (taID, profID));
 
-#List all tables (empty)
+# List all tables (empty)
 SHOW TABLES;
+
+# Done
