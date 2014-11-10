@@ -28,7 +28,8 @@ SHOW TABLES;
 CREATE TABLE prof(
 	fname varchar(30), 
 	lname varchar(30), 
-	westernID varchar(8) NOT NULL UNIQUE, 
+	westernID varchar(8) NOT NULL,
+	UNIQUE (westernID), 
 	PRIMARY KEY (westernID));
 CREATE TABLE ta(
 	fname varchar(30) NOT NULL, 
@@ -42,8 +43,9 @@ CREATE TABLE ta(
 	FOREIGN KEY (superID) REFERENCES prof(westernID),
 	PRIMARY KEY (westernID));
 CREATE TABLE course(
-	courseCode varchar(6) NOT NULL UNIQUE, 
-	cname varchar(30) NOT NULL, 
+	courseCode varchar(6) NOT NULL, 
+	cname varchar(30) NOT NULL,
+	UNIQUE (courseCode),
 	PRIMARY KEY (courseCode));
 CREATE TABLE courseInstance(
 	term varchar(6) NOT NULL,
