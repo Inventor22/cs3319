@@ -18,6 +18,7 @@ SELECT lname FROM prof;
 
 # 2 - Show the first and last name of all students who have 
 # a head supervisor with the first name "Mike"
+SELECT DISTINCT westernID FROM prof WHERE fname="Mike";
 SELECT fname, lname FROM ta WHERE superID IN (SELECT DISTINCT westernID FROM prof WHERE fname="Mike");
 
 # 3 - List first name, last name, and type of grad of the TA's who are doing  aPhD and order by first name
