@@ -1,0 +1,56 @@
+
+#*************************************************
+#  Script 4
+#
+#  Andrew Simpson - asimps53@uwo.ca - 250 633 280 
+#  Submission Deadline: November 10, 2014
+#
+#  Just follows steps for script 4 as per the
+#  assignment.  
+#
+#*************************************************
+
+# Select database
+USE asimps53tadb;
+
+# 1 - Create a view that shows the TA's first name, last name and all 
+# the coruse numbers, years and terms for every course they TA'ed.
+CREATE VIEW taView AS
+SELECT ta.fname, ta.lname, course.cname, assignedTo.year, assignedTo.term
+	FROM ta
+		LEFT JOIN assignedTo
+			on assignedTo.taID=ta.westernID
+		LEFT JOIN course
+			on assignedTo.courseCode=course.courseCode;
+
+# 2 - Delete any instructor with the first name of 'Hanan'
+DELETE FROM prof WHERE fname="Hanan";
+
+# 3 - Delete the instructor with first name Doug and last name Vancise.
+# Note: If he can't be deleted, show what must be done to delete him.
+# Delete any co-supervising relationships he has:
+DELETE FROM coSupervisedBy 
+	WHERE profId IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise");
+# Make myself the supervisor of anyone he is the head supervisor of:
+UPDATE ta SET superID="asimps53"
+	WHERE profId IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise");
+# Now delete Doug Vancise from the database:
+DELETE FROM prof
+	WHERE fname="Doug" and lname="Vancise";
+
+# 4 - BONUS
+# Do not allow course instances to be created with a year before 2000 or after 2029.
+CREATE TRIGGER check_date BEFORE INSERT ON courseInstance
+IF NEW.year > 2029 THEN
+	SET NEW.year = 2029
+END IF
+IF NEW.year < 2000 THEN
+	SET NEW.year = 2000
+END IF;
+# Demonstrating that it works.
+INSERT INTO courseInstance values("Fall", "2035", "CS1033", "65000");
+INSERT INTO courseInstance values("Fall", "1845", "CS1033", "0");
+# Print out the table
+SELECT * FROM courseInstance;
+
+# Done
