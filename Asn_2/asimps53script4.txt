@@ -15,13 +15,15 @@ USE asimps53tadb;
 
 # 1 - Create a view that shows the TA's first name, last name and all 
 # the coruse numbers, years and terms for every course they TA'ed.
-CREATE VIEW taView AS
+CREATE VIEW taCourseView AS
 SELECT ta.fname, ta.lname, course.cname, assignedTo.year, assignedTo.term
 	FROM ta
 		LEFT JOIN assignedTo
 			on assignedTo.taID=ta.westernID
 		LEFT JOIN course
 			on assignedTo.courseCode=course.courseCode;
+# Demonstrate view
+SELECT * FROM taCourseView;
 
 # 2 - Delete any instructor with the first name of 'Hanan'
 DELETE FROM prof WHERE fname="Hanan";
@@ -30,10 +32,10 @@ DELETE FROM prof WHERE fname="Hanan";
 # Note: If he can't be deleted, show what must be done to delete him.
 # Delete any co-supervising relationships he has:
 DELETE FROM coSupervisedBy 
-	WHERE profId IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise");
+	WHERE profID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise");
 # Make myself the supervisor of anyone he is the head supervisor of:
 UPDATE ta SET superID="asimps53"
-	WHERE profId IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise");
+	WHERE profID IN (SELECT westernID FROM prof WHERE fname="Doug" and lname="Vancise");
 # Now delete Doug Vancise from the database:
 DELETE FROM prof
 	WHERE fname="Doug" and lname="Vancise";
