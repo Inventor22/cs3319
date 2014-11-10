@@ -23,8 +23,13 @@ SELECT ta.fname, ta.lname, assignedTo.courseCode, assignedTo.year, assignedTo.te
 # Demonstrate view
 SELECT * FROM taCourseView;
 
+# Show initial prof table
+SELECT * FROM prof;
+
 # 2 - Delete any instructor with the first name of 'Hanan'
 DELETE FROM prof WHERE fname="Hanan";
+# Show that there is no Hanan now
+SELECT * FROM prof;
 
 # 3 - Delete the instructor with first name Doug and last name Vancise.
 # Note: If he can't be deleted, show what must be done to delete him.
@@ -37,6 +42,8 @@ UPDATE ta SET superID="asimps53"
 # Now delete Doug Vancise from the database:
 DELETE FROM prof
 	WHERE fname="Doug" and lname="Vancise";
+# Show that Doug is gone
+SELECT * FROM prof;
 
 # 4 - BONUS
 # Do not allow course instances to be created with a year before 2000 or after 2029.
