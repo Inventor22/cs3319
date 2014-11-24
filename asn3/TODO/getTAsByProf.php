@@ -34,10 +34,10 @@
 				$count++;
 				echo '<tr>';
 				//echo $row["firstname"] . " " . $row["lastname"] . " " . $row["userid"] . " " . $row["gradtype"] . "<br>";
-				echo '<td>$row["userid"]</td>';
-				echo '<td>$row["firstname"]</td>';
-				echo '<td>$row["lastname"]</td>';
-				echo '<td>$row["gradtype"]</td>';
+				echo '<td>$row[\'userid\']</td>';
+				echo '<td>$row[\'firstname\']</td>';
+				echo '<td>$row[\'lastname\']</td>';
+				echo '<td>$row[\'gradtype\']</td>';
 				echo '</tr>';
 				// TODO: Show image.
 			}
