@@ -15,43 +15,42 @@
 		$c_year = $_POST["c_year"];
 		$c_term = $_POST["c_term"];
 		echo $c_code . " " . $c_year . " " . $c_term . "<br>";
+		$query = "select * from TAAssignedTO where coursenumber=\"$c_code\" and " .
+					"year=\"$c_year\" and term=\"$c_term\"";
 	// 	// Do head superviser seach:
-	// 	$query = 'select * from TEACHINGASSISTANT where profuserid="' . $wID . '"';
-	// 	$result=mysqli_query($connection,$query);
-	// 	if(!$result){
-	// 		die("databases query failed.");
-	// 		echo "Query error: 	" . mysqli_error($connection);
-	// 	}
-	// 	if ($result->num_rows > 0){
-	// 		// Setup table
-	// 		echo "<table id='display'>";
-	// 		echo "<tr>
-	// 				<td>User ID</td>
-	// 				<td>First Name</td>
-	// 				<td>Last Name</td>
-	// 				<td>Grad Type</td>
-	// 				<td>Profile Picture</td>
-	// 			  </tr>";
+		$result=mysqli_query($connection,$query);
+		if(!$result){
+			die("databases query failed.");
+			echo "Query error: 	" . mysqli_error($connection);
+		}
+		if ($result->num_rows > 0){
+			// Setup table
+			echo "<table id='display'>";
+			echo "<tr>
+					<td>User ID</td>
+					<td>First Name</td>
+					<td>Last Name</td>
+					<td>Grad Type</td>
+					<td>Profile Picture</td>
+				  </tr>";
 
-	// 		// Print data into table.
-	// 		while($row=mysqli_fetch_assoc($result)){
-	// 			echo '<tr>';
-	// 			echo "<td>{$row['userid']}</td>";
-	// 			echo "<td>{$row['firstname']}</td>";
-	// 			echo "<td>{$row['lastname']}</td>";
-	// 			echo "<td>{$row['gradtype']}</td>";
-	// 			echo '</tr>';
-	// 			// TODO: Show image.
-	// 		}
-	// 		echo "</table>";
-	// 	}
+			// Print data into table.
+			while($row=mysqli_fetch_assoc($result)){
+				echo '<tr>';
+				echo "<td>{$row['tauserid']}</td>";
+				echo "<td>{$row['numofstudents']}</td>";
+				// echo "<td>{$row['lastname']}</td>";
+				// echo "<td>{$row['gradtype']}</td>";
+				echo '</tr>';
+				// TODO: Show image.
+			}
+			echo "</table>";
+		}
 	// 	if ($result->num_rows == 0){
 	// 		echo 'None';
 	// 	}
 	// 	mysqli_free_result($result);
-	// ?>
-	// <h2>TA's that professor co-supervises:</h2>
-	// <?php
+
 	// 	// Do co-supervisor seach:
 	// 	$query = 'select * from CoSUPERVISE where profuserid="' . $wID . '"';
 	// 	$result=mysqli_query($connection,$query);
