@@ -9,26 +9,17 @@
 		include 'connectdb.php';
 	?>
 	<h1>Welcome to the Western Professors' Portal</h1>
-	<hr>
 	<h2>View TA's by professor</h2>
 	<h3>Please enter a professor's name:</h3>
 	<form action="getTAsByProf.php" method="post">
 		<?php
 			include 'getprofs.php';
 		?>
-<!-- 	<?php
-		   include 'get_tas.php';
-		?>
-		First name:<br>
-		<input type="text" name="firstname" value="">
-		<br>
-		Last name:<br>
-		<input type="text" name="lastname" value="">
-		<br><br> -->
-
 		<input type="submit" value="Get TAs">
 	</form>
+	<p>
 	<hr>
+	<p>
 	<h2>View TA's by course</h2>
 	<h3>Please enter a course number:</h3>
 	First name:<br>

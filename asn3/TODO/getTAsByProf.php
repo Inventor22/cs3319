@@ -11,12 +11,10 @@
 	<h1>TA's</h1>
 	<ol>
 		<?php
-			$wID = $_POST["profID"];
-			//$lname = $_POST["lname"];
-			// Get prof's westernID
-			$query = "select westernID from prof where westernID=" . $wID;
-			$result = mysqli_query($connection,$query);
-			if(!result){
+			$wID= $_POST["profID"];
+			$query = "select westernID from prof where westernID=" . $wID . '"';
+			$resultW=mysqli_query($connection,$query);
+			if($result){
 				die("databases query failed.");
 			}
 			//while($row = mysqli_fetch_assoc($result)){
