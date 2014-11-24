@@ -21,14 +21,28 @@
 				echo "Query error: 	" . mysqli_error($connection);
 			}
 			$count=0;
+			echo "<table id='display'>";
+			echo "<tr>
+					<td>User ID</td>
+					<td>First Name</td>
+					<td>Last Name</td>
+					<td>Grad Type</td>
+					<td>Profile Picture</td>
+				  </tr>";
+
 			while($row=mysqli_fetch_assoc($result)){
 				$count++;
-				echo '<li>';
-				echo $row["firstname"] . " " . $row["lastname"] . " " . $row["userid"] . " " . $row["gradtype"] . "<br>";
+				echo '<tr>';
+				//echo $row["firstname"] . " " . $row["lastname"] . " " . $row["userid"] . " " . $row["gradtype"] . "<br>";
+				echo '<td>$row["userid"]</td>';
+				echo '<td>$row["firstname"]</td>';
+				echo '<td>$row["lastname"]</td>';
+				echo '<td>$row["gradtype"]</td>';
+				echo '</tr>';
 				// TODO: Show image.
 			}
 			mysqli_free_result($result);
-			if ($count == 0){
+			if ($result->num_rows == 0){
 				echo 'None';
 			}
 		?>
@@ -42,7 +56,6 @@
 			if(!$result){
 				die("databases query failed: " . mysqli_error($connection));
 			}
-			$count=0;
 			while($row=mysqli_fetch_assoc($result)){
 				$count++;
 				// Do sub-query for the specific TA
@@ -57,7 +70,7 @@
 					// TODO: Show image.
 				}
 			}
-			if ($count == 0){
+			if ($result->num_rows == 0){
 				echo 'None';
 			}
 		?>
