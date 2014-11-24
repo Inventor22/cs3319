@@ -40,8 +40,7 @@
 			$query = 'select * from CoSUPERVISE where profuserid="' . $wID . '"';
 			$result=mysqli_query($connection,$query);
 			if(!$result){
-				die("databases query failed.");
-				echo "Query error: 	" . mysqli_error($connection);
+				die("databases query failed: " . mysqli_error($connection));
 			}
 			$count=0;
 			while($row=mysqli_fetch_assoc($result)){
