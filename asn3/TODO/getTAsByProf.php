@@ -34,17 +34,17 @@
 				$count++;
 				echo '<tr>';
 				//echo $row["firstname"] . " " . $row["lastname"] . " " . $row["userid"] . " " . $row["gradtype"] . "<br>";
-				echo '<td>$row[\'userid\']</td>';
-				echo '<td>$row[\'firstname\']</td>';
-				echo '<td>$row[\'lastname\']</td>';
-				echo '<td>$row[\'gradtype\']</td>';
+				echo "<td>{$row['userid']}</td>";
+				echo "<td>{$row['firstname']}</td>";
+				echo "<td>{$row['lastname']}</td>";
+				echo "<td>{$row['gradtype']}</td>";
 				echo '</tr>';
 				// TODO: Show image.
 			}
-			mysqli_free_result($result);
 			if ($result->num_rows == 0){
 				echo 'None';
 			}
+			mysqli_free_result($result);
 		?>
 	</ol>
 	<h2>TA's that professor co-supervises:</h2>
@@ -69,10 +69,12 @@
 					echo $row2["firstname"] . " " . $row2["lastname"] . " " . $row2["userid"] . " " . $row2["gradtype"] . "<br>";
 					// TODO: Show image.
 				}
+				mysqli_free_result($result2);
 			}
 			if ($result->num_rows == 0){
 				echo 'None';
 			}
+			mysqli_free_result($result);
 		?>
 	</ol>
 	<?php
