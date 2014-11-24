@@ -32,7 +32,6 @@
 			if ($count == 0){
 				echo 'None';
 			}
-			echo '<br>';
 		?>
 	</ol>
 	<ol>
@@ -64,7 +63,6 @@
 			if ($count == 0){
 				echo 'None';
 			}
-			echo '<br>';
 		?>
 	</ol>
 	<?php
