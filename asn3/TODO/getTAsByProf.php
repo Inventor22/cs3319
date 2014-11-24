@@ -9,6 +9,7 @@
 		include 'connectdb.php';
 	?>
 	<h1>TA's</h1>
+	<h2>TA's that professor head supervises:</h2>
 	<ol>
 		<?php
 			$wID= $_POST["profID"];
@@ -19,7 +20,6 @@
 				die("databases query failed.");
 				echo "Query error: 	" . mysqli_error($connection);
 			}
-			echo "TA's that professor " . $fname . " " . $lname . " head supervises:<br>";
 			$count=0;
 			while($row=mysqli_fetch_assoc($result)){
 				$count++;
@@ -34,6 +34,7 @@
 			}
 		?>
 	</ol>
+	<h2>TA's that professor co-supervises:</h2>
 	<ol>
 		<?php
 			// Do co-supervisor seach:
@@ -43,7 +44,6 @@
 				die("databases query failed.");
 				echo "Query error: 	" . mysqli_error($connection);
 			}
-			echo "TA's that professor " . $fname . " " . $lname . " co-supervises:<br>";
 			$count=0;
 			while($row=mysqli_fetch_assoc($result)){
 				$count++;
