@@ -1,3 +1,12 @@
+<!--
+    File: updload_file.php
+
+    Description:
+        Allows the client to upload an image file.
+        
+        Taken from PHP workshop.
+-->
+
 <?php
 include ('folders.php');
 $allowedExts = array("gif", "jpeg", "jpg", "png");

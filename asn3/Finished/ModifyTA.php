@@ -1,3 +1,15 @@
+<!--
+    Name:  Dustin Dobransky
+    Date:  23/11/14
+    ID:    250575030
+    Aliad: ddobran
+
+    File: ModifyTA.php
+
+    Description:
+        This file modified the first and last name of a TA.
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +22,7 @@
     include 'connectdb.php';
     ?>
     <h1>Modifying TA:</h1>
-    <ol>
-        <?php
+    <?php
         $from_tauserid      = $_POST["userid"];
         $from_firstname     = $_POST["firstname"];
         $from_lastname      = $_POST["lastname"];
@@ -20,24 +31,24 @@
         $to_firstname = $_POST["newfirstname"];
         $to_lastname  = $_POST["newlastname"]; 
         
-        $changeTA = 'UDPATE TEACHINGASSISTANT '.
-                    'set firstname="'.$to_firstname.'", lastname="'.$to_lastname.'" '
-                    'where userid="'.$from_tauserid.'"'.
-                        'OR (firstname="'.$from_firstname.'" AND lastname="'.$from_lastname.'") '
-                        'OR studentnumber="'.$from_studentnumber.'"';
+        $changeTA = 'UDPATE TEACHINGASSISTANT '
+                    .'set firstname="'.$to_firstname.'", lastname="'.$to_lastname.'" '
+                    .'where userid="'.$from_tauserid.'"'
+                        .'OR (firstname="'.$from_firstname.'" AND lastname="'.$from_lastname.'") '
+                        .'OR studentnumber="'.$from_studentnumber.'"';
         $addTA = false;
 
-        if (mysqli_query($connection,$changeTA);) {
+        if (mysqli_query($connection,$changeTA)) {
             echo "TA updated from TEACHINGASSISTANT table";
         } else {
             echo "TA not removed from TEACHINGASSISTANT table.";
-            echo "double check input parameters"
+            echo "double check input parameters";
         }
         
-        $verify = 'select * from TEACHINGASSISTANT '.
-                  'where userid="'.$from_tauserid.'"'.
-                     'OR (firstname="'.$to_firstname.'" AND lastname="'.$to_lastname.'") '
-                     'OR studentnumber="'.$from_studentnumber.'"';
+        $verify = 'select * from TEACHINGASSISTANT '
+                  .'where userid="'.$from_tauserid.'"'
+                     .'OR (firstname="'.$to_firstname.'" AND lastname="'.$to_lastname.'") '
+                     .'OR studentnumber="'.$from_studentnumber.'"';
         
         $result = mysqli_query($connection, $verify);
         if (!$result) {
@@ -52,39 +63,38 @@
         
         mysqli_close($connection);
         ?>
-        <table>
-            <tr>
-                <td>userid:</td>
-                <td><?php $_POST["userid"]; ?></td>
-            </tr>
-            <tr>
-                <td>firstname:</td>
-                <td>
-                    <?php $_POST["firstname"]; ?></td>
-            </tr>
-            <tr>
-                <td>lastname:</td>
-                <td>
-                    <?php $_POST["lastname"]; ?></td>
-            </tr>
-            <tr>
-                <td>studentnumber:</td>
-                <td><?php $_POST["studentnumber"]; ?></td>
-            </tr>
-            <tr>
-                <td>gradtype:</td>
-                <td>
-                    <?php $_POST["gradtype"]; ?></td>
-            </tr>
-            <tr>
-                <td>Picture:</td>
-                <td><?php echo '<img src="' . $row["imagelocation"] . '" height="150" width="120">'; ?></td>
-            </tr>
-            <tr>
-                <td>Picture:</td>
-                <td><?php $_POST["tauserid"]; ?></td>
-            </tr>
-        </table>
-    </ol>
+    <table>
+        <tr>
+            <td>userid:</td>
+            <td><?php $_POST["userid"]; ?></td>
+        </tr>
+        <tr>
+            <td>firstname:</td>
+            <td>
+                <?php $_POST["firstname"]; ?></td>
+        </tr>
+        <tr>
+            <td>lastname:</td>
+            <td>
+                <?php $_POST["lastname"]; ?></td>
+        </tr>
+        <tr>
+            <td>studentnumber:</td>
+            <td><?php $_POST["studentnumber"]; ?></td>
+        </tr>
+        <tr>
+            <td>gradtype:</td>
+            <td>
+                <?php $_POST["gradtype"]; ?></td>
+        </tr>
+        <tr>
+            <td>Picture:</td>
+            <td><?php echo '<img src="' . $row["imagelocation"] . '" height="150" width="120">'; ?></td>
+        </tr>
+        <tr>
+            <td>Picture:</td>
+            <td><?php $_POST["tauserid"]; ?></td>
+        </tr>
+    </table>
 </body>
 </html>

@@ -1,20 +1,73 @@
+<!--
+    Name:  Dustin Dobransky
+    Date:  23/11/14
+    ID:    250575030
+    Aliad: ddobran
+
+    File: GradSecretary.php
+
+    Description:
+        This file is responsible for providing an interface for the
+        Graduate Secretary for performing the following functions:
+    1. Add/Remove Professors
+    2. Add/Remove Teaching Assistants
+    3. Add/Remove Courses
+    4. Assign/Modify a head professor to a TA
+    5. Assign a TA to a course and provide extra course details (year, term, # students)
+    6. Add/Remove CoSupervisors for a TA
+-->
+
 <!DOCTYPE html>
+
+<?php 
+// password magic: http://www.totallyphp.co.uk/password-protect-a-page
+// Define your username and password 
+$username = "ADMIN"; 
+$password = "janice"; 
+
+if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) { 
+
+?>
+
+<h1>Login to Graduate Supervisor broom closet:</h1>
+
+<form name="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <p>
+        <label for="txtUsername">Username:</label>
+        <br />
+        <input type="text" title="Enter your Username" name="txtUsername" value="ADMIN" />
+    </p>
+
+    <p>
+        <label for="txtpassword">Password:</label>
+        <br />
+        <input type="password" title="Enter your password" name="txtPassword" />
+    </p>
+
+    <p>
+        <input type="submit" name="Submit" value="Login" />
+    </p>
+
+</form>
+
+<?php 
+} 
+else { 
+?>
+
 <html>
 <head>
     <meta charset="utf-8">
     <title>CS3319 - Databases - Assignment 3 stuff</title>
 </head>
 <body>
-    <!--    <?php
-            include 'connectdb.php';
-            ?>-->
+    <?php
+    //include 'connectdb.php';
+    ?>
     <h1>Graduate Student Secretary</h1>
     <h2>TAs</h2>
-    <form action="getpets.php" method="post">
-        <!--        <?php
-                    include 'getdata.php';
-                    ?>-->
-        <Button name="submit">Get TA Names</Button>
+    <form action="getTAs.php" method="post">
+        <button name="submit">Get TA Names</button>
     </form>
     <hr>
     <h2>Add a new teaching assistant:</h2>
@@ -45,16 +98,15 @@
                     <input type="radio" name="type" value="PhD">PhD
                     <input type="radio" name="type" value="Masters">Masters</td>
             </tr>
+            <tr>
+                <td>Image:</td>
+                <td><input type="file" name="imagelocation" id="file"><br></td>
+            </tr>
         </table>
         <br>
-        <?php
-        include 'getdata.php';
-        ?>
         <input type="submit" name="Add New TA" value="Add New TA">
     </form>
-    <?php
-    mysqli_close($connection);
-    ?>
+
     <hr>
     <h2>Delete a teaching assistant:</h2>
     <form action="deleteTA.php" method="post" enctype="multipart/form-data">
@@ -88,17 +140,12 @@
             </tr>
         </table>
         <br />
-        <?php
-        include 'getdata.php';
-        ?>
         <input type="submit" name="Delete TA" value="Delete TA">
     </form>
-    <?php
-    mysqli_close($connection);
-    ?>
+
     <hr>
     <h2>Rename a teaching assistant:</h2>
-    <form action="deleteTA.php" method="post" enctype="multipart/form-data">
+    <form action="ModifyTA.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>&nbsp;</td>
@@ -154,18 +201,13 @@
             </tr>
         </table>
         <br />
-        <?php
-        include 'getdata.php';
-        ?>
+
         <input type="submit" name="Rename TA" value="Rename TA">
     </form>
-    <?php
-    mysqli_close($connection);
-    ?>
 
     <hr>
     <h2>Add Professor:</h2>
-    <form action="deleteTA.php" method="post" enctype="multipart/form-data">
+    <form action="AddProfessor.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>userid:</td>
@@ -184,17 +226,12 @@
             </tr>
         </table>
         <br />
-        <?php
-        include 'getdata.php';
-        ?>
         <input type="submit" name="Add Professor" value="Add Professor">
     </form>
-    <?php
-    mysqli_close($connection);
-    ?>
+
     <hr>
     <h2>Delete Professor:</h2>
-    <form action="deleteTA.php" method="post" enctype="multipart/form-data">
+    <form action="DeleteProfessor.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>userid:</td>
@@ -217,39 +254,38 @@
             </tr>
         </table>
         <br />
-        <?php
-        include 'getdata.php';
-        ?>
         <input type="submit" name="Delete Professor" value="Delete Professor">
     </form>
-    <?php
-    mysqli_close($connection);
-    ?>
+
     <hr>
     <h2>Assign Professors to TAs:</h2>
-    <form action="deleteTA.php" method="post" enctype="multipart/form-data">
+    <form action="ProfToTA.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>TA userid:</td>
                 <td>
                     <input type="text" name="tauserid"></td>
-                <td>&nbsp;&nbsp;
-                    Prof userid</td>
+                <td>
+                    &nbsp;</td>
+                <td>Prof userid</td>
                 <td>
                     <input type="text" name="profuserid"></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>OR</td>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td></td>
+                <td>&nbsp;OR&nbsp;</td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
                 <td>TA firstname:</td>
                 <td>
                     <input type="text" name="ta_firstname"></td>
-                <td>&nbsp;&nbsp; Prof firstname&nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>Prof firstname&nbsp;</td>
                 <td>
                     <input type="text" name="prof_firstname"></td>
 
@@ -258,15 +294,14 @@
                 <td>TA lastname:</td>
                 <td>
                     <input type="text" name="ta_lastname"></td>
-                <td>&nbsp;&nbsp; Prof lastname&nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>Prof lastname&nbsp;</td>
                 <td>
                     <input type="text" name="prof_lastname"></td>
             </tr>
         </table>
         <br />
-        <?php
-        include 'getdata.php';
-        ?>
         <table>
             <tr>
                 <td align="center">
@@ -285,7 +320,7 @@
 
     <hr>
     <h2>Add/Remove Course:</h2>
-    <form action="addnewpet.php" method="post" enctype="multipart/form-data">
+    <form action="AddRemoveCourse.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Course Number:</td>
@@ -299,9 +334,6 @@
             </tr>
         </table>
         <br>
-        <?php
-        include 'getdata.php';
-        ?>
         <table>
             <tr>
                 <td>
@@ -314,7 +346,7 @@
 
     <hr />
     <h2>Assign TA to course:</h2>
-    <form action="addnewpet.php" method="post" enctype="multipart/form-data">
+    <form action="TAAssignTo.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Course Number:</td>
@@ -344,9 +376,6 @@
             </tr>
         </table>
         <br>
-        <?php
-        include 'getdata.php';
-        ?>
         <table>
             <tr>
                 <td>
@@ -356,5 +385,18 @@
             </tr>
         </table>
     </form>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <?php
+    mysqli_close($connection);
+    ?>
 </body>
 </html>
+
+<?php 
+} 
+?>

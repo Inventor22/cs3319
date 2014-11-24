@@ -1,3 +1,10 @@
+<!--
+    File: folders.php
+
+    Description:  This file creates a directory.
+                  From the PHP workshop.    
+-->
+
 <?php
 class Folder {
     function createFolder($foldername) {
