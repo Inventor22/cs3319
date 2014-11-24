@@ -24,7 +24,7 @@
             ' OR (firstname="'.$firstname.'" AND lastname ="'.$lastname.'")'.
             ' OR studentnumber="'.$studentnumber.'"';
         
-        if (mysqli_query($connection,$findTA0);) {
+        if (mysqli_query($connection,$findTA0)) {
             echo "TA removed from TEACHINGASSISTANT table";
         } else {
             echo "TA not removed from TEACHINGASSISTANT table.";

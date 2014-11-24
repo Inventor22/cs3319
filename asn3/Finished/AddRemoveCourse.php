@@ -14,7 +14,7 @@
         $courseName   = $_POST["coursename"];
         
         $checkIfCourseExists = 'select * from COURSE'
-                                    .'where coursenumber="'$courseNumber.'" '
+                                    .'where coursenumber="'.$courseNumber.'" '
                                     .'AND coursename="'.$courseName.'"';
         
         $result = mysqli_query($connection, $checkIfCourseExists);
@@ -30,6 +30,8 @@
                 $addCourse = 'INSERT INTO COURSE (coursenumber, coursename) VALUES("'.$courseNumber.'", "'.$courseName.'")';
                 if (mysqli_query($connection, $addCourse)) {
                     echo 'Successfully added course';
+                } else {
+                    echo 'Unable to add course';
                 }
             } else {
                 echo 'Course already exists!';

@@ -22,8 +22,7 @@
         
         $changeTA = 'UDPATE TEACHINGASSISTANT '.
                     'set firstname="'.$to_firstname.'", lastname="'.$to_lastname.'" '
-                    'where
-                        userid="'.$from_tauserid.'"'.
+                    'where userid="'.$from_tauserid.'"'.
                         'OR (firstname="'.$from_firstname.'" AND lastname="'.$from_lastname.'") '
                         'OR studentnumber="'.$from_studentnumber.'"';
         $addTA = false;

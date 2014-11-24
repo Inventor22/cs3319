@@ -6,7 +6,7 @@
 </head>
 <body>
     <?php
-    include 'connectdb.php';
+        include 'connectdb.php';
     ?>
     <h1>Deleting TA:</h1>
     <ol>
@@ -19,7 +19,7 @@
             ' userid="'. $profuserid .'"'. 
             ' OR (firstname="'.$firstname.'" AND lastname ="'.$lastname.'")';
         
-        if (mysqli_query($connection,$findTA0);) {
+        if (mysqli_query($connection,$findTA0)) {
             echo 'Prof. ' . $firstname . ' ' . $lastname . ' removed from TEACHINGASSISTANT table';
         } else {
             echo "Prof not removed from TEACHINGASSISTANT table.";

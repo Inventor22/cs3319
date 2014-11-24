@@ -22,10 +22,10 @@
             ' AND firstname="'.$firstname.'"'.
             ' AND lastname ="'.$lastname.'"';
         
-        if (!mysqli_query($connection, $findProf) {
+        if (!mysqli_query($connection, $findProf)) {
             echo "TA table invalid!";
         } else {
-            if ($row=mysqli_fetch_assoc($result)) {
+            if ($row=mysqli_fetch_assoc($result) && $row=NULL) {
                 echo "Prof already exists in INSTRUCTOR database.";
             } else {
                 $addTA = true;
