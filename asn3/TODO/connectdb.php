@@ -2,7 +2,7 @@
 $dbhost = "localhost";
 $dbuser= "root";
 $dbpass = "cs3319";
-$dbname = "asimps53tadb";
+$dbname = "DoDrew";
 $connection = mysqli_connect($dbhost, $dbuser,$dbpass,$dbname);
 if (mysqli_connect_errno()) {
     die("database connection failed :" .

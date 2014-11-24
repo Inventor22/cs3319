@@ -8,13 +8,13 @@
 	<?php
 		include 'connectdb.php';
 	?>
-	<h1>TA's</h1>
+	<h1>TA's Supervised by Professor </h1>
 	<h2>TA's that professor head supervises:</h2>
 	<ol>
 		<?php
 			$wID= $_POST["profID"];
 			// Do head superviser seach:
-			$query = 'select * from ta where superID="' . $wID . '"';
+			$query = 'select * from TEACHINGASSISTANT where profuserid="' . $wID . '"';
 			$result=mysqli_query($connection,$query);
 			if(!$result){
 				die("databases query failed.");
@@ -24,11 +24,10 @@
 			while($row=mysqli_fetch_assoc($result)){
 				$count++;
 				echo '<li>';
-				echo $row["fname"] . " " . $row["lname"] . " " . $row["westernID"] . " " . $row["type"] . "<br>";
+				echo $row["firstname"] . " " . $row["lastname"] . " " . $row["userid"] . " " . $row["gradtype"] . "<br>";
 				// TODO: Show image.
 			}
 			mysqli_free_result($result);
-			$query = 'select * from ...';
 			if ($count == 0){
 				echo 'None';
 			}
@@ -38,7 +37,7 @@
 	<ol>
 		<?php
 			// Do co-supervisor seach:
-			$query = 'select * from coSupervisedBy where profID="' . $wID . '"';
+			$query = 'select * from CoSUPERVISE where profuserid="' . $wID . '"';
 			$result=mysqli_query($connection,$query);
 			if(!$result){
 				die("databases query failed.");
@@ -48,7 +47,7 @@
 			while($row=mysqli_fetch_assoc($result)){
 				$count++;
 				// Do sub-query for the specific TA
-				$query2='select * from ta where westernID="' . $row["taID"] . '"';
+				$query2='select * from TEACHINGASSISTANT where westernID="' . $row["tauserid"] . '"';
 				$result2=mysqli_query($connection,$query2);
 				if(!$result2){
 					die("databases query failed.");
@@ -56,7 +55,7 @@
 				}
 				if($row2=mysqli_fetch_assoc($result2)){
 					echo '<li>';
-					echo $row2["fname"] . " " . $row2["lname"] . " " . $row2["westernID"] . " " . $row2["type"] . "<br>";
+					echo $row2["firstname"] . " " . $row2["lastname"] . " " . $row2["userid"] . " " . $row2["gradtype"] . "<br>";
 					// TODO: Show image.
 				}
 			}
