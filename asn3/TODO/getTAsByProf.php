@@ -46,7 +46,7 @@
 			while($row=mysqli_fetch_assoc($result)){
 				$count++;
 				// Do sub-query for the specific TA
-				$query2='select * from TEACHINGASSISTANT where westernID="' . $row["tauserid"] . '"';
+				$query2='select * from TEACHINGASSISTANT where userid="' . $row["tauserid"] . '"';
 				$result2=mysqli_query($connection,$query2);
 				if(!$result2){
 					die("databases query failed: " . mysqli_error($connection));
