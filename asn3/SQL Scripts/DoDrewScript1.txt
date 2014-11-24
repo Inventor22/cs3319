@@ -4,6 +4,7 @@ create database DoDrew;
 use DoDrew;
 show tables;
 
+
 create table INSTRUCTOR  (
     firstname VARCHAR(30) not null, 
     lastname VARCHAR(30) not null, 
