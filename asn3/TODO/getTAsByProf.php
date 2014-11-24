@@ -12,11 +12,11 @@
 	<ol>
 		<?php
 			$wID= $_POST["profID"];
-			echo $wID . "<br>";
-			$query = 'select westernID from prof where westernID="' . $wID . '"';
+			$query = 'select * from ta where superID="' . $wID . '"';
 			$result=mysqli_query($connection,$query);
-			if($result){
-				die("databases query failed.");
+			if(!$result){
+				die("databases query failed.") .
+				echo "Query error: 	" . mysqli_error($connection);
 			}
 			echo "TA's that professor " . $fname . " " . $lname . " head supervises:<br>";
 			while($row=mysqli_fetch_assoc($result)){
