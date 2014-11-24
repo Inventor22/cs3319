@@ -20,26 +20,28 @@
 				die("databases query failed.");
 				echo "Query error: 	" . mysqli_error($connection);
 			}
-			$count=0;
-			echo "<table id='display'>";
-			echo "<tr>
-					<td>User ID</td>
-					<td>First Name</td>
-					<td>Last Name</td>
-					<td>Grad Type</td>
-					<td>Profile Picture</td>
-				  </tr>";
+			if ($result->num_rows > 0){
+				// Setup table
+				echo "<table id='display'>";
+				echo "<tr>
+						<td>User ID</td>
+						<td>First Name</td>
+						<td>Last Name</td>
+						<td>Grad Type</td>
+						<td>Profile Picture</td>
+					  </tr>";
 
-			while($row=mysqli_fetch_assoc($result)){
-				$count++;
-				echo '<tr>';
-				//echo $row["firstname"] . " " . $row["lastname"] . " " . $row["userid"] . " " . $row["gradtype"] . "<br>";
-				echo "<td>{$row['userid']}</td>";
-				echo "<td>{$row['firstname']}</td>";
-				echo "<td>{$row['lastname']}</td>";
-				echo "<td>{$row['gradtype']}</td>";
-				echo '</tr>';
-				// TODO: Show image.
+				// Print data into table.
+				while($row=mysqli_fetch_assoc($result)){
+					echo '<tr>';
+					echo "<td>{$row['userid']}</td>";
+					echo "<td>{$row['firstname']}</td>";
+					echo "<td>{$row['lastname']}</td>";
+					echo "<td>{$row['gradtype']}</td>";
+					echo '</tr>';
+					// TODO: Show image.
+				}
+				echo "</table>";
 			}
 			if ($result->num_rows == 0){
 				echo 'None';
