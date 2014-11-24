@@ -21,8 +21,7 @@
 	<hr>
 	<p>
 	<h2>View TA's by course</h2>
-	<h3>Please enter a course number:</h3>
-	First name:<br>
+	<h3>Please select a course:</h3>
 	<form action="getTAsByCourse.php" method="post">
 <!-- 		<?php
 		// Only needed if we want to use radio buttons
@@ -30,13 +29,13 @@
 		// there are simply too many courses.
 		   include 'getcourses.php';
 		?> -->
-		Course Code:<br>
+		Course Code (cs####):<br>
 		<input type="text" name="c_code" value="">
 		<br>
 		Year:<br>
 		<input type="text" name="c_year" value="">
 		<br>
-		Term:<br>
+		Term (First letter capitalized):<br>
 		<input type="text" name="c_term" value="">
 		<br><br>
 		<input type="submit" value="Submit">
