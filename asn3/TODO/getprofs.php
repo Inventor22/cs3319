@@ -6,7 +6,7 @@
     }
     echo "Who are you looking up?</br>";
     while($row = mysqli_fetch_assoc($result)){
-        echo '<input type="radio" name="profs" value="';
+        echo '<input type="radio" name="profID" value="';
         echo $row["westernID"];
         echo '">' . $row["fname"] . " " . $row["lname"] . "<br>";
     }
