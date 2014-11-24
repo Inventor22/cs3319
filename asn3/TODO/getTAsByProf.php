@@ -11,7 +11,7 @@
 	<h1>TA's</h1>
 	<ol>
 		<?php
-			$wID = $_POST["fname"];
+			$wID = $_POST["westernID"];
 			//$lname = $_POST["lname"];
 			// Get prof's westernID
 			$query = "select westernID from prof where westernID=" . $wID;
