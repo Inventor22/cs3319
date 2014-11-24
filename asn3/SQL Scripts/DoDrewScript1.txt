@@ -1,0 +1,46 @@
+SHOW databases;
+DROP database if exists DoDrew;
+create database DoDrew;
+use DoDrew;
+show tables;
+
+create table INSTRUCTOR  (
+    firstname VARCHAR(30) not null, 
+    lastname VARCHAR(30) not null, 
+    userid VARCHAR(8) not NULL, 
+    primary key (userid));
+
+create table TEACHINGASSISTANT (
+    firstname VARCHAR(30) not null, 
+    lastname VARCHAR(30) not null, 
+    studentnumber CHAR(9), 
+    userid VARCHAR(8) not NULL, 
+    gradtype VARCHAR (7), 
+    imagelocation VARCHAR(40), 
+    profuserid VARCHAR(8), 
+    primary key (userid), 
+    FOREIGN KEY (profuserid) REFERENCES INSTRUCTOR(userid) ON DELETE RESTRICT);
+
+create table COURSE  (
+    coursenumber CHAR(6) not null, 
+    coursename VARCHAR(30), 
+    primary key (coursenumber));
+
+create table CoSUPERVISE (
+    profuserid VARCHAR(8) not null, 
+    tauserid VARCHAR(8) not null, 
+    primary key (profuserid, tauserid), 
+    FOREIGN KEY (profuserid) REFERENCES INSTRUCTOR(userid), 
+    FOREIGN KEY (tauserid) REFERENCES TEACHINGASSISTANT(userid));
+
+create table TAAssignedTO (
+    coursenumber CHAR(6) not null, 
+    tauserid VARCHAR(8) not null, 
+    year INT, 
+    term VARCHAR(6),
+    numofstudents INT, 
+    primary key (coursenumber, tauserid), 
+    FOREIGN KEY (coursenumber) REFERENCES COURSE(coursenumber), 
+    FOREIGN KEY (tauserid) REFERENCES TEACHINGASSISTANT(userid));
+
+show tables;
