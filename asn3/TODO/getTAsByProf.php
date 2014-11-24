@@ -12,7 +12,7 @@
 	<ol>
 		<?php
 			$wID= $_POST["profID"];
-			$query = "select westernID from prof where westernID=" . $wID . '"';
+			$query = 'select westernID from prof where westernID="' . $wID . '"';
 			$result=mysqli_query($connection,$query);
 			if($result){
 				die("databases query failed.");
