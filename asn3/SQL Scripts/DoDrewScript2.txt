@@ -13,7 +13,7 @@ INSERT INTO TEACHINGASSISTANT VALUES ("Lisa","Simpson","250011113","lsimpson","P
 INSERT INTO TEACHINGASSISTANT VALUES ("Maggie","Simpson","250011114","msimpso1","PhD","","lreid2");
 INSERT INTO TEACHINGASSISTANT VALUES ("Ned","Flanders","250000666","nflanders","PhD","","mkatchab");
 INSERT INTO TEACHINGASSISTANT VALUES ("Todd","Flanders","250000667","tflanders","Masters","","mbauer");
-INSERT INTO TEACHINGASSISTANT VALUES ("Monty","Burns","250000001","mburns","PhD","","dvancis");
+INSERT INTO TEACHINGASSISTANT VALUES ("Monty","Burns","250000001","mburns","PhD","","dvancise");
 INSERT INTO TEACHINGASSISTANT VALUES ("Waylan","Smithers","250022222","wsmither","PhD","","mbauer");
 INSERT INTO TEACHINGASSISTANT VALUES ("Peter","Griffin","250033333","pgriffin","Masters","","lreid2");
 SELECT * FROM TEACHINGASSISTANT;
@@ -34,7 +34,7 @@ SELECT * FROM COURSE;
 INSERT INTO CoSUPERVISE VALUES ("mdaley","hsimpson");
 INSERT INTO CoSUPERVISE VALUES ("mbauer","hsimpson");
 INSERT INTO CoSUPERVISE VALUES ("mdaley","mburns");
-INSERT INTO CoSUPERVISE VALUES ("dvancis","mburns");
+INSERT INTO CoSUPERVISE VALUES ("dvancise","mburns");
 INSERT INTO CoSUPERVISE VALUES ("mbauer","msimpso1");
 INSERT INTO CoSUPERVISE VALUES ("sosborn","msimpso1");
 INSERT INTO CoSUPERVISE VALUES ("mperry","msimpso1");
