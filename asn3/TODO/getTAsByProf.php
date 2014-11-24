@@ -12,6 +12,7 @@
 	<ol>
 		<?php
 			$wID= $_POST["profID"];
+			echo $wID . "<br>";
 			$query = 'select westernID from prof where westernID="' . $wID . '"';
 			$result=mysqli_query($connection,$query);
 			if($result){
