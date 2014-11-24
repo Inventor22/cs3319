@@ -33,6 +33,10 @@
 				echo 'None';
 			}
 			echo '<br>';
+		?>
+	</ol>
+	<ol>
+		<?php
 			// Do co-supervisor seach:
 			$query = 'select * from coSupervisedBy where profID="' . $wID . '"';
 			$result=mysqli_query($connection,$query);
