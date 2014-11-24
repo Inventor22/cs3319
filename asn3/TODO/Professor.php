@@ -15,7 +15,7 @@
 	<form action="getTAsByProf.php" method="post">
 		<?php
 			include 'getprofs.php';
-		>
+		?>
 <!-- 	<?php
 		   include 'get_tas.php';
 		?>
