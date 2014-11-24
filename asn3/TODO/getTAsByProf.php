@@ -13,17 +13,20 @@
 		<?php
 			$wID= $_POST["profID"];
 			$query = "select westernID from prof where westernID=" . $wID . '"';
-			$resultW=mysqli_query($connection,$query);
+			$result=mysqli_query($connection,$query);
 			if($result){
 				die("databases query failed.");
 			}
-			//while($row = mysqli_fetch_assoc($result)){
-			//echo "TA's that professor " . $fname . " " . $lname . " head supervises:<br>";
 			echo "TA's that professor " . $fname . " " . $lname . " head supervises:<br>";
-			while($row = mysqli_fetch_assoc($result)){
+			while($row=mysqli_fetch_assoc($result)){
+				echo '<li>';
 				echo $row["fname"] . " " . $row["lname"] . "<br>";
 			}
 			mysqli_free_result($result);
 		?>
 	</ol>
+	<?php
+    	mysqli_close($connection);
+  	?>
 </body>
+</html>
