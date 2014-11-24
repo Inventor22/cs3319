@@ -15,7 +15,7 @@
 			$query = 'select * from ta where superID="' . $wID . '"';
 			$result=mysqli_query($connection,$query);
 			if(!$result){
-				die("databases query failed.") .
+				die("databases query failed.");
 				echo "Query error: 	" . mysqli_error($connection);
 			}
 			echo "TA's that professor " . $fname . " " . $lname . " head supervises:<br>";
