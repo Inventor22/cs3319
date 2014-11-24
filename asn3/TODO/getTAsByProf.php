@@ -34,7 +34,7 @@
 			}
 			echo '<br>';
 			// Do co-supervisor seach:
-			$query = 'select * from cosupervises where superID="' . $wID . '"';
+			$query = 'select * from coSupervisedBy where profID="' . $wID . '"';
 			$result=mysqli_query($connection,$query);
 			if(!$result){
 				die("databases query failed.");
@@ -44,9 +44,18 @@
 			$count=0;
 			while($row=mysqli_fetch_assoc($result)){
 				$count++;
-				echo '<li>';
-				echo $row["fname"] . " " . $row["lname"] . " " . $row["westernID"] . " " . $row["type"] . "<br>";
-				// TODO: Show image.
+				// Do sub-query for the specific TA
+				$query2='select * from ta where westernID="' . $row["taID"] . '"';
+				$result2=mysqli_query($connection,$query2);
+				if(!$result2){
+					die("databases query failed.");
+					echo "Query error: 	" . mysqli_error($connection);
+				}
+				if($row2=mysqli_fetch_assoc($result2)){
+					echo '<li>';
+					echo $row2["fname"] . " " . $row2["lname"] . " " . $row2["westernID"] . " " . $row2["type"] . "<br>";
+					// TODO: Show image.
+				}
 			}
 			if ($count == 0){
 				echo 'None';
