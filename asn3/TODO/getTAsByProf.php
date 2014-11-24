@@ -49,8 +49,7 @@
 				$query2='select * from TEACHINGASSISTANT where westernID="' . $row["tauserid"] . '"';
 				$result2=mysqli_query($connection,$query2);
 				if(!$result2){
-					die("databases query failed.");
-					echo "Query error: 	" . mysqli_error($connection);
+					die("databases query failed: " . mysqli_error($connection));
 				}
 				if($row2=mysqli_fetch_assoc($result2)){
 					echo '<li>';
