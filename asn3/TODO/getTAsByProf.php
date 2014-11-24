@@ -11,15 +11,16 @@
 	<h1>TA's</h1>
 	<ol>
 		<?php
-			$fname = $_POST["fname"];
-			$lname = $_POST["lname"];
+			$wID = $_POST["fname"];
+			//$lname = $_POST["lname"];
 			// Get prof's westernID
-			$query = "select westernID from prof where fname=" . $fname;
+			$query = "select westernID from prof where westernID=" . $wID;
 			$result = mysqli_query($connection,$query);
 			if(!result){
 				die("databases query failed.");
 			}
 			//while($row = mysqli_fetch_assoc($result)){
+			//echo "TA's that professor " . $fname . " " . $lname . " head supervises:<br>";
 			echo "TA's that professor " . $fname . " " . $lname . " head supervises:<br>";
 			while($row = mysqli_fetch_assoc($result)){
 				echo $row["fname"] . " " . $row["lname"] . "<br>";
