@@ -19,7 +19,7 @@
 			if(!result){
 				die("databases query failed.");
 			}
-			while()
+			//while($row = mysqli_fetch_assoc($result)){
 			echo "TA's that professor " . $fname . " " . $lname . " head supervises:<br>";
 			while($row = mysqli_fetch_assoc($result)){
 				echo $row["fname"] . " " . $row["lname"] . "<br>";
