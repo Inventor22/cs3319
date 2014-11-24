@@ -21,7 +21,8 @@
 			echo "TA's that professor " . $fname . " " . $lname . " head supervises:<br>";
 			while($row=mysqli_fetch_assoc($result)){
 				echo '<li>';
-				echo $row["fname"] . " " . $row["lname"] . "<br>";
+				echo $row["fname"] . " " . $row["lname"] . " " . $row["westernID"] . " " . $row["type"] . <br>";
+				//TODO: Show image.
 			}
 			mysqli_free_result($result);
 		?>
