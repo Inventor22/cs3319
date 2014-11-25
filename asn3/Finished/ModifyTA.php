@@ -22,13 +22,13 @@
     ?>
     <h1>Modifying TA:</h1>
     <?php
-    $from_tauserid      = mysqli_real_escape_string($connection, $_POST["userid"]);
-    $from_firstname     = mysqli_real_escape_string($connection, $_POST["firstname"]);
-    $from_lastname      = mysqli_real_escape_string($connection, $_POST["lastname"]);
-    $from_studentnumber = mysqli_real_escape_string($connection, $_POST["studentnumber"]);
+    $from_tauserid      = strlen($_POST["userid"]) > 0 ? mysqli_real_escape_string($connection, $_POST["userid"]) : NULL;
+    $from_firstname     = strlen($_POST["firstname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["firstname"]) : NULL;
+    $from_lastname      = strlen($_POST["lastname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["lastname"]) : NULL;
+    $from_studentnumber = strlen($_POST["studentnumber"]) > 0 ? mysqli_real_escape_string($connection, $_POST["studentnumber"]) : NULL;
     
-    $to_firstname = mysqli_real_escape_string($connection, $_POST["newfirstname"]);
-    $to_lastname  = mysqli_real_escape_string($connection, $_POST["newlastname"]);
+    $to_firstname = strlen($_POST["newfirstname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["newfirstname"]) : NULL;
+    $to_lastname  = strlen($_POST["newlastname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["newlastname"]) : NULL;
     
     if (strlen($from_tauserid) > 0) {
         echo 'from taserid';
