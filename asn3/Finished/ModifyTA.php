@@ -28,19 +28,16 @@
     $from_studentnumber = $_POST["studentnumber"];
     
     $to_firstname = $_POST["newfirstname"];
-    $to_lastname  = $_POST["newlastname"]; 
-    
-    echo $to_firstname;
-    echo $to_lastname;
+    $to_lastname  = $_POST["newlastname"];
     
     if (strlen($from_tauserid) > 0) {
         $changeTA = "update TEACHINGASSISTANT 
-                    set lastname='".$to_lastname."', firstname='".$to_firstname."'".
-                    " where userid='".$from_tauserid."'";
+                    set lastname='".$to_lastname."', firstname='".$to_firstname."'"
+                    ." where userid='".$from_tauserid."'";
     } else if (strlen($from_firstname) > 0 && strlen($from_lastname) > 0) {
         $changeTA = "UDPATE TEACHINGASSISTANT 
-                    set lastname='$to_lastname', firstname='$to_firstname'
-                    where firstname='$from_firstname' AND lastname='$from_lastname')";
+                    set lastname='".$to_lastname."', firstname='".$to_firstname."'"
+                    ." where firstname='".$from_firstname."' AND lastname='".$from_lastname."')";
     } else if (strlen($from_studentnumber) > 0) {
         $changeTA = "UDPATE TEACHINGASSISTANT 
                     set lastname='$to_lastname', firstname='$to_firstname'
