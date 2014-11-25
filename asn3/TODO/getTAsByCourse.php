@@ -16,7 +16,7 @@
 		$c_year = $_POST["c_year"];
 		$c_term = $_POST["c_term"];
 
-		echo "<h2>TA's that are assigned to course $c_code in $c_term term $c_year:</h2>";
+		echo "<h2>TA's assigned to $c_code in $c_term term $c_year:</h2>";
 
 		// Put the query together
 		$query = "select * from TAAssignedTO where coursenumber=\"$c_code\" and " .
