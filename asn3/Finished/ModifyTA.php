@@ -30,7 +30,7 @@
     $to_firstname = strlen($_POST["newfirstname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["newfirstname"]) : NULL;
     $to_lastname  = strlen($_POST["newlastname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["newlastname"]) : NULL;
     
-    echo $from_firstname.' '.$from_lastname.' '.$from_tauserid.' '.$from_studentnumber.' '.$to_firstname.' '.$to_lastname.'<br>'.
+    echo $from_firstname.' '.$from_lastname.' '.$from_tauserid.' '.$from_studentnumber.' '.$to_firstname.' '.$to_lastname.'<br>';
     
     if (strlen($from_tauserid) > 0) {
         echo 'from taserid';
