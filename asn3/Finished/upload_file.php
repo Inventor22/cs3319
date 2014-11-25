@@ -13,7 +13,7 @@ $allowedExts = array("gif", "jpeg", "jpg", "png");
 $temp = explode(".", $_FILES["file"]["name"]);
 $extension = end($temp);
 $extension = strtolower($extension);
-$uploadholder = dirname(__FILE__) . "/upload";
+$uploadholder = dirname(__FILE__) . "/TA_Pictures";
 $uploadFolder = new Folder;
 if ((($_FILES["file"]["type"] == "image/gif")
     || ($_FILES["file"]["type"] == "image/jpeg")
@@ -27,14 +27,14 @@ if ((($_FILES["file"]["type"] == "image/gif")
         echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
     } else {
         $uploadFolder->createFolder($uploadholder);
-        if (file_exists("upload/" . $_FILES["file"]["name"])) {
+        if (file_exists("TA_Pictures/" . $_FILES["file"]["name"])) {
             echo '<p><hr>';
             echo $_FILES["file"]["name"] . " already exists. ";
             echo '<p><hr>';
             $TApic = "NULL";
         } else {
-            move_uploaded_file($_FILES["file"]["tmp_name"],"upload/" . $_FILES["file"]["name"]);
-            $TApic = "upload/" . $_FILES["file"]["name"];
+            move_uploaded_file($_FILES["file"]["tmp_name"],"TA_Pictures/" . $_FILES["file"]["name"]);
+            $TApic = "TA_Pictures/" . $_FILES["file"]["name"];
         } // end of else
     } // end of else
 } else {

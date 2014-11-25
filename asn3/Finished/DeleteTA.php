@@ -42,11 +42,14 @@
     
     if ($found && mysqli_num_rows($found) > 0)
     {
-        $ta = mysqli_fetch_assoc($connection, $found);
+        $ta = mysqli_fetch_assoc($found);
+        echo $ta['imagelocation'].' <br>';
         unlink($ta['imagelocation']); // delete the image
+        $firstname = $ta['firstname'];
+        $lastname  = $ta['lastname'];
         
         if (mysqli_query($connection, $deleteTA)) {
-            echo '<br>Prof. ' . $firstname . ' ' . $lastname . ' removed.';
+            echo '<br>TA ' . $firstname . ' ' . $lastname . ' removed.';
         } else {
             echo '<br>Unable to delete TA ' . $firstname . ' ' . $lastname;
         }
