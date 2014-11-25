@@ -48,7 +48,7 @@
 			echo "</table>";
 		}
     	
-    	echo "This TA is currently assigned to \"$count\" courses.<br>";
+    	echo "This TA is currently assigned to $count courses.<br>";
 
     	// Get the TA's type
 		$query = "select * from TEACHINGASSISTANT where userid=\"$taid\"";
