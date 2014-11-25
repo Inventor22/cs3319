@@ -7,15 +7,15 @@ LOAD DATA INFILE '/tmp/fall2014data.txt' INTO TABLE INSTRUCTOR FIELDS TERMINATED
 
 select * from INSTRUCTOR;
 
-INSERT INTO TEACHINGASSISTANT VALUES ("Homer","Simpson","250011111","hsimpson","Masters","","lreid2");
-INSERT INTO TEACHINGASSISTANT VALUES ("Marge","Simpson","250011112","msimpson","Masters","","mmm");
-INSERT INTO TEACHINGASSISTANT VALUES ("Lisa","Simpson","250011113","lsimpson","PhD","","lreid2");
-INSERT INTO TEACHINGASSISTANT VALUES ("Maggie","Simpson","250011114","msimpso1","PhD","","lreid2");
-INSERT INTO TEACHINGASSISTANT VALUES ("Ned","Flanders","250000666","nflanders","PhD","","mkatchab");
-INSERT INTO TEACHINGASSISTANT VALUES ("Todd","Flanders","250000667","tflanders","Masters","","mbauer");
-INSERT INTO TEACHINGASSISTANT VALUES ("Monty","Burns","250000001","mburns","PhD","","dvancise");
-INSERT INTO TEACHINGASSISTANT VALUES ("Waylan","Smithers","250022222","wsmither","PhD","","mbauer");
-INSERT INTO TEACHINGASSISTANT VALUES ("Peter","Griffin","250033333","pgriffin","Masters","","lreid2");
+INSERT INTO TEACHINGASSISTANT VALUES ("Homer","Simpson","250011111","hsimpson","Masters","default.png","lreid2");
+INSERT INTO TEACHINGASSISTANT VALUES ("Marge","Simpson","250011112","msimpson","Masters","default.png","mmm");
+INSERT INTO TEACHINGASSISTANT VALUES ("Lisa","Simpson","250011113","lsimpson","PhD","default.png","lreid2");
+INSERT INTO TEACHINGASSISTANT VALUES ("Maggie","Simpson","250011114","msimpso1","PhD","default.png","lreid2");
+INSERT INTO TEACHINGASSISTANT VALUES ("Ned","Flanders","250000666","nflanders","PhD","default.png","mkatchab");
+INSERT INTO TEACHINGASSISTANT VALUES ("Todd","Flanders","250000667","tflanders","Masters","default.png","mbauer");
+INSERT INTO TEACHINGASSISTANT VALUES ("Monty","Burns","250000001","mburns","PhD","default.png","dvancise");
+INSERT INTO TEACHINGASSISTANT VALUES ("Waylan","Smithers","250022222","wsmither","PhD","default.png","mbauer");
+INSERT INTO TEACHINGASSISTANT VALUES ("Peter","Griffin","250033333","pgriffin","Masters","default.png","lreid2");
 SELECT * FROM TEACHINGASSISTANT;
 
 INSERT INTO COURSE VALUES ("CS1026","Intro to Programming");
