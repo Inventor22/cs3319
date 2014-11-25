@@ -42,7 +42,7 @@
     {
         echo 'from firstname';
         
-        $changeTA = "UDPATE TEACHINGASSISTANT 
+        $changeTA = "udpate TEACHINGASSISTANT 
                     set lastname='".$to_lastname."', firstname='".$to_firstname."'"
                     ." where userid='".$from_tauserid."'";
         
