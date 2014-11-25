@@ -42,7 +42,7 @@
         
         $changeTA = "UDPATE TEACHINGASSISTANT 
                     set lastname='".$to_lastname."', firstname='".$to_firstname."'"
-                    ." where firstname='".$from_firstname."' AND lastname='".$from_lastname."')";
+                    ." where firstname='".$from_firstname."' AND lastname='".$from_lastname."'";
     }
     else if (strlen($from_studentnumber) > 0)
     {
