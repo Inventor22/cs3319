@@ -35,7 +35,7 @@
     if (!$result) {
         echo "TA table invalid!";
     } else {
-        if ($row=mysqli_fetch_assoc($result) && $row==NULL) {
+        if (mysqli_num_rows($result) > 0) {
             echo "Prof already exists in INSTRUCTOR database.";
         } else {
             $addProf = true;
