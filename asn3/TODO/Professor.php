@@ -16,6 +16,7 @@
 		<?php
 			include 'getprofs.php';
 		?>
+		<br><br>
 		<input type="submit" value="Get TAs">
 	</form>
 	<p>
@@ -32,12 +33,6 @@
 		?> -->
 		Course Code (cs####):<br>
 		<input type="text" name="c_code" value="">
-		<br>
-		Year:<br>
-		<input type="text" name="c_year" value="">
-		<br>
-		Term (first letter capitalized):<br>
-		<input type="text" name="c_term" value="">
 		<br><br>
 		<input type="submit" value="Submit">
 	</form>
@@ -50,6 +45,7 @@
 		<?php
 			include 'gettas.php';
 		?>
+		<br><br>
 		<input type="submit" value="Get Courses"/>
 	</form>
 	<?php

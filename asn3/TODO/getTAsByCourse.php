@@ -13,14 +13,11 @@
 	<?php
 		// Get course code, year, and term from the caller
 		$c_code = $_POST["c_code"];
-		$c_year = $_POST["c_year"];
-		$c_term = $_POST["c_term"];
 
-		echo "<h2>TA's assigned to $c_code in $c_term term $c_year:</h2>";
+		echo "<h2>TA's assigned to $c_code:</h2>";
 
 		// Put the query together
-		$query = "select * from TAAssignedTO where coursenumber=\"$c_code\" and " .
-					"year=\"$c_year\" and term=\"$c_term\"";
+		$query = "select * from TAAssignedTO where coursenumber=\"$c_code\"";
 		
 		// Do seach:
 		$result=mysqli_query($connection,$query);
@@ -33,6 +30,8 @@
 			echo "<table id='display'>";
 			echo "<tr>
 					<td>User ID</td>
+					<td>Year</td>
+					<td>Term</td>
 					<td>Number of Students</td>
 				  </tr>";
 
@@ -40,6 +39,8 @@
 			while($row=mysqli_fetch_assoc($result)){
 				echo '<tr>';
 				echo "<td>{$row['tauserid']}</td>";
+				echo "<td>{$row['year']}</td>";
+				echo "<td>{$row['term']}</td>";
 				echo "<td>{$row['numofstudents']}</td>";
 				echo '</tr>';
 			}
