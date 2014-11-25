@@ -60,7 +60,7 @@
         if (!mysqli_query($connection, $query)) {
             die("Error: insert failed" . mysqli_error($connection));
         }
-        echo "<br>New Prof added:";
+        echo "<br>New Prof added.<br>";
     }
     mysqli_close($connection);
     
