@@ -19,18 +19,29 @@
     <?php
     include 'connectdb.php';
     ?>
-    <h1>Deleting TA:</h1>
+    <h1>Deleting Professor</h1>
     <?php
     $profuserid = $_POST["userid"];
     $firstname  = $_POST["firstname"];
     $lastname   = $_POST["lastname"];
     
-    $findTA0 = 'delete from INSTRUCTOR where'
+    $findTA = 'select * from INSTRUCTOR where'
         .' userid="'. $profuserid .'"'
         .' OR (firstname="'.$firstname.'" AND lastname ="'.$lastname.'")';
     
-    if (mysqli_query($connection,$findTA0)) {
-        echo 'Prof. ' . $firstname . ' ' . $lastname . ' removed from TEACHINGASSISTANT table';
+    $deleteTA = 'delete from INSTRUCTOR where'
+        .' userid="'. $profuserid .'"'
+        .' OR (firstname="'.$firstname.'" AND lastname ="'.$lastname.'")';
+    
+    $found = mysqli_query($connection,$findTA);
+    
+    if ($found && mysqli_num_rows($found) > 0)
+    {
+        if (mysqli_query($connection, $deleteTA)) {
+            echo '<br>Prof. ' . $firstname . ' ' . $lastname . ' removed.';
+        } else {
+            echo '<br>Unable to delete Prof. ' . $firstname . ' ' . $lastname;
+        }
     } else {
         echo "Prof not removed from TEACHINGASSISTANT table.";
         echo "double check input parameters";

@@ -81,6 +81,9 @@
                 </table>";
         }
         mysqli_close($connection);
+        
+        echo '<hr><br>List of Profs:<br>';
+        include 'GetProfs.php';
     }
     else
     {
