@@ -60,7 +60,7 @@
             . $TApic . '","' 
             . $headprofid . '")';
         
-        echo '<br>'.$TApic.'<br>';
+        echo '<br>TA pic: '.$TApic.'<br>';
         
         if (!mysqli_query($connection, $query)) {
             die("Error: insert failed" . mysqli_error($connection));
