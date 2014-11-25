@@ -30,6 +30,8 @@
         AND firstname='$firstname'
         AND lastname ='$lastname'";
     
+    echo $findProf.'<br>';
+    
     $result = mysqli_query($connection, $findProf);
     
     if (!$result) {
@@ -38,7 +40,7 @@
         if (mysqli_num_rows($result) > 0) {
             echo "Prof already exists in INSTRUCTOR database.";
             while ($row = mysqli_fetch_assoc($result)) {
-                echo "<li> ".$row['userid']." , ".$row['firstname']." , ".$row['lastname'];
+                echo "<li> ".$row['userid'].", ".$row['firstname'].", ".$row['lastname'].".";
             }
         } else {
             $addProf = true;
