@@ -26,8 +26,8 @@
     $lastname      = $_POST["lastname"];
     
     $findProf = "select * from INSTRUCTOR where
-        userid= '$profuserid''
-        AND firstname='$firstname''
+        userid= '$profuserid'
+        AND firstname='$firstname'
         AND lastname ='$lastname'";
     
     $result = mysqli_query($connection, $findProf);
