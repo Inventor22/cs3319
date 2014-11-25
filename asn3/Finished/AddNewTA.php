@@ -22,7 +22,7 @@
     ?>
     <h1>Added new TA:</h1>
     <?php
-    $tauserid      = $_POST["tauserid"];
+    $tauserid      = $_POST["userid"];
     $firstname     = $_POST["firstname"];
     $lastname      = $_POST["lastname"];
     $studentnumber = $_POST["studentnumber"];
@@ -80,7 +80,7 @@
         <tr>
             <td>firstname:</td>
             <td>
-                <?php $_POST["firstname"]; ?></td>
+                <?php $_POST["firstname"].' '; ?></td>
         </tr>
         <tr>
             <td>lastname:</td>
