@@ -20,6 +20,6 @@ if (mysqli_connect_errno()) {
         "(" . mysqli_connect_errno() . ")"
         );
 } else {
-    echo 'Successfully connected to database '.$dbname;
+    //echo 'Successfully connected to database '.$dbname;
 }
 ?>

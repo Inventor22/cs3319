@@ -26,8 +26,7 @@
     $lastname      = $_POST["lastname"];
     $studentnumber = $_POST["studentnumber"];
     
-    echo 'Deleting TA: '.$tauserid.' from TEACHINGASSISTANT';
-    echo '<br>';
+    echo "Deleting TA: $tauserid";
 
     $findTA0 = "delete from TEACHINGASSISTANT where".
     " userid='". $tauserid ."'". 
