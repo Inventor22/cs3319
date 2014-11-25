@@ -30,7 +30,7 @@
     echo '<br>';
 
     $findTA0 = "delete from TEACHINGASSISTANT where".
-    " userid='". $tauserid .'"'. 
+    " userid='". $tauserid ."'". 
     " OR (firstname='".$firstname."' AND lastname ='".$lastname."')".
     " OR studentnumber='".$studentnumber."'";
 
