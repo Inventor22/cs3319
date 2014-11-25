@@ -21,7 +21,7 @@
     ?>
     <h1>Added new Prof:</h1>
     <?php
-    $profuserid      = $_POST["userid"];
+    $profuserid    = $_POST["userid"];
     $firstname     = $_POST["firstname"];
     $lastname      = $_POST["lastname"];
     
@@ -29,12 +29,12 @@
     echo "fname: ".$firstname."<br>";
     echo "lname: ".$lastname."<br>";
     
-    $findProf = "select * from INSTRUCTOR where
-        userid= '$profuserid'
-        AND firstname='$firstname'
-        AND lastname ='$lastname'";
+    //$findProf = "select * from INSTRUCTOR where
+    //    userid= '$profuserid'
+    //    AND firstname='$firstname'
+    //    AND lastname ='$lastname'";
     
-    echo $findProf.'<br>';
+    //echo $findProf.'<br>';
     
     $result = mysqli_query($connection, $findProf);
     
@@ -60,24 +60,24 @@
         if (!mysqli_query($connection, $query)) {
             die("Error: insert failed" . mysqli_error($connection));
         }
-        echo "New Prof added:";
+        echo "<br>New Prof added:";
     }
     mysqli_close($connection);
     ?>
     <table>
         <tr>
             <td>Prof userid:</td>
-            <td><?php $_POST["userid"]; ?></td>
+            <td><?php $profuserid ?></td>
         </tr>
         <tr>
             <td>First name:</td>
             <td>
-                <?php $_POST["firstname"]; ?></td>
+                <?php $firstname ?></td>
         </tr>
         <tr>
             <td>Last name:</td>
             <td>
-                <?php $_POST["lastname"]; ?></td>
+                <?php $lastname ?></td>
         </tr>
     </table>
 </body>
