@@ -29,21 +29,21 @@
     }
     echo "<table id='display'>";
     echo "<tr>
+                <td>Picture</td>
                 <td>User ID</td>
                 <td>First name</td>
                 <td>Last name</td>
-                <td>Picture</td>
                 <td>Student number</td>
                 <td>Grad type</td>
-                <td>Head prof user id</td>
+                <td>Head prof</td>
              </tr>";
     
     while ($row=mysqli_fetch_assoc($result)) {
         echo "<tr>";
+        echo '<td><img src="' . $rows[$product_image] . '"height="150px" width="120px"></td>';        
         echo "<td>" . $row["userid"] . "</td>";
         echo "<td>" . $row["firstname"] . "</td>";
         echo "<td>" . $row["lastname"] . "</td>";
-        echo '<td><img src="' . $rows[$product_image] . '"height="150px" width="120px"></td>';
         echo "<td>" . $row["studentnumber"] . "</td>";
         echo "<td>" . $row["gradtype"] . "</td>";
         echo "<td>" . $row["profuserid"] . "</td>";

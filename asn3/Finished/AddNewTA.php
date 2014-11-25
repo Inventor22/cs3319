@@ -26,9 +26,8 @@
     $firstname     = $_POST["firstname"];
     $lastname      = $_POST["lastname"];
     $studentnumber = $_POST["studentnumber"];
-    $gradtype      = $_POST["gradtype"];
+    $gradtype      = $_POST["type"];
     $headprofid    = $_POST["profuserid"];
-    $imagelocation = $_POST["imagelocation"];
     
     $addTA = false;
     
@@ -50,13 +49,15 @@
     }
     
     if ($addTA) {
-        $query = 'insert into TEACHINGASSISTANT values("'
-            . $tauserid . '","' 
+        $query = 'insert into TEACHINGASSISTANT
+        (firstname, lastname, studentnumber, userid, gradtype, imagelocation, profuserid)
+        values("'
             . $firstname . '","'
             . $lastname . '","' 
             . $studentnumber . '","' 
+            . $tauserid . '","' 
             . $gradtype . '","' 
-            . $imagelocation . '","' 
+            . $TApic . '","' 
             . $headprofid . '")';
         
         if (!mysqli_query($connection, $query)) {
@@ -67,7 +68,11 @@
     }
     mysqli_close($connection);
     ?>
-<!--    <table>
+   <table>
+            <tr>
+            <td>Picture:</td>
+            <td><?php echo '<img src="' . $TApic . '" height="150" width="120">'; ?></td>
+        </tr>
         <tr>
             <td>userid:</td>
             <td><?php $_POST["userid"]; ?></td>
@@ -92,14 +97,10 @@
                 <?php $_POST["gradtype"]; ?></td>
         </tr>
         <tr>
-            <td>Picture:</td>
-            <td><?php echo '<img src="' . $row["imagelocation"] . '" height="150" width="120">'; ?></td>
-        </tr>
-        <tr>
             <td>Head Prof:</td>
             <td><?php $_POST["profuserid"]; ?></td>
         </tr>
-    </table>-->
+    </table>
 
     <?php
     include 'getTAs.php';

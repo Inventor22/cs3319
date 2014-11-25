@@ -100,7 +100,7 @@ else {
             </tr>
             <tr>
                 <td>Image:</td>
-                <td><input type="file" name="imagelocation" id="file"><br></td>
+                <td><input type="file" name="file" id="file"><br></td>
             </tr>
             <tr>
                 <td>Prof user id:</td>
