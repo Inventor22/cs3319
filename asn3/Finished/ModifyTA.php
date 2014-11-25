@@ -22,13 +22,13 @@
     ?>
     <h1>Modifying TA:</h1>
     <?php
-    $from_tauserid      = mysql_real_escape_string($_POST["userid"]);
-    $from_firstname     = mysql_real_escape_string($_POST["firstname"]);
-    $from_lastname      = mysql_real_escape_string($_POST["lastname"]);
-    $from_studentnumber = mysql_real_escape_string($_POST["studentnumber"]);
+    $from_tauserid      = mysqli_real_escape_string($_POST["userid"]);
+    $from_firstname     = mysqli_real_escape_string($_POST["firstname"]);
+    $from_lastname      = mysqli_real_escape_string($_POST["lastname"]);
+    $from_studentnumber = mysqli_real_escape_string($_POST["studentnumber"]);
     
-    $to_firstname = mysql_real_escape_string($_POST["newfirstname"]);
-    $to_lastname  = mysql_real_escape_string($_POST["newlastname"]);
+    $to_firstname = mysqli_real_escape_string($_POST["newfirstname"]);
+    $to_lastname  = mysqli_real_escape_string($_POST["newlastname"]);
     
     if (strlen($from_tauserid) > 0) {
         echo 'from taserid';
