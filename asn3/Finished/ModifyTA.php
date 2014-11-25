@@ -46,7 +46,7 @@
                     set lastname='$to_lastname', firstname='$to_firstname'
                     where studentnumber='$from_studentnumber'";
     } else {
-        echo 'no valid fields; update aborted'
+        echo 'no valid fields; update aborted';
     }
     
     if (mysqli_query($connection,$changeTA)) {
