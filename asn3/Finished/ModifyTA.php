@@ -30,6 +30,9 @@
     $to_firstname = $_POST["newfirstname"];
     $to_lastname  = $_POST["newlastname"]; 
     
+    echo $to_firstname;
+    echo $to_lastname;
+    
     $changeTA = "UDPATE TEACHINGASSISTANT 
                     set firstname='$to_firstname', lastname='$to_lastname'
                     where userid='$from_tauserid'
@@ -41,6 +44,7 @@
         echo "TA updated from TEACHINGASSISTANT table";
     } else {
         echo "TA not updated";
+        echo '<br>';
         echo "double check input parameters";
         echo mysqli_error($connection);
     }
