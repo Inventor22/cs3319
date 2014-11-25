@@ -28,16 +28,31 @@
     
     echo "Deleting TA: $tauserid";
 
-    $findTA0 = "delete from TEACHINGASSISTANT where".
-    " userid='". $tauserid ."'". 
-    " OR (firstname='".$firstname."' AND lastname ='".$lastname."')".
-    " OR studentnumber='".$studentnumber."'";
+    $findTA0 = "select * from TEACHINGASSISTANT where".
+        " userid='". $tauserid ."'". 
+        " OR (firstname='".$firstname."' AND lastname ='".$lastname."')".
+        " OR studentnumber='".$studentnumber."'";
 
-    $result = mysqli_query($connection,$findTA0);
-    if ($result) {
-        echo "TA removed from TEACHINGASSISTANT table";
+    $deleteTA = "delete from TEACHINGASSISTANT where".
+        " userid='". $tauserid ."'". 
+        " OR (firstname='".$firstname."' AND lastname ='".$lastname."')".
+        " OR studentnumber='".$studentnumber."'";
+    
+    $found = mysqli_query($connection,$findTA0);
+    
+    if ($found && mysqli_num_rows($found) > 0)
+    {
+        $ta = mysqli_fetch_assoc($connection, $found);
+        unlink($ta['imagelocation']); // delete the image
+        
+        if (mysqli_query($connection, $deleteTA)) {
+            echo '<br>Prof. ' . $firstname . ' ' . $lastname . ' removed.';
+        } else {
+            echo '<br>Unable to delete TA ' . $firstname . ' ' . $lastname;
+        }
+        echo "<br>TA removed from TEACHINGASSISTANT table";
     } else {
-        echo "TA not removed from TEACHINGASSISTANT table.";
+        echo "<br>TA not removed from TEACHINGASSISTANT table.";
         echo '<br>';
         echo "Double check input parameters";
         echo '<br>';     

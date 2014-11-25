@@ -75,30 +75,30 @@
         </tr>
         <tr>
             <td>userid:</td>
-            <td><?php $_POST["userid"]; ?></td>
+            <td><?php echo $_POST["userid"]; ?></td>
         </tr>
         <tr>
             <td>firstname:</td>
             <td>
-                <?php $firstname; ?></td>
+                <?php echo $_POST["firstname"]; ?></td>
         </tr>
         <tr>
             <td>lastname:</td>
             <td>
-                <?php $_POST["lastname"]; ?></td>
+                <?php echo $_POST["lastname"]; ?></td>
         </tr>
         <tr>
             <td>studentnumber:</td>
-            <td><?php $_POST["studentnumber"]; ?></td>
+            <td><?php echo $_POST["studentnumber"]; ?></td>
         </tr>
         <tr>
             <td>gradtype:</td>
             <td>
-                <?php $_POST["gradtype"]; ?></td>
+                <?php echo $_POST["type"]; ?></td>
         </tr>
         <tr>
             <td>Head Prof:</td>
-            <td><?php $_POST["profuserid"]; ?></td>
+            <td><?php echo $_POST["profuserid"]; ?></td>
         </tr>
     </table>
 

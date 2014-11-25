@@ -25,19 +25,19 @@
     $firstname  = $_POST["firstname"];
     $lastname   = $_POST["lastname"];
     
-    $findTA = 'select * from INSTRUCTOR where'
+    $findProf = 'select * from INSTRUCTOR where'
         .' userid="'. $profuserid .'"'
         .' OR (firstname="'.$firstname.'" AND lastname ="'.$lastname.'")';
     
-    $deleteTA = 'delete from INSTRUCTOR where'
+    $deleteProf = 'delete from INSTRUCTOR where'
         .' userid="'. $profuserid .'"'
         .' OR (firstname="'.$firstname.'" AND lastname ="'.$lastname.'")';
     
-    $found = mysqli_query($connection,$findTA);
+    $found = mysqli_query($connection,$findProf);
     
     if ($found && mysqli_num_rows($found) > 0)
     {
-        if (mysqli_query($connection, $deleteTA)) {
+        if (mysqli_query($connection, $deleteProf)) {
             echo '<br>Prof. ' . $firstname . ' ' . $lastname . ' removed.';
         } else {
             echo '<br>Unable to delete Prof. ' . $firstname . ' ' . $lastname;
