@@ -34,7 +34,7 @@
     echo $to_lastname;
     
     if (strlen($from_tauserid) > 0) {
-        $changeTA = "UDPATE TEACHINGASSISTANT 
+        $changeTA = "update TEACHINGASSISTANT 
                     set lastname='".$to_lastname."', firstname='".$to_firstname."'".
                     " where userid='".$from_tauserid."'";
     } else if (strlen($from_firstname) > 0 && strlen($from_lastname) > 0) {
@@ -69,8 +69,8 @@
     } else {
         while ($row=mysqli_fetch_assoc($result)) {
             echo '<li>';
-            echo $row["userid"];
-            echo '<img src="' . $row["petpicture"] . '" height="60" width="60">';
+            echo $row["userid"].', '.$row['firstname'].', '.$row['lastname'];
+            echo '<img src="' . $row["imagelocation"] . '" height="150" width="120">';
         }
     }
     
