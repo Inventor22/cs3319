@@ -40,6 +40,17 @@
 		<br><br>
 		<input type="submit" value="Submit">
 	</form>
+	<p>
+	<hr>
+	<p>
+	<hr>View Number of Courses a TA is Assigned to:</hr>
+	<h3>Please select a TA:</h3>
+	<form action="getTACourseCount.php" method="post">
+		<?php
+			include 'gettas.php';
+		?>
+		<input type="submit" value="Get courses"/>
+	</form>
 	<?php
 		mysqli_close($connection);
 	?>

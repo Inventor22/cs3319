@@ -8,16 +8,19 @@
 	<?php
 		include 'connectdb.php';
 	?>
-	<h1>TA's Supervised by Professor </h1>
-	<h2>TA's that professor head supervises:</h2>
+	<h1>TA's Assigned to Course</h1>
+	<h2>TA's that are assigned to course:</h2>
 	<?php
+		// Get course code, year, and term from the caller
 		$c_code = $_POST["c_code"];
 		$c_year = $_POST["c_year"];
 		$c_term = $_POST["c_term"];
-		echo $c_code . " " . $c_year . " " . $c_term . "<br>";
+
+		// Put the query together
 		$query = "select * from TAAssignedTO where coursenumber=\"$c_code\" and " .
 					"year=\"$c_year\" and term=\"$c_term\"";
-	// 	// Do head superviser seach:
+		
+		// Do seach:
 		$result=mysqli_query($connection,$query);
 		if(!$result){
 			die("databases query failed.");
@@ -46,54 +49,6 @@
 			}
 			echo "</table>";
 		}
-	// 	if ($result->num_rows == 0){
-	// 		echo 'None';
-	// 	}
-	// 	mysqli_free_result($result);
-
-	// 	// Do co-supervisor seach:
-	// 	$query = 'select * from CoSUPERVISE where profuserid="' . $wID . '"';
-	// 	$result=mysqli_query($connection,$query);
-	// 	if(!$result){
-	// 		die("databases query failed: " . mysqli_error($connection));
-	// 	}
-	// 	if ($result->num_rows > 0){
-	// 		// Setup table
-	// 		echo "<table id='display'>";
-	// 		echo "<tr>
-	// 				<td>User ID</td>
-	// 				<td>First Name</td>
-	// 				<td>Last Name</td>
-	// 				<td>Grad Type</td>
-	// 				<td>Profile Picture</td>
-	// 			  </tr>";
-	// 		while($row=mysqli_fetch_assoc($result)){
-	// 			$query2='select * from TEACHINGASSISTANT where userid="' . $row["tauserid"] . '"';
-	// 			$result2=mysqli_query($connection,$query2);
-	// 			if(!$result2){
-	// 				die("databases query failed: " . mysqli_error($connection));
-	// 			}
-	// 			// Only do if, should only be one result
-	// 			if($row2=mysqli_fetch_assoc($result2)){
-	// 				// Print data into table.
-	// 				echo '<tr>';
-	// 				echo "<td>{$row2['userid']}</td>";
-	// 				echo "<td>{$row2['firstname']}</td>";
-	// 				echo "<td>{$row2['lastname']}</td>";
-	// 				echo "<td>{$row2['gradtype']}</td>";
-	// 				echo '</tr>';
-	// 				// TODO: Show image.
-	// 			}
-	// 			mysqli_free_result($result2);
-	// 		}
-	// 		echo "</table>";
-	// 	}
-	// 	if ($result->num_rows == 0){
-	// 		echo 'None';
-	// 	}
-	// 	mysqli_free_result($result);
-	?>
-	<?php
     	mysqli_close($connection);
   	?>
 </body>
