@@ -30,36 +30,28 @@
     $to_firstname = strlen($_POST["newfirstname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["newfirstname"]) : NULL;
     $to_lastname  = strlen($_POST["newlastname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["newlastname"]) : NULL;
     
-    echo $from_firstname.' '.$from_lastname.' '.$from_tauserid.' '.$from_studentnumber.' '.$to_firstname.' '.$to_lastname.'<br>';
-     
     if (strlen($from_tauserid) > 0) {
-        echo 'from taserid';
         $changeTA = "update TEACHINGASSISTANT 
                     set lastname='".$to_lastname."', firstname='".$to_firstname."'"
                     ." where userid='".$from_tauserid."'";
     }
     else if (strlen($from_firstname) > 0 && strlen($from_lastname) > 0)
     {
-        echo 'from firstname';
-        
         $changeTA = "update TEACHINGASSISTANT 
                     set lastname = '".$to_lastname."', firstname = '".$to_firstname."'"
                     ." where firstname = '".$from_firstname."' and lastname = '".$from_lastname."';";
-        
-        echo $changeTA;
     }
     else if (strlen($from_studentnumber) > 0)
-    {
-        echo 'from SN';        
+    {   
         $changeTA = "UPDATE TEACHINGASSISTANT 
                     set lastname='$to_lastname', firstname='$to_firstname'
                     where studentnumber='$from_studentnumber'";
     } else {
-        echo 'no valid fields; update aborted';
+        echo 'no valid fields; update aborted <br>';
     }
     
     if (mysqli_query($connection,$changeTA)) {
-        echo "TA updated from TEACHINGASSISTANT table";
+        echo "TA updated";
     } else {
         echo "TA not updated";
         echo '<br>';
@@ -79,57 +71,9 @@
         while ($row=mysqli_fetch_assoc($result)) {
             echo '<li>';
             echo $row["userid"].', '.$row['firstname'].', '.$row['lastname'];
-            echo '<img src="' . $row["imagelocation"] . '" height="150" width="120">';
         }
     }
     
-    $getTa = "select * from TEACHINGASSISTANT
-                  where userid='$from_tauserid'
-                        OR (firstname='$from_firstname' AND lastname='$from_lastname')
-                        OR studentnumber='$from_studentnumber'";
-    
-    $ta;
-    
-    $res = mysqli_query($connection, $getTa);
-    if ($res) {
-        $ta = mysqli_fetch_assoc($res);
-    }
-    
-    ?>
-    <table>
-        <tr>
-            <td>userid:</td>
-            <td><?php $ta["userid"]; ?></td>
-        </tr>
-        <tr>
-            <td>firstname:</td>
-            <td>
-                <?php $ta["firstname"]; ?></td>
-        </tr>
-        <tr>
-            <td>lastname:</td>
-            <td>
-                <?php $ta["lastname"]; ?></td>
-        </tr>
-        <tr>
-            <td>studentnumber:</td>
-            <td><?php $ta["studentnumber"]; ?></td>
-        </tr>
-        <tr>
-            <td>gradtype:</td>
-            <td>
-                <?php $ta["gradtype"]; ?></td>
-        </tr>
-        <tr>
-            <td>Picture:</td>
-            <td><?php echo '<img src="' . $ta["imagelocation"] . '" height="150" width="120">'; ?></td>
-        </tr>
-        <tr>
-            <td>Head prof:</td>
-            <td><?php $ta["profuserid"]; ?></td>
-        </tr>
-    </table>
-    <?php
     mysqli_close($connection);
     ?>
 </body>
