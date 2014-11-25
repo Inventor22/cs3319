@@ -222,7 +222,7 @@ else {
             <tr>
                 <td>lastname:</td>
                 <td>
-                    <input type="text" name="firstname"></td>
+                    <input type="text" name="lastname"></td>
             </tr>
         </table>
         <br />
