@@ -40,8 +40,9 @@
     if (mysqli_query($connection,$changeTA)) {
         echo "TA updated from TEACHINGASSISTANT table";
     } else {
-        echo "TA not removed from TEACHINGASSISTANT table.";
+        echo "TA not updated";
         echo "double check input parameters";
+        echo mysqli_error($connection);
     }
     
     $verify = "select * from TEACHINGASSISTANT
@@ -107,7 +108,6 @@
         </tr>
     </table>
     <?php
-    mysqli_free_result($ta);
     mysqli_close($connection);
     ?>
 </body>
