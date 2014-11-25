@@ -16,7 +16,7 @@
 		<?php
 			include 'getprofs.php';
 		?>
-		<br><br>
+		<br>
 		<input type="submit" value="Get TAs">
 	</form>
 	<p>
@@ -45,7 +45,7 @@
 		<?php
 			include 'gettas.php';
 		?>
-		<br><br>
+		<br>
 		<input type="submit" value="Get Courses"/>
 	</form>
 	<?php
