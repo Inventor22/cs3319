@@ -9,7 +9,8 @@
 		include 'connectdb.php';
 	?>
 	<h1>Welcome to the Western Professors' Portal</h1>
-	<h2>View TA's by professor</h2>
+	<hr>
+	<h2>View TA's by Professor</h2>
 	<h3>Please enter a professor's name:</h3>
 	<form action="getTAsByProf.php" method="post">
 		<?php
@@ -20,7 +21,7 @@
 	<p>
 	<hr>
 	<p>
-	<h2>View TA's by course</h2>
+	<h2>View TA's by Course</h2>
 	<h3>Please select a course:</h3>
 	<form action="getTAsByCourse.php" method="post">
 <!-- 		<?php
@@ -35,7 +36,7 @@
 		Year:<br>
 		<input type="text" name="c_year" value="">
 		<br>
-		Term (First letter capitalized):<br>
+		Term (first letter capitalized):<br>
 		<input type="text" name="c_term" value="">
 		<br><br>
 		<input type="submit" value="Submit">
@@ -43,9 +44,9 @@
 	<p>
 	<hr>
 	<p>
-	<h2>View Number of Courses a TA is Assigned To</h2>
+	<h2>View Courses a TA is Assigned To</h2>
 	<h3>Please select a TA:</h3>
-	<form action="getTACourseCount.php" method="post">
+	<form action="getTACourses.php" method="post">
 		<?php
 			include 'gettas.php';
 		?>
