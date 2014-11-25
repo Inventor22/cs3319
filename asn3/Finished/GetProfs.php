@@ -20,7 +20,7 @@
     <?php
     include 'connectdb.php';
     ?>
-    <h1>Here are all the TAs:</h1>
+    <h1>List of all Profs:</h1>
     <?php
     $query = 'select * from INSTRUCTOR';
     $result=mysqli_query($connection,$query);
