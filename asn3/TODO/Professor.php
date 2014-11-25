@@ -43,13 +43,13 @@
 	<p>
 	<hr>
 	<p>
-	<hr>View Number of Courses a TA is Assigned to:</hr>
+	<h2>View Number of Courses a TA is Assigned To</h2>
 	<h3>Please select a TA:</h3>
 	<form action="getTACourseCount.php" method="post">
 		<?php
 			include 'gettas.php';
 		?>
-		<input type="submit" value="Get courses"/>
+		<input type="submit" value="Get Course Count"/>
 	</form>
 	<?php
 		mysqli_close($connection);
