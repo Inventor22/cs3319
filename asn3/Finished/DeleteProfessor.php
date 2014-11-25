@@ -43,8 +43,8 @@
             echo '<br>Unable to delete Prof. ' . $firstname . ' ' . $lastname;
         }
     } else {
-        echo "Prof not removed from TEACHINGASSISTANT table.";
-        echo "double check input parameters";
+        echo "Prof not removed.<br>";
+        echo "Double check input parameters";
     }
     
     mysqli_close($connection);
