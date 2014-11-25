@@ -1,2 +1,5 @@
 *.vsdx
 *.pdf
+*.user
+*.sln
+*.suo
