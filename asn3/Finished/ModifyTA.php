@@ -51,7 +51,7 @@
     }
     
     if (mysqli_query($connection,$changeTA)) {
-        echo "TA updated";
+        echo "TA updated<br>";
     } else {
         echo "TA not updated";
         echo '<br>';
@@ -68,8 +68,9 @@
     if (!$result) {
         echo "ta not updated properly; unable to access TEACHINGASSISTANT database";
     } else {
+        echo "From:<li> $from_firstname $from_lastname";
         while ($row=mysqli_fetch_assoc($result)) {
-            echo '<li>';
+            echo 'To: <li>';
             echo $row["userid"].', '.$row['firstname'].', '.$row['lastname'];
         }
     }
