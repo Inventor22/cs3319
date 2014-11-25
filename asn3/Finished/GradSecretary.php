@@ -90,7 +90,7 @@ else {
             </tr>
             <tr>
                 <td>studentnumber:</td>
-                <td></tsd><input type="text" name="studentnumber"></td>
+                <td><input type="text" name="studentnumber"></td>
             </tr>
             <tr>
                 <td>gradtype:</td>
@@ -109,7 +109,7 @@ else {
 
     <hr>
     <h2>Delete a teaching assistant:</h2>
-    <form action="deleteTA.php" method="post" enctype="multipart/form-data">
+    <form action="DeleteTA.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>userid:</td>
