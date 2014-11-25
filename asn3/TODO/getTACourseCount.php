@@ -48,7 +48,7 @@
 		}
     	
     	// Display the count of the courses that they're in
-    	echo "<p>This TA is currently assigned to $count courses.<br>";
+    	echo "<p>This TA is currently assigned to $count course(s).<br>";
 
     	// Get the TA's type - used to check if they can do more
 		$query = "select * from TEACHINGASSISTANT where userid=\"$taid\"";

@@ -9,12 +9,14 @@
 		include 'connectdb.php';
 	?>
 	<h1>TA's Assigned to Course</h1>
-	<h2>TA's that are assigned to course:</h2>
+	
 	<?php
 		// Get course code, year, and term from the caller
 		$c_code = $_POST["c_code"];
 		$c_year = $_POST["c_year"];
 		$c_term = $_POST["c_term"];
+
+		echo "<h2>TA's that are assigned to course $c_code in $c_term term $c_year:</h2>";
 
 		// Put the query together
 		$query = "select * from TAAssignedTO where coursenumber=\"$c_code\" and " .
@@ -31,10 +33,7 @@
 			echo "<table id='display'>";
 			echo "<tr>
 					<td>User ID</td>
-					<td>First Name</td>
-					<td>Last Name</td>
-					<td>Grad Type</td>
-					<td>Profile Picture</td>
+					<td>Number of Students</td>
 				  </tr>";
 
 			// Print data into table.
@@ -42,10 +41,7 @@
 				echo '<tr>';
 				echo "<td>{$row['tauserid']}</td>";
 				echo "<td>{$row['numofstudents']}</td>";
-				// echo "<td>{$row['lastname']}</td>";
-				// echo "<td>{$row['gradtype']}</td>";
 				echo '</tr>';
-				// TODO: Show image.
 			}
 			echo "</table>";
 		}
