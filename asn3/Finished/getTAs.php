@@ -40,7 +40,12 @@
     
     while ($row=mysqli_fetch_assoc($result)) {
         echo "<tr>";
-        echo '<td><img src="' . $rows[$product_image] . '"height="150px" width="120px"></td>';        
+        echo '<td>';
+        if ($rows['imagelocation'] != NULL) {
+            echo '<img src="' . $rows['imagelocation'] . '"height="150px" width="120px"></td>';
+        } else {
+            echo '</td>';
+        }
         echo "<td>" . $row["userid"] . "</td>";
         echo "<td>" . $row["firstname"] . "</td>";
         echo "<td>" . $row["lastname"] . "</td>";
