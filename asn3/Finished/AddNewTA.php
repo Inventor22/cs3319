@@ -80,7 +80,7 @@
         <tr>
             <td>firstname:</td>
             <td>
-                <?php $_POST["firstname"].' '; ?></td>
+                <?php $firstname; ?></td>
         </tr>
         <tr>
             <td>lastname:</td>
