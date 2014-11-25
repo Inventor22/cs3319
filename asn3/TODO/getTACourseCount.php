@@ -24,33 +24,33 @@
 		}
 		$count = $result->num_rows;
 		if ($result->num_rows > 0){
-			// Todo: not use table...
 			// Setup table
 			echo "<table id='display'>";
 			echo "<tr>
 					<td>User ID</td>
-					<td>First Name</td>
-					<td>Last Name</td>
-					<td>Grad Type</td>
-					<td>Profile Picture</td>
+					<td>Course Number</td>
+					<td>Year</td>
+					<td>Term</td>
+					<td>Number of Students</td>
 				  </tr>";
 
 			// Print data into table.
 			while($row=mysqli_fetch_assoc($result)){
 				echo '<tr>';
 				echo "<td>{$row['tauserid']}</td>";
+				echo "<td>{$row['coursenumber']}</td>";
+				echo "<td>{$row['year']}</td>";
+				echo "<td>{$row['term']}</td>";
 				echo "<td>{$row['numofstudents']}</td>";
-				// echo "<td>{$row['lastname']}</td>";
-				// echo "<td>{$row['gradtype']}</td>";
 				echo '</tr>';
-				// TODO: Show image.
 			}
 			echo "</table>";
 		}
     	
+    	// Display the count of the courses that they're in
     	echo "This TA is currently assigned to $count courses.<br>";
 
-    	// Get the TA's type
+    	// Get the TA's type - used to check if they can do more
 		$query = "select * from TEACHINGASSISTANT where userid=\"$taid\"";
 		
 		// Do seach:
