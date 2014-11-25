@@ -62,7 +62,7 @@ else {
 </head>
 <body>
     <?php
-    //include 'connectdb.php';
+    include 'connectdb.php';
     ?>
     <h1>Graduate Student Secretary</h1>
     <h2>TAs</h2>
