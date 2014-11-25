@@ -1,3 +1,19 @@
+<!--
+    Name:  Andrew Simpson
+    Date:  23/11/14
+    ID:    250 633 280
+    Aliad: asimps53
+
+    File: Professor.php
+
+    Description:
+		This is the professors' portal.
+		From this page, a professor can:
+			- view all of the TAs assigned to a prof
+			- view all of the TAs assigned to a course
+			- view all of the courses that a TA is assigned to
+-->
+
 <!DOCTYPE html>
 <html>
 <head>

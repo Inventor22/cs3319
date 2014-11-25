@@ -1,3 +1,16 @@
+<!--
+    Name:  Andrew Simpson
+    Date:  23/11/14
+    ID:    250 633 280
+    Aliad: asimps53
+
+    File: gettas.php
+
+    Description:
+        This file lists out all of the profs in radio buttons.
+        The value of each button is the profs' western id.
+-->
+
 <?php
     $query = "select * from INSTRUCTOR";
     $result = mysqli_query($connection,$query);

@@ -1,3 +1,15 @@
+<!--
+    Name:  Andrew Simpson
+    Date:  23/11/14
+    ID:    250 633 280
+    Aliad: asimps53
+
+    File: getTACourses.php
+
+    Description:
+		This page shows all of the courses that a TA is assigned to.
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +21,13 @@
 		include 'connectdb.php';
 	?>
 	<h1>TA Courses</h1>
-	<h2>Courses that the specified TA is assigned to:</h2>
 	<?php
 		// Get course code, year, and term from the caller
 		$taid = $_POST["taID"];
+		
+		// Header
+		echo "<h2>Courses that TA '$taID' is assigned to:</h2>";
+
 		// Put the query together
 		$query = "select * from TAAssignedTO where tauserid=\"$taid\"";
 		

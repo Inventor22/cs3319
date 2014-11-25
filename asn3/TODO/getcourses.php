@@ -1,3 +1,16 @@
+<!--
+    Name:  Andrew Simpson
+    Date:  23/11/14
+    ID:    250 633 280
+    Aliad: asimps53
+
+    File: getcourses.php
+
+    Description:
+        This file lists out all of the courses in radio buttons.
+        The value of each button is each courses' code.
+-->
+
 <?php
     $query = "select * from COURSE";
     $result = mysqli_query($connection,$query);
