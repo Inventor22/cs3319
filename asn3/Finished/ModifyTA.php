@@ -42,7 +42,7 @@
     {
         echo 'from firstname';
         
-        $changeTA = "udpate TEACHINGASSISTANT 
+        $changeTA = "update TEACHINGASSISTANT 
                     set lastname = '".$to_lastname."', firstname = '".$to_firstname."'"
                     ." where firstname = '".$from_firstname."' and lastname = '".$from_lastname."';";
         
@@ -51,7 +51,7 @@
     else if (strlen($from_studentnumber) > 0)
     {
         echo 'from SN';        
-        $changeTA = "UDPATE TEACHINGASSISTANT 
+        $changeTA = "UPDATE TEACHINGASSISTANT 
                     set lastname='$to_lastname', firstname='$to_firstname'
                     where studentnumber='$from_studentnumber'";
     } else {
