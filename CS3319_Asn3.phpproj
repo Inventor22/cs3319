@@ -30,6 +30,7 @@
     <Compile Include="Asn3\Finished\DeleteProfessor.php" />
     <Compile Include="Asn3\Finished\DeleteTA.php" />
     <Compile Include="Asn3\Finished\folders.php" />
+    <Compile Include="Asn3\Finished\GetProfs.php" />
     <Compile Include="Asn3\Finished\getTAs.php" />
     <Compile Include="Asn3\Finished\GradSecretary.php" />
     <Compile Include="Asn3\Finished\index.php" />

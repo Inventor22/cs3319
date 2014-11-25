@@ -37,6 +37,9 @@
     }
     
     mysqli_close($connection);
+    
+    include 'GetProfs.php';
+    
     ?>
 </body>
 </html>
