@@ -67,7 +67,7 @@ else {
     <h1>Graduate Student Secretary</h1>
     <h2>TAs</h2>
     <form action="getTAs.php" method="post">
-        <button name="submit">Get TA Names</button>
+        <button name="submit">Get TAs</button>
     </form>
     <hr>
     <h2>Add a new teaching assistant:</h2>
@@ -101,6 +101,10 @@ else {
             <tr>
                 <td>Image:</td>
                 <td><input type="file" name="imagelocation" id="file"><br></td>
+            </tr>
+            <tr>
+                <td>Prof user id:</td>
+                <td><input type="text" name="profuserid" /></td>
             </tr>
         </table>
         <br>

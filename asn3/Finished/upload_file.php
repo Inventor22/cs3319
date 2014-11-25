@@ -31,10 +31,10 @@ if ((($_FILES["file"]["type"] == "image/gif")
             echo '<p><hr>';
             echo $_FILES["file"]["name"] . " already exists. ";
             echo '<p><hr>';
-            $petpic = "NULL";
+            $TApic = "NULL";
         } else {
             move_uploaded_file($_FILES["file"]["tmp_name"],"upload/" . $_FILES["file"]["name"]);
-            $petpic = "upload/" . $_FILES["file"]["name"];
+            $TApic = "upload/" . $_FILES["file"]["name"];
         } // end of else
     } // end of else
 } else {

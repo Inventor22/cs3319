@@ -42,7 +42,7 @@
     if (!$result) {
         echo "TA table invalid!";
     } else {
-        if ($row=mysqli_fetch_assoc($result)) {
+        if (mysqli_num_rows($result)>0) {
             echo "TA already exists in TEACHINGASSISTANTS database.";
         } else {
             $addTA = true;
@@ -67,7 +67,7 @@
     }
     mysqli_close($connection);
     ?>
-    <table>
+<!--    <table>
         <tr>
             <td>userid:</td>
             <td><?php $_POST["userid"]; ?></td>
@@ -99,7 +99,7 @@
             <td>Head Prof:</td>
             <td><?php $_POST["profuserid"]; ?></td>
         </tr>
-    </table>
+    </table>-->
 
     <?php
     include 'getTAs.php';

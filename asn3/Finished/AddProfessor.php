@@ -19,7 +19,7 @@
     <?php
     include 'connectdb.php';
     ?>
-    <h1>Added new Prof:</h1>
+    <h1>Adding new Prof:</h1>
     <?php
     $profuserid    = $_POST["userid"];
     $firstname     = $_POST["firstname"];
