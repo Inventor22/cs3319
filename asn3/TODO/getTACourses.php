@@ -70,10 +70,10 @@
 
 		// Handle note about whether the TA cannot do more courses
 		if ($type=="Masters" && $count>=3){
-			echo "Note: This TA is not available to be assigned to anymore courses.<br>";
+			echo "Note: This TA is not available to be assigned to any more courses.<br>";
 		}
 		else if ($type=="PhD" && $count>=8){
-			echo "Note: This TA is not available to be assigned to anymore courses.<br>";
+			echo "Note: This TA is not available to be assigned to any more courses.<br>";
 		}
 		else {
 			echo "Note: This TA is available to be assigned to more courses.<br>";
