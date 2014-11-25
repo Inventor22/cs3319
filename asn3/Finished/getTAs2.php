@@ -45,7 +45,7 @@
         if ($rows['imagelocation'] != NULL) {
             echo '<img src="' . $rows['imagelocation'] . '"height="150px" width="120px"></td>';
         } else {
-            echo '</td>';
+            echo 'Image loc:~'.$rows['imagelocation'].'~</td>';
         }
         echo "<td>" . $row["userid"] . "</td>";
         echo "<td>" . $row["firstname"] . "</td>";
@@ -53,7 +53,6 @@
         echo "<td>" . $row["studentnumber"] . "</td>";
         echo "<td>" . $row["gradtype"] . "</td>";
         echo "<td>" . $row["profuserid"] . "</td>";
-        echo "<td>" . $row["imagelocation"] . "</td>";
         echo "</tr>";
     }
     echo "</table>";
