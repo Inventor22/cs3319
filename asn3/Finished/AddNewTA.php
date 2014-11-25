@@ -100,5 +100,9 @@
             <td><?php $_POST["profuserid"]; ?></td>
         </tr>
     </table>
+
+    <?php
+    include 'getTAs.php';
+    ?>
 </body>
 </html>
