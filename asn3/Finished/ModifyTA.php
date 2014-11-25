@@ -1,3 +1,15 @@
+<!--
+    Name:  Dustin Dobransky
+    Date:  23/11/14
+    ID:    250575030
+    Aliad: ddobran
+
+    File: ModifyTA.php
+
+    Description:
+        This file modified the first and last name of a TA.
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,85 +18,63 @@
 </head>
 <body>
     <?php
-    include 'upload_file.php';
     include 'connectdb.php';
     ?>
     <h1>Modifying TA:</h1>
-    <ol>
-        <?php
-        $from_tauserid      = $_POST["userid"];
-        $from_firstname     = $_POST["firstname"];
-        $from_lastname      = $_POST["lastname"];
-        $from_studentnumber = $_POST["studentnumber"];
-        
-        $to_firstname = $_POST["newfirstname"];
-        $to_lastname  = $_POST["newlastname"]; 
-        
-        $changeTA = 'UDPATE TEACHINGASSISTANT '.
-                    'set firstname="'.$to_firstname.'", lastname="'.$to_lastname.'" '
-                    'where userid="'.$from_tauserid.'"'.
-                        'OR (firstname="'.$from_firstname.'" AND lastname="'.$from_lastname.'") '
-                        'OR studentnumber="'.$from_studentnumber.'"';
-        $addTA = false;
-
-        if (mysqli_query($connection,$changeTA);) {
-            echo "TA updated from TEACHINGASSISTANT table";
-        } else {
-            echo "TA not removed from TEACHINGASSISTANT table.";
-            echo "double check input parameters"
+    <?php
+    $from_tauserid      = strlen($_POST["userid"]) > 0 ? mysqli_real_escape_string($connection, $_POST["userid"]) : NULL;
+    $from_firstname     = strlen($_POST["firstname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["firstname"]) : NULL;
+    $from_lastname      = strlen($_POST["lastname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["lastname"]) : NULL;
+    $from_studentnumber = strlen($_POST["studentnumber"]) > 0 ? mysqli_real_escape_string($connection, $_POST["studentnumber"]) : NULL;
+    
+    $to_firstname = strlen($_POST["newfirstname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["newfirstname"]) : NULL;
+    $to_lastname  = strlen($_POST["newlastname"]) > 0 ? mysqli_real_escape_string($connection, $_POST["newlastname"]) : NULL;
+    
+    if (strlen($from_tauserid) > 0) {
+        $changeTA = "update TEACHINGASSISTANT 
+                    set lastname='".$to_lastname."', firstname='".$to_firstname."'"
+                    ." where userid='".$from_tauserid."'";
+    }
+    else if (strlen($from_firstname) > 0 && strlen($from_lastname) > 0)
+    {
+        $changeTA = "update TEACHINGASSISTANT 
+                    set lastname = '".$to_lastname."', firstname = '".$to_firstname."'"
+                    ." where firstname = '".$from_firstname."' and lastname = '".$from_lastname."';";
+    }
+    else if (strlen($from_studentnumber) > 0)
+    {   
+        $changeTA = "UPDATE TEACHINGASSISTANT 
+                    set lastname='$to_lastname', firstname='$to_firstname'
+                    where studentnumber='$from_studentnumber'";
+    } else {
+        echo 'no valid fields; update aborted <br>';
+    }
+    
+    if (mysqli_query($connection,$changeTA)) {
+        echo "TA updated<br>";
+    } else {
+        echo "TA not updated";
+        echo '<br>';
+        echo "double check input parameters";
+        echo mysqli_error($connection);
+    }
+    
+    $verify = "select * from TEACHINGASSISTANT
+                   where userid='$from_tauserid'
+                     OR (firstname='$to_firstname' AND lastname='$to_lastname')
+                     OR studentnumber='$from_studentnumber'";
+    
+    $result = mysqli_query($connection, $verify);
+    if (!$result) {
+        echo "ta not updated properly; unable to access TEACHINGASSISTANT database";
+    } else {
+        while ($row=mysqli_fetch_assoc($result)) {
+            echo 'Updated:';
+            echo $row['firstname'].' '.$row['lastname'].', '.$row["userid"].'<br>';
         }
-        
-        $verify = 'select * from TEACHINGASSISTANT '.
-                  'where userid="'.$from_tauserid.'"'.
-                     'OR (firstname="'.$to_firstname.'" AND lastname="'.$to_lastname.'") '
-                     'OR studentnumber="'.$from_studentnumber.'"';
-        
-        $result = mysqli_query($connection, $verify);
-        if (!$result) {
-            echo "ta not updated properly; unable to access TEACHINGASSISTANT database";
-        } else {
-            while ($row=mysqli_fetch_assoc($result)) {
-                echo '<li>';
-                echo $row["userid"];
-                echo '<img src="' . $row["petpicture"] . '" height="60" width="60">';
-            }
-        }
-        
-        mysqli_close($connection);
-        ?>
-        <table>
-            <tr>
-                <td>userid:</td>
-                <td><?php $_POST["userid"]; ?></td>
-            </tr>
-            <tr>
-                <td>firstname:</td>
-                <td>
-                    <?php $_POST["firstname"]; ?></td>
-            </tr>
-            <tr>
-                <td>lastname:</td>
-                <td>
-                    <?php $_POST["lastname"]; ?></td>
-            </tr>
-            <tr>
-                <td>studentnumber:</td>
-                <td><?php $_POST["studentnumber"]; ?></td>
-            </tr>
-            <tr>
-                <td>gradtype:</td>
-                <td>
-                    <?php $_POST["gradtype"]; ?></td>
-            </tr>
-            <tr>
-                <td>Picture:</td>
-                <td><?php echo '<img src="' . $row["imagelocation"] . '" height="150" width="120">'; ?></td>
-            </tr>
-            <tr>
-                <td>Picture:</td>
-                <td><?php $_POST["tauserid"]; ?></td>
-            </tr>
-        </table>
-    </ol>
+    }
+    
+    mysqli_close($connection);
+    ?>
 </body>
 </html>

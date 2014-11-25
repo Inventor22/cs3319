@@ -1,3 +1,10 @@
+<!--
+    File: folders.php
+
+    Description:  This file creates a directory.
+                  From the PHP workshop.    
+-->
+
 <?php
 class Folder {
     function createFolder($foldername) {
@@ -6,7 +13,8 @@ class Folder {
             return false; 
         } else {
             //if folder doesnt exist, then create it and set permissions
-            mkdir($foldername,0755);
+            //mkdir($foldername,0755);
+            mkdir($foldername,0777);
             $error = error_get_last();
             echo $error['message'];
             return false;

@@ -1,3 +1,14 @@
+<!--
+    Name:  Dustin Dobransky
+    Date:  23/11/14
+    ID:    250575030
+    Aliad: ddobran
+
+    File: AddRemoveCourse.php
+
+    Description:  This file adds or removes a course from the COURSE database
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,67 +17,64 @@
 </head>
 <body>
     <?php
-        include 'connectdb.php';
-    ?>
-    <ol>
-        <?php
-        $courseNumber = $_POST["coursenumber"];
-        $courseName   = $_POST["coursename"];
+    include 'connectdb.php';
         
-        $checkIfCourseExists = 'select * from COURSE'
-                                    .'where coursenumber="'.$courseNumber.'" '
-                                    .'AND coursename="'.$courseName.'"';
+    $courseNumber = $_POST["coursenumber"];
+    $courseName   = $_POST["coursename"];
         
-        $result = mysqli_query($connection, $checkIfCourseExists);
+    $checkIfCourseExists = 'select * from COURSE'
+                                .'where coursenumber="'.$courseNumber.'" '
+                                .'AND coursename="'.$courseName.'"';
         
-        $courseExists = false;
-        if ($result && mysqli_num_rows($result) > 0) {
-            $courseExists = true;
-        }
+    $result = mysqli_query($connection, $checkIfCourseExists);
         
-        if ($_POST['submit']==0) // add course
-        {
-            if (!$courseExists) {
-                $addCourse = 'INSERT INTO COURSE (coursenumber, coursename) VALUES("'.$courseNumber.'", "'.$courseName.'")';
-                if (mysqli_query($connection, $addCourse)) {
-                    echo 'Successfully added course';
-                } else {
-                    echo 'Unable to add course';
-                }
+    $courseExists = false;
+    if ($result && mysqli_num_rows($result) > 0) {
+        $courseExists = true;
+    }
+        
+    if ($_POST['submit']==0) // add course
+    {
+        if (!$courseExists) {
+            $addCourse = 'INSERT INTO COURSE (coursenumber, coursename) VALUES("'.$courseNumber.'", "'.$courseName.'")';
+            if (mysqli_query($connection, $addCourse)) {
+                echo 'Successfully added course';
             } else {
-                echo 'Course already exists!';
+                echo 'Unable to add course';
             }
+        } else {
+            echo 'Course already exists!';
         }
-        else if($_POST['submit']==1) // remove course
-        {
-            if ($courseExists) {
-                $removeCourse = 'DELETE FROM COURSE '.
-                                    'where coursenumber="'$courseNumber.'" '
-                                    .'AND coursename="'.$courseName.'"';
+    }
+    else if($_POST['submit']==1) // remove course
+    {
+        if ($courseExists) {
+            $removeCourse = 'DELETE FROM COURSE '.
+                                'where coursenumber="'.$courseNumber.'" '
+                                .'AND coursename="'.$courseName.'"';
                 
-                if (mysqli_query($connection, $removeCourse)) {
-                    echo 'Course successfully deleted!';
-                } else {
-                    echo 'Removing course failed!';
-                }
+            if (mysqli_query($connection, $removeCourse)) {
+                echo 'Course successfully deleted!';
             } else {
-                echo 'Coursed does not exist, cannot delete!';
+                echo 'Removing course failed!';
             }
+        } else {
+            echo 'Coursed does not exist, cannot delete!';
         }
+    }
         
-        echo 'All registered courses:';
+    echo 'All registered courses:';
         
-        $getAllCourses = 'SELECT * FROM COURSE';
-        $allCourses = mysqli_query($connection, $getAllCourses);
-        if ($allCourses) {
-            while ($row = mysqli_fetch_assoc($allCourses)) {
-                echo '<li>';
-                echo 'Course name: '.$row['coursename'].' Course Number: '.$row['coursenumber'];
-            }
+    $getAllCourses = 'SELECT * FROM COURSE';
+    $allCourses = mysqli_query($connection, $getAllCourses);
+    if ($allCourses) {
+        while ($row = mysqli_fetch_assoc($allCourses)) {
+            echo '<li>';
+            echo 'Course name: '.$row['coursename'].' Course Number: '.$row['coursenumber'];
         }
+    }
         
-        mysqli_close($connection);
-        ?>
-    </ol>
+    mysqli_close($connection);
+    ?>
 </body>
 </html>

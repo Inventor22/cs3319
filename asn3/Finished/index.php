@@ -1,3 +1,18 @@
+<!--
+    Name:  Dustin Dobransky
+    Date:  23/11/14
+    ID:    250575030
+    Aliad: ddobran
+
+    File: index.php
+
+    Description:
+        The homepage.
+        This allows the user two options:
+    1. Log in as a graduate supervisor
+    2. Log in as a professor
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,34 +22,12 @@
 <body>
     <h1>Le Assignment</h1>
     <h2>Choose your own Adventure:</h2>
-    <form action="getpets.php" method="post">
-        <?php
-            include 'getdata.php';
-        ?>
-        <input type="submit" value="Get Pet Namess">
+    <form action="GradSecretary.php" method="post">
+        <input type="submit" value="Graduate Supervisor">
     </form>
-    <p>
-        <hr>
-        <p>
-            <h2>ADD A NEW PET:</h2>
-            <form action="addnewpet.php" method="post" enctype="multipart/form-data">
-                New Pet's Name:
-                <input type="text" name="petname"><br>
-                New Pet's Species:
-                <br>
-                <input type="radio" name="species" value="dog">Dog<br>
-                <input type="radio" name="species" value="cat">Cat<br>
-                <input type="radio" name="species" value="bird">Bird<br>
-                <input type="file" name="file" id="file"><br>
-                For which customer:
-                <br>
-                <?php
-                    include 'getdata.php';
-                ?>
-                <input type="submit" value="Add New Pet">
-            </form>
-            <?php
-                mysqli_close($connection);
-            ?>
+    <br />
+    <form action="Professor.php" method="post">
+        <input type="submit" value="Professor">
+    </form>
 </body>
 </html>

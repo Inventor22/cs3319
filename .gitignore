@@ -1,3 +1,6 @@
 *.vsdx
 *.pdf
 Thumbs.db
+*.user
+*.sln
+*.suo
