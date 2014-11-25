@@ -25,24 +25,24 @@
     $firstname     = $_POST["firstname"];
     $lastname      = $_POST["lastname"];
     
-    $addProf = false;
-    
     $findProf = 'select * from INSTRUCTOR where '.
         '        userid="'. $profuserid .'"'. 
         ' AND firstname="'.$firstname.'"'.
         ' AND lastname ="'.$lastname.'"';
     
-    if (!mysqli_query($connection, $findProf)) {
+    $result = mysqli_query($connection, $findProf);
+    
+    if (!$result) {
         echo "TA table invalid!";
     } else {
-        if ($row=mysqli_fetch_assoc($result) && $row=NULL) {
+        if ($row=mysqli_fetch_assoc($result) && $row==NULL) {
             echo "Prof already exists in INSTRUCTOR database.";
         } else {
-            $addTA = true;
+            $addProf = true;
         }
     }
     
-    if ($addTA) {
+    if ($addProf) {
         $query = 'insert into INSTRUCTOR values("'
             . $firstname . '","'
             . $lastname . '","' 

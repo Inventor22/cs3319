@@ -68,9 +68,8 @@
     if (!$result) {
         echo "ta not updated properly; unable to access TEACHINGASSISTANT database";
     } else {
-        echo "From: $from_firstname"." "."$from_lastname <br>";
         while ($row=mysqli_fetch_assoc($result)) {
-            echo 'To:';
+            echo 'Updated:';
             echo $row['firstname'].' '.$row['lastname'].', '.$row["userid"].'<br>';
         }
     }
