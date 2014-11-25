@@ -38,7 +38,8 @@
                 <td>Head prof</td>
              </tr>";
     
-    while ($row=mysqli_fetch_assoc($result)) {
+    while ($row=mysqli_fetch_assoc($result))
+    {
         echo "<tr>";
         echo '<td>';
         if ($rows['imagelocation'] != NULL) {
@@ -52,6 +53,7 @@
         echo "<td>" . $row["studentnumber"] . "</td>";
         echo "<td>" . $row["gradtype"] . "</td>";
         echo "<td>" . $row["profuserid"] . "</td>";
+        echo "<td>" . $row["imagelocation"] . "</td>";
         echo "</tr>";
     }
     echo "</table>";
