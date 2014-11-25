@@ -35,8 +35,8 @@
     
     if (strlen($from_tauserid) > 0) {
         $changeTA = "UDPATE TEACHINGASSISTANT 
-                    set lastname='$to_lastname', firstname='$to_firstname'
-                    where userid='$from_tauserid'";
+                    set lastname='".$to_lastname."', firstname='".$to_firstname."'".
+                    " where userid='".$from_tauserid."'";
     } else if (strlen($from_firstname) > 0 && strlen($from_lastname) > 0) {
         $changeTA = "UDPATE TEACHINGASSISTANT 
                     set lastname='$to_lastname', firstname='$to_firstname'
