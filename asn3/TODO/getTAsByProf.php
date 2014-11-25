@@ -37,8 +37,8 @@
 				echo "<td>{$row['firstname']}</td>";
 				echo "<td>{$row['lastname']}</td>";
 				echo "<td>{$row['gradtype']}</td>";
+				echo "<td><img src={$row['imagelocation']} height=\"60\" width=\"60\"></td>";
 				echo '</tr>';
-				// TODO: Show image.
 			}
 			echo "</table>";
 		}
@@ -79,8 +79,8 @@
 					echo "<td>{$row2['firstname']}</td>";
 					echo "<td>{$row2['lastname']}</td>";
 					echo "<td>{$row2['gradtype']}</td>";
+					echo "<td><img src={$row2['imagelocation']} height=\"60\" width=\"60\"></td>";
 					echo '</tr>';
-					// TODO: Show image.
 				}
 				mysqli_free_result($result2);
 			}
