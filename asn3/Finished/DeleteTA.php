@@ -19,29 +19,36 @@
     <?php
     include 'connectdb.php';
     ?>
-    <h1>Deleting TA:</h1>
+    <h1>Deleting TA</h1>
     <?php
     $tauserid      = $_POST["userid"];
     $firstname     = $_POST["firstname"];
     $lastname      = $_POST["lastname"];
     $studentnumber = $_POST["studentnumber"];
+    
+    echo 'Deleting TA: '.$tauserid.' from TEACHINGASSISTANT';
+    echo '<br>';
 
-    $findTA0 = 'delete from TEACHINGASSISTANT where'.
-    ' userid="'. $tauserid .'"'. 
-    ' OR (firstname="'.$firstname.'" AND lastname ="'.$lastname.'")'.
-    ' OR studentnumber="'.$studentnumber.'"';
+    $findTA0 = "delete from TEACHINGASSISTANT where".
+    " userid='". $tauserid .'"'. 
+    " OR (firstname='".$firstname."' AND lastname ='".$lastname."')".
+    " OR studentnumber='".$studentnumber."'";
 
-    if (mysqli_query($connection,$findTA0)) {
+    $result = mysqli_query($connection,$findTA0);
+    if ($result) {
         echo "TA removed from TEACHINGASSISTANT table";
     } else {
         echo "TA not removed from TEACHINGASSISTANT table.";
         echo '<br>';
         echo "Double check input parameters";
     }
+    mysqli_free_result($result);
     
     include 'getTAs.php';
 
-    mysqli_close($connection);
+    if ($connection) {   
+        mysqli_close($connection);
+    }
     ?>
 </body>
 </html>
