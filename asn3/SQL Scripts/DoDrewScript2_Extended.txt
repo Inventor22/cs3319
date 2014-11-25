@@ -1,0 +1,77 @@
+use DoDrew;
+show tables;
+
+select * from INSTRUCTOR;
+
+LOAD DATA INFILE '/tmp/fall2014data.txt' INTO TABLE INSTRUCTOR FIELDS TERMINATED BY ',';
+
+select * from INSTRUCTOR;
+
+INSERT INTO TEACHINGASSISTANT VALUES ("Homer","Simpson","250011111","hsimpson","Masters","","lreid2");
+INSERT INTO TEACHINGASSISTANT VALUES ("Marge","Simpson","250011112","msimpson","Masters","","mmm");
+INSERT INTO TEACHINGASSISTANT VALUES ("Lisa","Simpson","250011113","lsimpson","PhD","","lreid2");
+INSERT INTO TEACHINGASSISTANT VALUES ("Maggie","Simpson","250011114","msimpso1","PhD","","lreid2");
+INSERT INTO TEACHINGASSISTANT VALUES ("Ned","Flanders","250000666","nflanders","PhD","","mkatchab");
+INSERT INTO TEACHINGASSISTANT VALUES ("Todd","Flanders","250000667","tflanders","Masters","","mbauer");
+INSERT INTO TEACHINGASSISTANT VALUES ("Monty","Burns","250000001","mburns","PhD","","dvancise");
+INSERT INTO TEACHINGASSISTANT VALUES ("Waylan","Smithers","250022222","wsmither","PhD","","mbauer");
+INSERT INTO TEACHINGASSISTANT VALUES ("Peter","Griffin","250033333","pgriffin","Masters","","lreid2");
+SELECT * FROM TEACHINGASSISTANT;
+
+INSERT INTO COURSE VALUES ("CS1026","Intro to Programming");
+INSERT INTO COURSE VALUES ("CS1033","Multimedia and Communications");
+INSERT INTO COURSE VALUES ("CS1032","Info Systems and Design");
+INSERT INTO COURSE VALUES ("CS2212","Intro to Software Engineering");
+INSERT INTO COURSE VALUES ("CS3319","Intro to Databases");
+INSERT INTO COURSE VALUES ("CS4411","Advanced Databases");
+INSERT INTO COURSE VALUES ("CS2210","Data Structures");
+INSERT INTO COURSE VALUES ("CS2208","Computer Organization");
+INSERT INTO COURSE VALUES ("CS2209","Logic");
+INSERT INTO COURSE VALUES ("CS2211","Software Tools");
+INSERT INTO COURSE VALUES ("CS3357","Networks");
+SELECT * FROM COURSE;
+
+INSERT INTO CoSUPERVISE VALUES ("mdaley","hsimpson");
+INSERT INTO CoSUPERVISE VALUES ("mbauer","hsimpson");
+INSERT INTO CoSUPERVISE VALUES ("mdaley","mburns");
+INSERT INTO CoSUPERVISE VALUES ("dvancise","mburns");
+INSERT INTO CoSUPERVISE VALUES ("mbauer","msimpso1");
+INSERT INTO CoSUPERVISE VALUES ("sosborn","msimpso1");
+INSERT INTO CoSUPERVISE VALUES ("mperry","msimpso1");
+INSERT INTO CoSUPERVISE VALUES ("lreid2","lsimpson");
+SELECT * FROM CoSUPERVISE;
+
+INSERT INTO TAAssignedTO VALUES ("cs1033","hsimpson",2014,"Fall",30);
+INSERT INTO TAAssignedTO VALUES ("cs1033","tflanders",2014,"Fall",33);
+INSERT INTO TAAssignedTO VALUES ("cs1033","msimpson",2014,"Fall",43);
+INSERT INTO TAAssignedTO VALUES ("cs3357","hsimpson",2013,"Spring",66);
+INSERT INTO TAAssignedTO VALUES ("cs3357","tflanders",2013,"Spring",77);
+INSERT INTO TAAssignedTO VALUES ("cs3357","wsmither",2013,"Spring",65);
+INSERT INTO TAAssignedTO VALUES ("cs3357","mburns",2013,"Spring",54);
+INSERT INTO TAAssignedTO VALUES ("cs1033","hsimpson",2013,"Fall",13);
+INSERT INTO TAAssignedTO VALUES ("cs1033","nflanders",2013,"Fall",34);
+INSERT INTO TAAssignedTO VALUES ("cs1033","lsimpson",2013,"Fall",35);
+INSERT INTO TAAssignedTO VALUES ("cs3319","mburns",2014,"Fall",20);
+INSERT INTO TAAssignedTO VALUES ("cs1026","lsimpson",2014,"Fall",21);
+INSERT INTO TAAssignedTO VALUES ("cs1026","msimpso1",2014,"Fall",102);
+INSERT INTO TAAssignedTO VALUES ("cs1026","wsmither",2014,"Summer",23);
+INSERT INTO TAAssignedTO VALUES ("cs1026","msimpson",2013,"Summer",45);
+INSERT INTO TAAssignedTO VALUES ("cs1026","lsimpson",2012,"Summer",45);
+INSERT INTO TAAssignedTO VALUES ("cs1026","lsimpson",2011,"Summer",45);
+INSERT INTO TAAssignedTO VALUES ("cs1026","lsimpson",2010,"Summer",45);
+INSERT INTO TAAssignedTO VALUES ("cs1026","lsimpson",2009,"Summer",45);
+INSERT INTO TAAssignedTO VALUES ("cs1026","lsimpson",2008,"Summer",45);
+INSERT INTO TAAssignedTO VALUES ("cs1026","lsimpson",2007,"Summer",45);
+select * from TAAssignedTO;
+
+select * from TEACHINGASSISTANT;
+UPDATE TEACHINGASSISTANT set firstname = "Rod" where firstname="Todd";
+select * from TEACHINGASSISTANT;
+
+select * from TEACHINGASSISTANT;
+UPDATE TEACHINGASSISTANT set profuserid = "mperry" where firstname="Waylan";
+select * from TEACHINGASSISTANT;
+
+select * from TAAssignedTO;
+UPDATE TAAssignedTO set year=2012 where coursenumber="cs1026" and term="Fall";
+select * from TAAssignedTO;
