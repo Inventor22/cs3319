@@ -33,13 +33,22 @@
     echo $to_firstname;
     echo $to_lastname;
     
-    $changeTA = "UDPATE TEACHINGASSISTANT 
+    if (strlen($from_tauserid) > 0) {
+        $changeTA = "UDPATE TEACHINGASSISTANT 
                     set lastname='$to_lastname', firstname='$to_firstname'
-                    where userid='$from_tauserid'
-                        OR (firstname='$from_firstname' AND lastname='$from_lastname')
-                        OR studentnumber='$from_studentnumber'";
-    $addTA = false;
-
+                    where userid='$from_tauserid'";
+    } else if (strlen($from_firstname) > 0) {
+        $changeTA = "UDPATE TEACHINGASSISTANT 
+                    set lastname='$to_lastname', firstname='$to_firstname'
+                    where firstname='$from_firstname' AND lastname='$from_lastname')";
+    } else if {
+        $changeTA = "UDPATE TEACHINGASSISTANT 
+                    set lastname='$to_lastname', firstname='$to_firstname'
+                    where studentnumber='$from_studentnumber'";
+    } else {
+        echo 'no valid fields; update aborted'
+    }
+    
     if (mysqli_query($connection,$changeTA)) {
         echo "TA updated from TEACHINGASSISTANT table";
     } else {
