@@ -34,7 +34,7 @@
     echo $to_lastname;
     
     $changeTA = "UDPATE TEACHINGASSISTANT 
-                    set firstname='$to_firstname', lastname='$to_lastname'
+                    set lastname='$to_lastname', firstname='$to_firstname'
                     where userid='$from_tauserid'
                         OR (firstname='$from_firstname' AND lastname='$from_lastname')
                         OR studentnumber='$from_studentnumber'";
