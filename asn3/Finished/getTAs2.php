@@ -42,7 +42,7 @@
     {
         echo "<tr>";
         echo '<td>';
-        if ($rows["imagelocation"] != NULL) {
+        if (strlen($rows["imagelocation"])>0) {
             echo '<img src="' . $rows["imagelocation"] . '"height="150px" width="120px"></td>';
         } else {
             echo 'Image loc:~'.$rows["imagelocation"].'~</td>';
