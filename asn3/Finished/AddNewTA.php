@@ -103,7 +103,7 @@
     </table>
 
     <?php
-    include 'getTAs.php';
+    include 'getTAs2.php';
     ?>
 </body>
 </html>

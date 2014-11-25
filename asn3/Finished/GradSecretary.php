@@ -66,7 +66,7 @@ else {
     ?>
     <h1>Graduate Student Secretary</h1>
     <h2>TAs</h2>
-    <form action="getTAs.php" method="post">
+    <form action="getTAs2.php" method="post">
         <button name="submit">Get TAs</button>
     </form>
     <hr>
