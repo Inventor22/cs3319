@@ -71,7 +71,7 @@
         echo "From:<li> $from_firstname $from_lastname";
         while ($row=mysqli_fetch_assoc($result)) {
             echo 'To: <li>';
-            echo $row["userid"].', '.$row['firstname'].', '.$row['lastname'];
+            echo $row['firstname'].' '.$row['lastname'].', '.$row["userid"];
         }
     }
     
