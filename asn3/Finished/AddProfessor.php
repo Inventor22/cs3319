@@ -25,7 +25,7 @@
     $firstname     = $_POST["firstname"];
     $lastname      = $_POST["lastname"];
     
-    echo $profuserid $firstname $lastname;
+    echo $profuserid, $firstname, $lastname;
     
     $findProf = "select * from INSTRUCTOR where
         userid= '$profuserid'
