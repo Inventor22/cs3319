@@ -38,6 +38,8 @@
         echo '<br>';
         echo "Double check input parameters";
     }
+    
+    include 'getTAs.php';
 
     mysqli_close($connection);
     ?>
