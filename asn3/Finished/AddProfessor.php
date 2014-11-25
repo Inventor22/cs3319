@@ -63,22 +63,22 @@
         echo "<br>New Prof added:";
     }
     mysqli_close($connection);
-    ?>
-    <table>
+    
+    echo "<table>
         <tr>
             <td>Prof userid:</td>
-            <td><?php $profuserid ?></td>
+            <td> $profuserid </td>
         </tr>
         <tr>
             <td>First name:</td>
-            <td>
-                <?php $firstname ?></td>
+            <td> $firstname </td>
         </tr>
         <tr>
             <td>Last name:</td>
-            <td>
-                <?php $lastname ?></td>
+            <td> $lastname </td>
         </tr>
-    </table>
+    </table>";
+    
+    ?>
 </body>
 </html>
