@@ -41,8 +41,9 @@
         echo "TA not removed from TEACHINGASSISTANT table.";
         echo '<br>';
         echo "Double check input parameters";
+        echo '<br>';     
+        echo mysqli_error($connection);
     }
-    mysqli_free_result($result);
     
     include 'getTAs.php';
 
