@@ -50,7 +50,7 @@
 		<?php
 			include 'gettas.php';
 		?>
-		<input type="submit" value="Get Course Count"/>
+		<input type="submit" value="Get Courses"/>
 	</form>
 	<?php
 		mysqli_close($connection);
