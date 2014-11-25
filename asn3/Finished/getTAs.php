@@ -4,7 +4,7 @@
     ID:    250575030
     Aliad: ddobran
 
-    File: DeleteTA.php
+    File: getTAs.php
 
     Description:  This file retrieves and displays all the TAs from the
                   TEACHINGASSISTANT database, formatted in a table
