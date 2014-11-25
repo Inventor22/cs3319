@@ -42,10 +42,10 @@
     {
         echo "<tr>";
         echo '<td>';
-        if ($rows['imagelocation'] != NULL) {
-            echo '<img src="' . $rows['imagelocation'] . '"height="150px" width="120px"></td>';
+        if ($rows["imagelocation"] != NULL) {
+            echo '<img src="' . $rows["imagelocation"] . '"height="150px" width="120px"></td>';
         } else {
-            echo 'Image loc:~'.$rows['imagelocation'].'~</td>';
+            echo 'Image loc:~'.$rows["imagelocation"].'~</td>';
         }
         echo "<td>" . $row["userid"] . "</td>";
         echo "<td>" . $row["firstname"] . "</td>";
@@ -54,6 +54,7 @@
         echo "<td>" . $row["gradtype"] . "</td>";
         echo "<td>" . $row["profuserid"] . "</td>";
         echo "</tr>";
+        echo $row;
     }
     echo "</table>";
     mysqli_free_result($result);
