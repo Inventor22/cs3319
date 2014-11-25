@@ -54,7 +54,7 @@
         echo "<td>" . $row["gradtype"] . "</td>";
         echo "<td>" . $row["profuserid"] . "</td>";
         echo "</tr>";
-        echo $row;
+        print_r($row);
     }
     echo "</table>";
     mysqli_free_result($result);
