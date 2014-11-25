@@ -25,12 +25,11 @@
 	<h2>View TA's by Course</h2>
 	<h3>Please select a course:</h3>
 	<form action="getTAsByCourse.php" method="post">
+		<!-- Radio buttons -->
 		<?php
-		// Only needed if we want to use radio buttons
-		// Radio buttons are a bad choice for this - 
-		// there are simply too many courses.
 		   include 'getcourses.php';
 		?>
+		<!--  Text box -->
 		<!--Course Code (cs####):<br>
 		<input type="text" name="c_code" value="">
 		<br>-->
