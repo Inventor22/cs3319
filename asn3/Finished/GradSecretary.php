@@ -383,9 +383,9 @@ else {
         <table>
             <tr>
                 <td>
-                    <button type="submit" value="0">Add Course Info and assign TA</button></td>
+                    <button type="submit" name="submit" value="0">Add Course Info and assign TA</button></td>
                 <td>
-                    <button type="submit" value="1">Remove TA from Course</button></td>
+                    <button type="submit" name="submit" value="1">Remove TA from Course</button></td>
             </tr>
         </table>
     </form>

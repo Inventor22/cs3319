@@ -27,11 +27,11 @@
     $term         = $_POST["term"];
     $tauserid     = $_POST["tauserid"];
     
-    echo $courseNumber.'<br>';
-    echo $year        .'<br>';
-    echo $numStudents .'<br>';
-    echo $term        .'<br>';
-    echo $tauserid    .'<br>';
+    //echo $courseNumber.'<br>';
+    //echo $year        .'<br>';
+    //echo $numStudents .'<br>';
+    //echo $term        .'<br>';
+    //echo $tauserid    .'<br>';
     
     $intsNotValidRange = ($year < 1990)
                       || ($year > 2050)
