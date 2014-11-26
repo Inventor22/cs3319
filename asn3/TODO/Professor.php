@@ -30,7 +30,7 @@
 	<h3>Please enter a professor's name:</h3>
 	<form action="getTAsByProf.php" method="post">
 		<?php
-			include 'getprofs.php';
+			include 'getprofs_radio.php';
 		?>
 		<br>
 		<input type="submit" value="Get TAs">
@@ -43,7 +43,7 @@
 	<form action="getTAsByCourse.php" method="post">
 		<!-- Radio buttons -->
 		<?php
-		   include 'getcourses.php';
+		   include 'getcourses_radio.php';
 		?>
 		<!--  Text box -->
 		<!--Course Code (cs####):<br>
@@ -59,7 +59,7 @@
 	<h3>Please select a TA:</h3>
 	<form action="getTACourses.php" method="post">
 		<?php
-			include 'gettas.php';
+			include 'gettas_radio.php';
 		?>
 		<br>
 		<input type="submit" value="Get Courses"/>
