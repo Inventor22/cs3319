@@ -56,8 +56,8 @@
 					echo "<td><img src={$row['imagelocation']} height=\"60\" width=\"60\"></td>";
 				}
 				else {
-					echo "<td>No image.</td>";
-					//echo "<td><img src=TA_Pictures/default0.jpg height=\"60\" width=\"60\"></td>";
+					//echo "<td>no_image</td>";
+					echo "<td><img src=TA_Pictures/default0.jpg height=\"60\" width=\"60\"></td>";
 				}
 				echo '</tr>';
 			}
@@ -104,8 +104,8 @@
 						echo "<td><img src={$row2['imagelocation']} height=\"60\" width=\"60\"></td>";
 					}
 					else {
-						echo "<td>No image.</td>";
-						//echo "<td><img src=TA_Pictures/default0.jpg height=\"60\" width=\"60\"></td>";
+						//echo "<td>no_image</td>";
+						echo "<td><img src=TA_Pictures/default0.jpg height=\"60\" width=\"60\"></td>";
 					}
 					echo '</tr>';
 				}
