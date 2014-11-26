@@ -52,7 +52,7 @@
 				echo "<td>{$row['firstname']}</td>";
 				echo "<td>{$row['lastname']}</td>";
 				echo "<td>{$row['gradtype']}</td>";
-				if ($row["imagelocation"] != ""){
+				if ($row["imagelocation"] != NULL && file_exists($row["imagelocation"])){
 					echo "<td><img src={$row['imagelocation']} height=\"60\" width=\"60\"></td>";
 				}
 				else {
@@ -99,8 +99,8 @@
 					echo "<td>{$row2['firstname']}</td>";
 					echo "<td>{$row2['lastname']}</td>";
 					echo "<td>{$row2['gradtype']}</td>";
-					if ($row2["imagelocation"] != ""){
-					echo "<td><img src={$row2['imagelocation']} height=\"60\" width=\"60\"></td>";
+					if ($row2["imagelocation"] != NULL && file_exists($row2["imagelocation"])){
+						echo "<td><img src={$row2['imagelocation']} height=\"60\" width=\"60\"></td>";
 					}
 					else {
 						echo "<td><img src=TA_Pictures/default0.jpg height=\"60\" width=\"60\"></td>";
