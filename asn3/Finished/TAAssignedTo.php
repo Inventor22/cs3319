@@ -40,12 +40,12 @@
     
     if (!$intsNotValidRange) {
         
-        $checkIfExists = 'SELECT * FROM TAAssignedTO where '
-                    .'coursenumber="'.$courseNumber.'" AND '
-                    .'year="'.$year.'" AND '
-                    .'numofstudents="'.$numStudents.'" AND '
-                    .'term="'.$term.'", AND '
-                    .'tauserid="'.$tauserid.'"';
+        $checkIfExists = "SELECT * FROM TAAssignedTO where
+                    coursenumber = '$courseNumber' AND
+                    year = $year AND
+                    numofstudents= $numStudents AND
+                    term = '$term' AND
+                    tauserid = '$tauserid' ";
         
         $result = mysqli_query($connection, $checkIfExists);
         
@@ -54,9 +54,11 @@
             if ($result && mysqli_num_rows($result) > 0) {
                 echo 'cannot add ta to course -- already exists';
             } else {
-                $addCourseInfo = 'INSERT INTO TAAssignedTO (coursenumber, tauserid, year, term, numofstudents) '
-                                    .' VALUES("'.$courseNumber.'", "'.$tauserid.'", "'
-                                    .$year.'", "'.$term.'", "'.$numStudents.'")';
+                $addCourseInfo = "INSERT INTO TAAssignedTO
+                    (coursenumber, tauserid, year, term, numofstudents)
+                    VALUES('$courseNumber', '$tauserid',
+                            $year, '$term', $numStudents)";
+                
                 if (mysqli_query($connection, $addCourseInfo)) {
                     echo 'SUCCESS: Added course info and TA';
                 } else {
@@ -70,13 +72,13 @@
                 $removeCourse = "DELETE FROM TAAssignedTO
                                 where tauserid     = '$tauserid'
                                 AND   courseNumber = '$courseNumber'
-                                AND   year         = '$year'
+                                AND   year         = $year
                                 AND   term         = '$term'";
                 
                 $checkForCourse = "SELECT * FROM TAAssignedTO
                                 where tauserid     = '$tauserid'
                                 AND   courseNumber = '$courseNumber'
-                                AND   year         = '$year'
+                                AND   year         = $year
                                 AND   term         = '$term'";
                 
                 if (mysqli_query($connection, $removeCourse)) {
@@ -85,7 +87,6 @@
                         echo '<br>Something went wrong.  Course not deleted.';
                     } else {
                         echo '<br>Course successfully deleted!';
-
                     }
                 } else {
                     echo '<br>Removing course failed!';
