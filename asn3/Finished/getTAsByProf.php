@@ -52,7 +52,7 @@
 				echo "<td>{$row['firstname']}</td>";
 				echo "<td>{$row['lastname']}</td>";
 				echo "<td>{$row['gradtype']}</td>";
-				if ($row["imagelocation"] != NULL){
+				if ($row["imagelocation"] != ""){
 					echo "<td><img src={$row['imagelocation']} height=\"60\" width=\"60\"></td>";
 				}
 				else {
@@ -99,7 +99,7 @@
 					echo "<td>{$row2['firstname']}</td>";
 					echo "<td>{$row2['lastname']}</td>";
 					echo "<td>{$row2['gradtype']}</td>";
-					if ($row2["imagelocation"] != NULL){
+					if ($row2["imagelocation"] != ""){
 					echo "<td><img src={$row2['imagelocation']} height=\"60\" width=\"60\"></td>";
 					}
 					else {
