@@ -22,64 +22,95 @@
     include 'connectdb.php';
     
     $courseNumber = $_POST["coursenumber"];
-    $year         = $_POST["year"];
-    $numStudents  = $_POST["numofstudents"];
+    $year         = (int)$_POST["year"];
+    $numStudents  = (int)$_POST["numofstudents"];
     $term         = $_POST["term"];
     $tauserid     = $_POST["tauserid"];
+    
+    //echo $courseNumber.'<br>';
+    //echo $year        .'<br>';
+    //echo $numStudents .'<br>';
+    //echo $term        .'<br>';
+    //echo $tauserid    .'<br>';
+    
+    $intsNotValidRange = ($year < 1990)
+                      || ($year > 2050)
+                      || ($numStudents < 0)
+                      || ($numStudents > 3000);
+    
+    if (!$intsNotValidRange) {
         
-    $checkIfExists = 'SELECT * FROM TAAssignedTO where '
-                .'coursenumber="'.$courseNumber.'" AND '
-                .'year="'.$year.'" AND '
-                .'numofstudents="'.$numStudents.'" AND '
-                .'term="'.$term.'", AND '
-                .'tauserid="'.$tauserid.'"';
-            
-    $result = mysqli_query($connection, $checkIfExists);
+        $checkIfExists = "SELECT * FROM TAAssignedTO where
+                    coursenumber = '$courseNumber' AND
+                    year = $year AND
+                    numofstudents= $numStudents AND
+                    term = '$term' AND
+                    tauserid = '$tauserid' ";
         
-    if ($_POST['submit']==0) // Add Course Info and assign TA
-    {
-        if ($result && mysqli_num_rows($result) > 0) {
-            echo 'cannot add ta to course -- already exists';
-        } else {
-            $addCourseInfo = 'INSERT INTO TAAssignedTO (coursenumber, tauserid, year, term, numofstudents) '
-                                .' VALUES("'.$courseNumber.'", "'.$tauserid.'", "'
-                                .$year.'", "'.$term.'", "'.$numStudents.'")';
-            if (mysqli_query($connection, $addCourseInfo)) {
-                echo 'SUCCESS: Added course info and TA';
+        $result = mysqli_query($connection, $checkIfExists);
+        
+        if ($_POST['submit']==0) // Add Course Info and assign TA
+        {
+            if ($result && mysqli_num_rows($result) > 0) {
+                echo 'cannot add ta to course -- already exists';
             } else {
-                echo 'FAILED: could not insert course info';   
-            }
-        }
-    }
-    else if($_POST['submit']==1) // Remove TA from Course
-    {
-        if ($courseExists) {
-            $removeCourse = 'DELETE FROM COURSE '.
-                                'where coursenumber="'.$courseNumber.'" '
-                                .'AND coursename="'.$courseName.'"';
+                $addCourseInfo = "INSERT INTO TAAssignedTO
+                    (coursenumber, tauserid, year, term, numofstudents)
+                    VALUES('$courseNumber', '$tauserid',
+                            $year, '$term', $numStudents)";
                 
-            if (mysqli_query($connection, $removeCourse)) {
-                echo 'Course successfully deleted!';
-            } else {
-                echo 'Removing course failed!';
+                if (mysqli_query($connection, $addCourseInfo)) {
+                    echo 'SUCCESS: Added course info and TA';
+                } else {
+                    echo 'FAILED: could not insert course info';   
+                }
             }
-        } else {
-            echo 'Coursed does not exist, cannot delete!';
         }
-    }
+        else if($_POST['submit']==1) // Remove TA from Course
+        {
+            if ($result && mysqli_num_rows($result) > 0) {
+                $removeCourse = "DELETE FROM TAAssignedTO
+                                where tauserid     = '$tauserid'
+                                AND   courseNumber = '$courseNumber'
+                                AND   year         = $year
+                                AND   term         = '$term'";
+                
+                $checkForCourse = "SELECT * FROM TAAssignedTO
+                                where tauserid     = '$tauserid'
+                                AND   courseNumber = '$courseNumber'
+                                AND   year         = $year
+                                AND   term         = '$term'";
+                
+                if (mysqli_query($connection, $removeCourse)) {
+                    $exists = mysqli_query($connection,  $checkForCourse);
+                    if ($exists && mysqli_num_rows($exists) > 0) {
+                        echo '<br>Something went wrong.  Course not deleted.';
+                    } else {
+                        echo "<br>Course $courseNumber successfully deleted!";
+                    }
+                } else {
+                    echo '<br>Removing course failed!';
+                }
+            } else {
+                echo '<br>Course does not exist, cannot delete!';
+            }
+        }
         
-    echo 'All registered courses and their TAs:';
-    echo '<br>';
+        echo '<br><br>All registered courses and their TAs:';
+        echo '<br>';
         
-    $getAllCourses = 'SELECT * FROM TAAssignedTO';
-    $allCourses = mysqli_query($connection, $getAllCourses);
-    if ($allCourses) {
-        while ($row = mysqli_fetch_assoc($allCourses)) {
-            echo '<li>';
-            echo 'Course Number: '.$row['coursenumber'].' tauserid: '.$row['tauserid']
+        $getAllCourses = 'SELECT * FROM TAAssignedTO';
+        $allCourses = mysqli_query($connection, $getAllCourses);
+        if ($allCourses) {
+            while ($row = mysqli_fetch_assoc($allCourses)) {
+                echo '<li>';
+                echo 'Course Number: '.$row['coursenumber'].' tauserid: '.$row['tauserid']
                 .' year: '.$row['year'].' term: '.$row['term']
                 .' Number of Students: '.$row['numofstudents'];
+            }
         }
+    } else {
+        echo '<br>Integer parameters out of range!';
     }
         
     mysqli_close($connection);

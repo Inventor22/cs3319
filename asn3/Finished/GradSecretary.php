@@ -329,12 +329,12 @@ else {
             <tr>
                 <td>Course Number:</td>
                 <td>
-                    <input type="text" name="userid"></td>
+                    <input type="text" name="coursenumber"></td>
             </tr>
             <tr>
                 <td>Course Name:</td>
                 <td>
-                    <input type="text" name="firstname"></td>
+                    <input type="text" name="coursename"></td>
             </tr>
         </table>
         <br>
@@ -350,7 +350,7 @@ else {
 
     <hr />
     <h2>Assign TA to course:</h2>
-    <form action="TAAssignTo.php" method="post" enctype="multipart/form-data">
+    <form action="TAAssignedTo.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Course Number:</td>
@@ -383,9 +383,9 @@ else {
         <table>
             <tr>
                 <td>
-                    <button type="submit" value="0">Add Course Info and assign TA</button></td>
+                    <button type="submit" name="submit" value="0">Add Course Info and assign TA</button></td>
                 <td>
-                    <button type="submit" value="1">Remove TA from Course</button></td>
+                    <button type="submit" name="submit" value="1">Remove TA from Course</button></td>
             </tr>
         </table>
     </form>

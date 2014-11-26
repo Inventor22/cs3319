@@ -38,13 +38,14 @@
                 <td>Head prof</td>
              </tr>";
     
-    while ($row=mysqli_fetch_assoc($result)) {
+    while ($row=mysqli_fetch_assoc($result))
+    {
         echo "<tr>";
         echo '<td>';
-        if ($rows['imagelocation'] != NULL) {
-            echo '<img src="' . $rows['imagelocation'] . '"height="150px" width="120px"></td>';
+        if ($row["imagelocation"] != NULL && file_exists($row["imagelocation"])) {
+            echo '<img src="' . $row["imagelocation"] . '"height="150px" width="120px"></td>';
         } else {
-            echo '</td>';
+            echo '<img src="TA_Pictures/default' . rand(0,2) . '.jpg"height="150px" width="120px"></td>';
         }
         echo "<td>" . $row["userid"] . "</td>";
         echo "<td>" . $row["firstname"] . "</td>";
@@ -53,6 +54,7 @@
         echo "<td>" . $row["gradtype"] . "</td>";
         echo "<td>" . $row["profuserid"] . "</td>";
         echo "</tr>";
+        //print_r($row);
     }
     echo "</table>";
     mysqli_free_result($result);

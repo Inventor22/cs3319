@@ -18,63 +18,59 @@
 <body>
     <?php
     include 'connectdb.php';
-        
+    
     $courseNumber = $_POST["coursenumber"];
     $courseName   = $_POST["coursename"];
-        
-    $checkIfCourseExists = 'select * from COURSE'
-                                .'where coursenumber="'.$courseNumber.'" '
-                                .'AND coursename="'.$courseName.'"';
-        
+    
+    //echo $courseName;
+    //echo $courseNumber;
+    
+    $checkIfCourseExists = "select * from COURSE
+                                where coursenumber = '$courseNumber'";
+    //AND   coursename   = '$courseName'";
+    
     $result = mysqli_query($connection, $checkIfCourseExists);
-        
+    
     $courseExists = false;
     if ($result && mysqli_num_rows($result) > 0) {
         $courseExists = true;
     }
-        
+    
     if ($_POST['submit']==0) // add course
     {
         if (!$courseExists) {
-            $addCourse = 'INSERT INTO COURSE (coursenumber, coursename) VALUES("'.$courseNumber.'", "'.$courseName.'")';
+            $addCourse = "INSERT INTO COURSE (coursenumber, coursename) VALUES('$courseNumber', '$courseName')";
             if (mysqli_query($connection, $addCourse)) {
-                echo 'Successfully added course';
+                echo '<br>Successfully added course';
             } else {
-                echo 'Unable to add course';
+                echo '<br>Unable to add course';
             }
         } else {
-            echo 'Course already exists!';
+            echo '<br>Course already exists!';
         }
     }
     else if($_POST['submit']==1) // remove course
     {
         if ($courseExists) {
-            $removeCourse = 'DELETE FROM COURSE '.
-                                'where coursenumber="'.$courseNumber.'" '
-                                .'AND coursename="'.$courseName.'"';
-                
-            if (mysqli_query($connection, $removeCourse)) {
-                echo 'Course successfully deleted!';
+            $removeCourse = "DELETE FROM COURSE 
+                                where coursenumber = '$courseNumber'";
+                                //AND   coursename   = '$courseName'";
+            
+            if (!mysqli_query($connection, $removeCourse)) {
+                echo '<br>Removing course failed!<br>';
+            }
+            else if (mysqli_query($connection, $courseExists)) {
+                echo '<br>Something went wrong.  Course not removed.<br>';
             } else {
-                echo 'Removing course failed!';
+                echo "<br>Course $courseNumber successfully removed.<br>";
             }
         } else {
-            echo 'Coursed does not exist, cannot delete!';
+            echo '<br>Coursed does not exist, cannot delete!<br>';
         }
     }
-        
-    echo 'All registered courses:';
-        
-    $getAllCourses = 'SELECT * FROM COURSE';
-    $allCourses = mysqli_query($connection, $getAllCourses);
-    if ($allCourses) {
-        while ($row = mysqli_fetch_assoc($allCourses)) {
-            echo '<li>';
-            echo 'Course name: '.$row['coursename'].' Course Number: '.$row['coursenumber'];
-        }
-    }
-        
     mysqli_close($connection);
+    
+    include 'PrintAllCourses.php';
     ?>
 </body>
 </html>

@@ -10,7 +10,11 @@
         This file does one of 4 things:
     1. Assign Prof as Head Supervisor for TA
     2. Assign Prof as CoSupervisor for TA
+<<<<<<< HEAD
     3. Remove Prof as Head Supervisor for TA - ILLEGAL!
+=======
+    3. Remove Prof as Head Supervisor for TA
+>>>>>>> d230110553718d57b0fe4bf3002bfdd91e7fe74e
     4. Remove Prof as CoSupervisor for TA
 -->
 
@@ -65,7 +69,6 @@
             }
             else if($_POST['submit']==1) // Assign Prof as CoSupervisor for TA
             {
-                // Check if the prof is already a cosupervisor
                 $check_for_coprof = 'select * from CoSUPERVISE where '.
                     'profuserid="'.$final_profid.
                     'AND tauserid="'.$final_taid.'"';
@@ -91,8 +94,6 @@
             }
             else if($_POST['submit']==2) // Remove Prof as Head Supervisor for TA
             {
-                // This is an illegal operation - we need to fix this!
-                // This is not in the assignment spec and should be removed!!!
                 $removeHeadProf =
                     'UPDATE TEACHINGASSISTANT'.
                     'set profuserid=NULL'.

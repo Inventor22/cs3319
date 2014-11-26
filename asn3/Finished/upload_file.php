@@ -29,7 +29,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
         $uploadFolder->createFolder($uploadholder);
         if (file_exists("TA_Pictures/" . $_FILES["file"]["name"])) {
             echo '<p><hr>';
-            echo $_FILES["file"]["name"] . " already exists. ";
+            echo $_FILES["file"]["name"] . " already exists. Assigning random default picture.";
             echo '<p><hr>';
             $TApic = "NULL";
         } else {

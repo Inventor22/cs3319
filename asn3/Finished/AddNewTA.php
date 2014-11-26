@@ -49,6 +49,10 @@
     }
     
     if ($addTA) {
+        if ($TApic == NULL) {
+            $TApic = 'TA_Pictures/default' . rand(0,2) . '.jpg';
+        }
+        
         $query = 'insert into TEACHINGASSISTANT
         (firstname, lastname, studentnumber, userid, gradtype, imagelocation, profuserid)
         values("'
@@ -59,6 +63,8 @@
             . $gradtype . '","' 
             . $TApic . '","' 
             . $headprofid . '")';
+        
+        //echo '<br>TA pic: '.$TApic.'<br>';
         
         if (!mysqli_query($connection, $query)) {
             die("Error: insert failed" . mysqli_error($connection));
