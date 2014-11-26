@@ -13,7 +13,7 @@
 		// Get variable from caller
 		$wID= $_POST["profID"];
 		// Print header
-		echo "<h2>TA's that professor $wID head supervises:</h2>"
+		echo "<h2>TA's that professor $wID head supervises:</h2>";
 		// Do head superviser seach:
 		$query = 'select * from TEACHINGASSISTANT where profuserid="' . $wID . '"';
 		$result=mysqli_query($connection,$query);
@@ -50,7 +50,7 @@
 		mysqli_free_result($result);
 	
 		// Print second header
-		echo "<h2>TA's that professor $wID co-supervises:</h2>"
+		echo "<h2>TA's that professor $wID co-supervises:</h2>";
 		// Do co-supervisor seach:
 		$query = 'select * from CoSUPERVISE where profuserid="' . $wID . '"';
 		$result=mysqli_query($connection,$query);
