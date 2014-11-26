@@ -43,7 +43,7 @@
     if ($found && mysqli_num_rows($found) > 0)
     {
         $ta = mysqli_fetch_assoc($found);
-        if (!in_array($ta['imagelocation'], 
+        if (file_exists($ta['imagelocation']) && !in_array($ta['imagelocation'], 
             array("TA_Pictures/default0.jpg","TA_Pictures/default1.jpg","TA_Pictures/default2.jpg")))
         {
             unlink($ta['imagelocation']); // delete the image
@@ -51,12 +51,11 @@
         $firstname = $ta['firstname'];
         $lastname  = $ta['lastname'];
         
-        if (mysqli_query($connection, $deleteTA)) {
-            echo '<br>TA ' . $firstname . ' ' . $lastname . ' removed.';
+        if (!mysqli_query($connection, $deleteTA)) {
+            echo '<br>Unable to delete TA ' . $tauserid . ': ' . $firstname . ' ' . $lastname;
         } else {
-            echo '<br>Unable to delete TA ' . $firstname . ' ' . $lastname;
+            echo "<br>TA removed";
         }
-        echo "<br>TA removed";
     } else {
         echo "<br>TA not removed from TEACHINGASSISTANT table.";
         echo '<br>';

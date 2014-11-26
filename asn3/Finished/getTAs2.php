@@ -42,7 +42,7 @@
     {
         echo "<tr>";
         echo '<td>';
-        if (file_exists($row["imagelocation"])) {
+        if ($row["imagelocation"] != NULL && file_exists($row["imagelocation"])) {
             echo '<img src="' . $row["imagelocation"] . '"height="150px" width="120px"></td>';
         } else {
             echo '<img src="TA_Pictures/default' . rand(0,2) . '.jpg"height="150px" width="120px"></td>';
