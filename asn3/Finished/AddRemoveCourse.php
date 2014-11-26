@@ -22,9 +22,9 @@
     $courseNumber = $_POST["coursenumber"];
     $courseName   = $_POST["coursename"];
         
-    $checkIfCourseExists = 'select * from COURSE'
-                                .'where coursenumber="'.$courseNumber.'" '
-                                .'AND coursename="'.$courseName.'"';
+    $checkIfCourseExists = "select * from COURSE
+                                where coursenumber = '$courseNumber'
+                                AND   coursename   = '$courseName'";
         
     $result = mysqli_query($connection, $checkIfCourseExists);
         
@@ -36,7 +36,7 @@
     if ($_POST['submit']==0) // add course
     {
         if (!$courseExists) {
-            $addCourse = 'INSERT INTO COURSE (coursenumber, coursename) VALUES("'.$courseNumber.'", "'.$courseName.'")';
+            $addCourse = "INSERT INTO COURSE (coursenumber, coursename) VALUES('$courseNumber', '$courseName')";
             if (mysqli_query($connection, $addCourse)) {
                 echo 'Successfully added course';
             } else {
@@ -49,9 +49,9 @@
     else if($_POST['submit']==1) // remove course
     {
         if ($courseExists) {
-            $removeCourse = 'DELETE FROM COURSE '.
-                                'where coursenumber="'.$courseNumber.'" '
-                                .'AND coursename="'.$courseName.'"';
+            $removeCourse = "DELETE FROM COURSE 
+                                where coursenumber = '$courseNumber'
+                                AND   coursename   = '$courseName'";
                 
             if (mysqli_query($connection, $removeCourse)) {
                 echo 'Course successfully deleted!';

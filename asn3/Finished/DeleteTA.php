@@ -65,10 +65,6 @@
     }
     
     include 'getTAs2.php';
-
-    if ($connection) {   
-        mysqli_close($connection);
-    }
     ?>
 </body>
 </html>
