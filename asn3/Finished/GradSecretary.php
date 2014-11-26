@@ -350,7 +350,7 @@ else {
 
     <hr />
     <h2>Assign TA to course:</h2>
-    <form action="TAAssignTo.php" method="post" enctype="multipart/form-data">
+    <form action="TAAssignedTo.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Course Number:</td>

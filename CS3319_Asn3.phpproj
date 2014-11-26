@@ -35,6 +35,7 @@
     <Compile Include="Asn3\Finished\GradSecretary.php" />
     <Compile Include="Asn3\Finished\index.php" />
     <Compile Include="Asn3\Finished\ModifyTA.php" />
+    <Compile Include="Asn3\Finished\PrintAllCourses.php" />
     <Compile Include="Asn3\Finished\ProfToTA.php" />
     <Compile Include="Asn3\Finished\TAAssignedTo.php" />
     <Compile Include="Asn3\Finished\upload_file.php" />

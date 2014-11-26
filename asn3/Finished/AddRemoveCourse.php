@@ -57,33 +57,21 @@
                                 //AND   coursename   = '$courseName'";
             
             if (!mysqli_query($connection, $removeCourse)) {
-                echo '<br>Removing course failed!';
+                echo '<br>Removing course failed!<br>';
             }
             else if (mysqli_query($connection, $courseExists)) {
-                echo '<br>Something went wrong.  Course not removed.';
+                echo '<br>Something went wrong.  Course not removed.<br>';
             } else {
-                echo "<br>Course $courseNumber successfully removed.";
+                echo "<br>Course $courseNumber successfully removed.<br>";
             }
         } else {
-            echo '<br>Coursed does not exist, cannot delete!';
+            echo '<br>Coursed does not exist, cannot delete!<br>';
         }
     }
-    
-    echo '<br>All registered courses:';
-    
-    $getAllCourses = 'SELECT * FROM COURSE';
-    $allCourses = mysqli_query($connection, $getAllCourses);
-    if ($allCourses) {
-        echo '<table><tr><td>Course Number</td><td>Course Name</td></tr>';
-        while ($row = mysqli_fetch_assoc($allCourses)) {
-            echo '<tr>';
-            echo '<td>'.$row['coursenumber'].'</td><td>'.$row['coursename'].'</td>';
-            echo '</tr>';
-        }
-        echo '</table>';
-    }
-    
     mysqli_close($connection);
+    
+    include 'PrintAllCourses.php';
+    
     ?>
 </body>
 </html>

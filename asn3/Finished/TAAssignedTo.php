@@ -54,21 +54,35 @@
     else if($_POST['submit']==1) // Remove TA from Course
     {
         if ($courseExists) {
-            $removeCourse = 'DELETE FROM COURSE '.
-                                'where coursenumber="'.$courseNumber.'" '
-                                .'AND coursename="'.$courseName.'"';
+            $removeCourse = "DELETE FROM TAAssignedTO
+                                where tauserid     = '$tauserid'
+                                AND   courseNumber = '$courseNumber'
+                                AND   year         = '$year'
+                                AND   term         = '$term'";
+            
+            $checkForCourse = "SELECT * FROM TAAssignedTO
+                                where tauserid     = '$tauserid'
+                                AND   courseNumber = '$courseNumber'
+                                AND   year         = '$year'
+                                AND   term         = '$term'";
                 
             if (mysqli_query($connection, $removeCourse)) {
-                echo 'Course successfully deleted!';
+                $exists = mysqli_query($connection,  $checkForCourse);
+                if ($exists && sqli_num_rows($exists) > 0) {
+                    echo '<br>Something went wrong.  Course not deleted.';
+                } else {
+                    echo '<br>Course successfully deleted!';
+
+                }
             } else {
-                echo 'Removing course failed!';
+                echo '<br>Removing course failed!';
             }
         } else {
-            echo 'Coursed does not exist, cannot delete!';
+            echo '<br>Coursed does not exist, cannot delete!';
         }
     }
         
-    echo 'All registered courses and their TAs:';
+    echo '<br>All registered courses and their TAs:';
     echo '<br>';
         
     $getAllCourses = 'SELECT * FROM TAAssignedTO';
