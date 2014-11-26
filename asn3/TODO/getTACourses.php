@@ -26,7 +26,7 @@
 		$taid = $_POST["taID"];
 		
 		// Header
-		echo "<h2>Courses that TA '$taID' is assigned to:</h2>";
+		echo "<h2>Courses that TA $taid is assigned to:</h2>";
 
 		// Put the query together
 		$query = "select * from TAAssignedTO where tauserid=\"$taid\"";
