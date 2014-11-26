@@ -53,8 +53,8 @@
     {
         if ($courseExists) {
             $removeCourse = "DELETE FROM COURSE 
-                                where coursenumber = '$courseNumber'
-                                AND   coursename   = '$courseName'";
+                                where coursenumber = '$courseNumber'";
+                                //AND   coursename   = '$courseName'";
             
             if (!mysqli_query($connection, $removeCourse)) {
                 echo '<br>Course successfully deleted!';
