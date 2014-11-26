@@ -83,7 +83,7 @@
                 
                 if (mysqli_query($connection, $removeCourse)) {
                     $exists = mysqli_query($connection,  $checkForCourse);
-                    if ($exists && sqli_num_rows($exists) > 0) {
+                    if ($exists && mysqli_num_rows($exists) > 0) {
                         echo '<br>Something went wrong.  Course not deleted.';
                     } else {
                         echo '<br>Course successfully deleted!';
