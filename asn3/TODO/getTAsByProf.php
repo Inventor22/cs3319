@@ -9,9 +9,11 @@
 		include 'connectdb.php';
 	?>
 	<h1>TA's Supervised by Professor </h1>
-	<h2>TA's that professor head supervises:</h2>
 	<?php
+		// Get variable from caller
 		$wID= $_POST["profID"];
+		// Print header
+		echo "<h2>TA's that professor $wID head supervises:</h2>"
 		// Do head superviser seach:
 		$query = 'select * from TEACHINGASSISTANT where profuserid="' . $wID . '"';
 		$result=mysqli_query($connection,$query);
@@ -46,9 +48,9 @@
 			echo 'None';
 		}
 		mysqli_free_result($result);
-	?>
-	<h2>TA's that professor co-supervises:</h2>
-	<?php
+	
+		// Print second header
+		echo "<h2>TA's that professor $wID co-supervises:</h2>"
 		// Do co-supervisor seach:
 		$query = 'select * from CoSUPERVISE where profuserid="' . $wID . '"';
 		$result=mysqli_query($connection,$query);
