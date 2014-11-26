@@ -132,7 +132,7 @@
     mysqli_close($connection);
     
     include 'GetProfs.php';
-    include 'GetTAs2.php';
+    include 'getTAs2.php';
     
     ?>
 </body>
