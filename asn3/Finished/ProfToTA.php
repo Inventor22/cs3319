@@ -72,34 +72,44 @@
             }
             else if($_POST['submit']==1) // Assign Prof as CoSupervisor for TA
             {
-                $check_for_coprof = 'select * from CoSUPERVISE where '.
-                    'profuserid="'.$final_profid.
-                    'AND tauserid="'.$final_taid.'"';
+                $checkIfHeadProf = "select * from TEACHINGASSISTANT where profuserid = $final_profid";
                 
-                $coprof_result = mysqli_query($connection, $check_for_coprof);
-                if ($coprof_result) {
-                    if (mysqli_num_rows($coprof_result) > 0) {
-                        echo 'Prof '.$final_profid.' is already a cosupervisor of TA '.$final_taid;
-                    } else {
-                        // insertion happens here
-                        $assign_coprof = 'INSERT INTO CoSUPERVISE (profuserid, tauserid) '
-                            .'VALUES("'.$final_profid.'", "'.$final_taid.'")';
-                        
-                        if (mysqli_query($connection, $assign_coprof)) {
-                            echo 'Prof '.$final_profid.' successfully assigned as CoSupervisor of TA '.$final_taid;
+                $checkHeadRes = mysqli_query($connection, $checkIfHeadProf);
+                if ($checkHeadRes && mysqli_num_rows($checkHeadRes) > 0)
+                {
+                    echo "<br>$final_prof is already Head Supervisor of $final_ta.  Cannot assign as CoSupervisor as well.";
+                }
+                else
+                {
+                    $check_for_coprof = "select * from CoSUPERVISE where
+                    profuserid = '$final_profid'
+                    AND tauserid = '$final_taid'";
+                    
+                    $coprof_result = mysqli_query($connection, $check_for_coprof);
+                    if ($coprof_result) {
+                        if (mysqli_num_rows($coprof_result) > 0) {
+                            echo 'Prof '.$final_profid.' is already a cosupervisor of TA '.$final_taid;
                         } else {
-                            echo 'Insertion failed info CoSUPERVISE';
+                            // insertion happens here
+                            $assign_coprof = "INSERT INTO CoSUPERVISE (profuserid, tauserid)
+                            VALUES('$final_profid', '$final_taid'";
+                            
+                            if (mysqli_query($connection, $assign_coprof)) {
+                                echo 'Prof '.$final_profid.' successfully assigned as CoSupervisor of TA '.$final_taid;
+                            } else {
+                                echo 'Insertion failed into CoSUPERVISE';
+                            }
                         }
+                    } else {
+                        echo 'database query failed, try again';
                     }
-                } else {
-                    echo 'database query failed, try again';
                 }
             }
             else if($_POST['submit']==2) // Remove Prof as CoSupervisor for TA
             {
-                $removeCoSupservise = 'DELETE FROM CoSUPERVISE where '.
-                                        'profuserid="'.$final_profid.'" '
-                                        .'AND tauserid="'.$final_taid.'"';
+                $removeCoSupservise = "DELETE FROM CoSUPERVISE where
+                                        profuserid   = '$final_profid'
+                                        AND tauserid = '$final_taid'";
                 
                 if (mysqli_query($connection, $removeCoSupservise)) {
                     echo "Succefully removed prof as cosupervisor of ta";
