@@ -22,8 +22,8 @@
     $courseNumber = $_POST["coursenumber"];
     $courseName   = $_POST["coursename"];
     
-    echo $courseName;
-    echo $courseNumber;
+    //echo $courseName;
+    //echo $courseNumber;
         
     $checkIfCourseExists = "select * from COURSE
                                 where coursenumber = '$courseNumber'

@@ -329,12 +329,12 @@ else {
             <tr>
                 <td>Course Number:</td>
                 <td>
-                    <input type="text" name="userid"></td>
+                    <input type="text" name="coursenumber"></td>
             </tr>
             <tr>
                 <td>Course Name:</td>
                 <td>
-                    <input type="text" name="firstname"></td>
+                    <input type="text" name="coursename"></td>
             </tr>
         </table>
         <br>
