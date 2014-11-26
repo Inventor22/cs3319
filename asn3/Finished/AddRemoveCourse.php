@@ -57,17 +57,13 @@
                                 //AND   coursename   = '$courseName'";
             
             if (!mysqli_query($connection, $removeCourse)) {
-                echo '<br>Course successfully deleted!';
-            } else {
                 echo '<br>Removing course failed!';
             }
-            
-            if (mysqli_query($connection, $courseExists)) {
-                echo '<br>Something whent wrong.  Course not removed.';
+            else if (mysqli_query($connection, $courseExists)) {
+                echo '<br>Something went wrong.  Course not removed.';
             } else {
-                echo "Course $courseNumber successfully removed.";
+                echo "<br>Course $courseNumber successfully removed.";
             }
-            
         } else {
             echo '<br>Coursed does not exist, cannot delete!';
         }
