@@ -92,7 +92,7 @@
                         } else {
                             // insertion happens here
                             $assign_coprof = "INSERT INTO CoSUPERVISE (profuserid, tauserid)
-                            VALUES('$final_profid', '$final_taid'";
+                            VALUES('$final_profid', '$final_taid')";
                             
                             if (mysqli_query($connection, $assign_coprof)) {
                                 echo 'Prof '.$final_profid.' successfully assigned as CoSupervisor of TA '.$final_taid;
