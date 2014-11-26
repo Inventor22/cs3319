@@ -41,12 +41,12 @@
         if (!$courseExists) {
             $addCourse = "INSERT INTO COURSE (coursenumber, coursename) VALUES('$courseNumber', '$courseName')";
             if (mysqli_query($connection, $addCourse)) {
-                echo 'Successfully added course';
+                echo '<br>Successfully added course';
             } else {
-                echo 'Unable to add course';
+                echo '<br>Unable to add course';
             }
         } else {
-            echo 'Course already exists!';
+            echo '<br>Course already exists!';
         }
     }
     else if($_POST['submit']==1) // remove course
@@ -56,17 +56,24 @@
                                 where coursenumber = '$courseNumber'
                                 AND   coursename   = '$courseName'";
             
-            if (mysqli_query($connection, $removeCourse)) {
-                echo 'Course successfully deleted!';
+            if (!mysqli_query($connection, $removeCourse)) {
+                echo '<br>Course successfully deleted!';
             } else {
-                echo 'Removing course failed!';
+                echo '<br>Removing course failed!';
             }
+            
+            if (mysqli_query($connection, $courseExists)) {
+                echo '<br>Something whent wrong.  Course not removed.';
+            } else {
+                echo "Course $courseNumber successfully removed.";
+            }
+            
         } else {
-            echo 'Coursed does not exist, cannot delete!';
+            echo '<br>Coursed does not exist, cannot delete!';
         }
     }
     
-    echo 'All registered courses:';
+    echo '<br>All registered courses:';
     
     $getAllCourses = 'SELECT * FROM COURSE';
     $allCourses = mysqli_query($connection, $getAllCourses);
