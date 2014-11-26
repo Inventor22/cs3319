@@ -149,8 +149,9 @@
     
     mysqli_close($connection);
     
-    include 'GetProfs.php';
-    include 'getTAs2.php';
+    include 'GetCoSupervisors.php';
+    //include 'GetProfs.php';
+    //include 'getTAs2.php';
     
     ?>
 </body>
