@@ -92,20 +92,7 @@
                     echo 'database query failed, try again';
                 }
             }
-            else if($_POST['submit']==2) // Remove Prof as Head Supervisor for TA
-            {
-                $removeHeadProf =
-                    'UPDATE TEACHINGASSISTANT'.
-                    'set profuserid=NULL'.
-                    'where userid="'.$final_taid.'"';
-                
-                if(mysqli_query($connection, $removeHeadProf)) {
-                    echo 'Successfully removed head prof '.$final_profid.' from TA '.$final_taid;
-                } else {
-                    echo 'FAILED: removing head prof '.$final_profid.' from TA '.$final_taid;
-                }
-            }
-            else if($_POST['submit']==3) // Remove Prof as CoSupervisor for TA
+            else if($_POST['submit']==2) // Remove Prof as CoSupervisor for TA
             {
                 $removeCoSupservise = 'DELETE FROM CoSUPERVISE where '.
                                         'profuserid="'.$final_profid.'" '
@@ -132,10 +119,10 @@
         }
     } else {
         if (!$getprofid_result) {
-            echo 'Prof not found in INSTRUCTOR database';
+            echo 'Prof not found.';
         }
         if (!$getprofid_result) {
-            echo 'TA not found in TEACHINGASSISTANT database';
+            echo 'TA not found';
         }
     }
     
