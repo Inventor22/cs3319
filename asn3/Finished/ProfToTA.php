@@ -60,9 +60,9 @@
             if($_POST['submit']==0) // Assign Prof as Head Supervisor for TA
             {
                 $assign =
-                    'UPDATE TEACHINGASSISTANT'.
-                    'set profuserid="'.$final_profid.'" '.
-                    'where userid="'.$final_taid.'"';
+                    "UPDATE TEACHINGASSISTANT
+                    set profuserid = '$final_profid'
+                    where userid = '$final_taid'";
                 
                 if (mysqli_query($connection, $assign)) {
                     echo 'Update Successful: '.$final_profid.' assigned as Head Prof to TA '.$final_taid.'.';
