@@ -29,13 +29,6 @@
     $gradtype      = $_POST["type"];
     $headprofid    = $_POST["profuserid"];
     
-    echo $tauserid     .'<br>';
-    echo $firstname    .'<br>';
-    echo $lastname     .'<br>';
-    echo $studentnumber.'<br>';
-    echo $gradtype     .'<br>';
-    echo $headprofid   .'<br>';
-    
     $addTA = false;
     
     $findTA0 = 'select * from TEACHINGASSISTANT where '.
