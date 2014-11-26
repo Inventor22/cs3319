@@ -7,7 +7,7 @@
 <body>
     <?php
     include 'connectdb.php';
-
+    
     echo '<br>All registered courses:';
     
     $getAllCourses = 'SELECT * FROM COURSE';
