@@ -72,12 +72,12 @@
             }
             else if($_POST['submit']==1) // Assign Prof as CoSupervisor for TA
             {
-                $checkIfHeadProf = "select * from TEACHINGASSISTANT where profuserid = $final_profid";
+                $checkIfHeadProf = "select * from TEACHINGASSISTANT where profuserid = '$final_profid'";
                 
                 $checkHeadRes = mysqli_query($connection, $checkIfHeadProf);
                 if ($checkHeadRes && mysqli_num_rows($checkHeadRes) > 0)
                 {
-                    echo "<br>$final_prof is already Head Supervisor of $final_ta.  Cannot assign as CoSupervisor as well.";
+                    echo "<br>$final_profid is already Head Supervisor of $final_taid.  Cannot assign as CoSupervisor as well.";
                 }
                 else
                 {
