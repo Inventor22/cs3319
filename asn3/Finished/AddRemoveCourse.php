@@ -22,11 +22,8 @@
     $courseNumber = $_POST["coursenumber"];
     $courseName   = $_POST["coursename"];
     
-    if ((0 === strpos($courseNumber, 'CS')
-      || 0 === strpos($courseNumber, 'cs'))
-      && strlen($courseName))
+    if (preg_match("/^CS([1-4]|[9])([0-9]{3})/i", $courseNumber) && strlen($courseName))
     {
-        
         //echo $courseName;
         //echo $courseNumber;
         
