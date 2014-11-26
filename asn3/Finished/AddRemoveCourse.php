@@ -18,24 +18,24 @@
 <body>
     <?php
     include 'connectdb.php';
-        
+    
     $courseNumber = $_POST["coursenumber"];
     $courseName   = $_POST["coursename"];
     
     //echo $courseName;
     //echo $courseNumber;
-        
+    
     $checkIfCourseExists = "select * from COURSE
-                                where coursenumber = '$courseNumber'
-                                AND   coursename   = '$courseName'";
-        
+                                where coursenumber = '$courseNumber'";
+    //AND   coursename   = '$courseName'";
+    
     $result = mysqli_query($connection, $checkIfCourseExists);
-        
+    
     $courseExists = false;
     if ($result && mysqli_num_rows($result) > 0) {
         $courseExists = true;
     }
-        
+    
     if ($_POST['submit']==0) // add course
     {
         if (!$courseExists) {
@@ -55,7 +55,7 @@
             $removeCourse = "DELETE FROM COURSE 
                                 where coursenumber = '$courseNumber'
                                 AND   coursename   = '$courseName'";
-                
+            
             if (mysqli_query($connection, $removeCourse)) {
                 echo 'Course successfully deleted!';
             } else {
@@ -65,9 +65,9 @@
             echo 'Coursed does not exist, cannot delete!';
         }
     }
-        
+    
     echo 'All registered courses:';
-        
+    
     $getAllCourses = 'SELECT * FROM COURSE';
     $allCourses = mysqli_query($connection, $getAllCourses);
     if ($allCourses) {
@@ -79,7 +79,7 @@
         }
         echo '</table>';
     }
-        
+    
     mysqli_close($connection);
     ?>
 </body>
