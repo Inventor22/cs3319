@@ -68,7 +68,7 @@
         }
         else if($_POST['submit']==1) // Remove TA from Course
         {
-            if ($courseExists) {
+            if ($result && mysqli_num_rows($result) > 0) {
                 $removeCourse = "DELETE FROM TAAssignedTO
                                 where tauserid     = '$tauserid'
                                 AND   courseNumber = '$courseNumber'
@@ -92,7 +92,7 @@
                     echo '<br>Removing course failed!';
                 }
             } else {
-                echo '<br>Coursed does not exist, cannot delete!';
+                echo '<br>Course does not exist, cannot delete!';
             }
         }
         
