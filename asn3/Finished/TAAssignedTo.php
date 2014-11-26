@@ -86,7 +86,7 @@
                     if ($exists && mysqli_num_rows($exists) > 0) {
                         echo '<br>Something went wrong.  Course not deleted.';
                     } else {
-                        echo '<br>Course successfully deleted!';
+                        echo "<br>Course $courseNumber successfully deleted!";
                     }
                 } else {
                     echo '<br>Removing course failed!';
@@ -96,7 +96,7 @@
             }
         }
         
-        echo '<br>All registered courses and their TAs:';
+        echo '<br><br>All registered courses and their TAs:';
         echo '<br>';
         
         $getAllCourses = 'SELECT * FROM TAAssignedTO';
