@@ -42,10 +42,10 @@
     {
         echo "<tr>";
         echo '<td>';
-        if ($row["imagelocation"] != NULL) {
+        if (file_exists($row["imagelocation"])) {
             echo '<img src="' . $row["imagelocation"] . '"height="150px" width="120px"></td>';
         } else {
-            echo $row["imagelocation"].'</td>';
+            echo '<img src="default' . rand(0,2) . '.png"height="150px" width="120px"></td>';
         }
         echo "<td>" . $row["userid"] . "</td>";
         echo "<td>" . $row["firstname"] . "</td>";
