@@ -71,7 +71,6 @@
     mysqli_close($connection);
     
     include 'PrintAllCourses.php';
-    
     ?>
 </body>
 </html>

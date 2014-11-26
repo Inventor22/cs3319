@@ -15,7 +15,7 @@
       $query = 'select * from owner, pet where pet.ownerid=owner.ownerid and pet.ownerid="' . $whichOwner . '"';
       $result=mysqli_query($connection,$query);
       if (!$result) {
-        die("database query2 failed.");
+        die("database query failed.");
       }
       while ($row=mysqli_fetch_assoc($result)) {
         echo '<li>';

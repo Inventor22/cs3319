@@ -10,7 +10,11 @@
         This file does one of 4 things:
     1. Assign Prof as Head Supervisor for TA
     2. Assign Prof as CoSupervisor for TA
+<<<<<<< HEAD
+    3. Remove Prof as Head Supervisor for TA - ILLEGAL!
+=======
     3. Remove Prof as Head Supervisor for TA
+>>>>>>> d230110553718d57b0fe4bf3002bfdd91e7fe74e
     4. Remove Prof as CoSupervisor for TA
 -->
 
