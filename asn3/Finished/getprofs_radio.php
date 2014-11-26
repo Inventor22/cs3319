@@ -4,7 +4,7 @@
     ID:    250 633 280
     Aliad: asimps53
 
-    File: gettas.php
+    File: getprofs_radio.php
 
     Description:
         This file lists out all of the profs in radio buttons.

@@ -1,3 +1,15 @@
+<!--
+    Name:  Andrew Simpson
+    Date:  23/11/14
+    ID:    250 633 280
+    Aliad: asimps53
+
+    File: getTAsByCourse.php
+
+    Description:
+        Lists all of the TA's assigned to a specifed course.
+-->
+
 <!DOCTYPE html>
 <html>
 <head>

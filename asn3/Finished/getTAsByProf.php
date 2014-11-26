@@ -1,3 +1,16 @@
+<!--
+    Name:  Andrew Simpson
+    Date:  23/11/14
+    ID:    250 633 280
+    Aliad: asimps53
+
+    File: getTAsByProf.php
+
+    Description:
+        Lists all of the TA's that are either supervised
+        or cosupervised by a specified prof.
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +52,12 @@
 				echo "<td>{$row['firstname']}</td>";
 				echo "<td>{$row['lastname']}</td>";
 				echo "<td>{$row['gradtype']}</td>";
-				echo "<td><img src={$row['imagelocation']} height=\"60\" width=\"60\"></td>";
+				if ($row["imagelocation"] != NULL){
+					echo "<td><img src={$row['imagelocation']} height=\"60\" width=\"60\"></td>";
+				}
+				else {
+					echo "<td><img src=TA_Pictures/default0.jpg height=\"60\" width=\"60\"></td>"
+				}
 				echo '</tr>';
 			}
 			echo "</table>";
@@ -81,7 +99,12 @@
 					echo "<td>{$row2['firstname']}</td>";
 					echo "<td>{$row2['lastname']}</td>";
 					echo "<td>{$row2['gradtype']}</td>";
+					if ($row["imagelocation"] != NULL){
 					echo "<td><img src={$row2['imagelocation']} height=\"60\" width=\"60\"></td>";
+					}
+					else {
+						echo "<td><img src=TA_Pictures/default0.jpg height=\"60\" width=\"60\"></td>"
+					}
 					echo '</tr>';
 				}
 				mysqli_free_result($result2);
