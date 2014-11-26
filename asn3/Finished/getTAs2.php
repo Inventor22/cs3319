@@ -45,7 +45,7 @@
         if (file_exists($row["imagelocation"])) {
             echo '<img src="' . $row["imagelocation"] . '"height="150px" width="120px"></td>';
         } else {
-            echo '<img src="default' . rand(0,2) . '.png"height="150px" width="120px"></td>';
+            echo '<img src="TA_Pictures/default' . rand(0,2) . '.jpg"height="150px" width="120px"></td>';
         }
         echo "<td>" . $row["userid"] . "</td>";
         echo "<td>" . $row["firstname"] . "</td>";
