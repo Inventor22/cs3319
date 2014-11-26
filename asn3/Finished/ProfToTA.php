@@ -54,8 +54,8 @@
             $final_profid = mysqli_fetch_assoc($getprofid_result)["userid"];
             $final_taid   = mysqli_fetch_assoc($gettaid_result)["userid"];
             
-            echo '<br>'.$final_profid;
-            echo '<br>'.$final_taid;
+            //echo '<br>'.$final_profid;
+            //echo '<br>'.$final_taid;
             
             if($_POST['submit']==0) // Assign Prof as Head Supervisor for TA
             {
@@ -130,6 +130,9 @@
     }
     
     mysqli_close($connection);
+    
+    include 'GetProfs.php';
+    
     ?>
 </body>
 </html>
