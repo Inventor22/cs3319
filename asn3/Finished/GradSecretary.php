@@ -90,7 +90,8 @@ else {
             </tr>
             <tr>
                 <td>studentnumber:</td>
-                <td><input type="text" name="studentnumber"></td>
+                <td>
+                    <input type="text" name="studentnumber"></td>
             </tr>
             <tr>
                 <td>gradtype:</td>
@@ -100,11 +101,14 @@ else {
             </tr>
             <tr>
                 <td>Image:</td>
-                <td><input type="file" name="file" id="file"><br></td>
+                <td>
+                    <input type="file" name="file" id="file"><br>
+                </td>
             </tr>
             <tr>
                 <td>Prof user id:</td>
-                <td><input type="text" name="profuserid" /></td>
+                <td>
+                    <input type="text" name="profuserid" /></td>
             </tr>
         </table>
         <br>
@@ -269,8 +273,7 @@ else {
                 <td>TA userid:</td>
                 <td>
                     <input type="text" name="tauserid"></td>
-                <td>
-                    &nbsp;</td>
+                <td>&nbsp;</td>
                 <td>Prof userid</td>
                 <td>
                     <input type="text" name="profuserid"></td>
@@ -287,8 +290,7 @@ else {
                 <td>TA firstname:</td>
                 <td>
                     <input type="text" name="ta_firstname"></td>
-                <td>
-                    &nbsp;</td>
+                <td>&nbsp;</td>
                 <td>Prof firstname&nbsp;</td>
                 <td>
                     <input type="text" name="prof_firstname"></td>
@@ -298,8 +300,7 @@ else {
                 <td>TA lastname:</td>
                 <td>
                     <input type="text" name="ta_lastname"></td>
-                <td>
-                    &nbsp;</td>
+                <td>&nbsp;</td>
                 <td>Prof lastname&nbsp;</td>
                 <td>
                     <input type="text" name="prof_lastname"></td>
@@ -308,16 +309,9 @@ else {
         <br />
         <table>
             <tr>
-                <td align="center">
-                    <button name="submit" value="0">Assign Prof as Head Supervisor for TA</button></td>
-                <td align="center">
-                    <button name="submit" value="1">Assign Prof as CoSupervisor for TA</button></td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <button name="submit" value="2">Remove Prof as Head Supervisor for TA</button></td>
-                <td align="center">
-                    <button name="submit" value="3">Remove Prof as CoSupervisor for TA</button></td>
+                <td><button name="submit" value="0">Reassign Head Supervisor for TA</button></td>
+                <td><button name="submit" value="1">Assign CoSupervisor for TA</button></td>
+                <td><button name="submit" value="2">Remove CoSupervisor for TA</button></td>
             </tr>
         </table>
     </form>
