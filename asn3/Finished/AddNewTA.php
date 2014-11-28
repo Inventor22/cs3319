@@ -39,15 +39,15 @@
     $result = mysqli_query($connection, $findTA0);
     
     if (!$result) {
-        echo "<br>TA table invalid!";
+        echo "TA table invalid!";
     } else {
         if (mysqli_num_rows($result)>0) {
-            echo "<br>TA already exists in TEACHINGASSISTANTS database.";
+            echo "TA already exists in TEACHINGASSISTANTS database.";
         } else {
             if (strlen($studentnumber) == 9) {
                 $addTA = true;
             } else {
-                echo '<br>Student number not valid.  Must be 9 characters.';
+                echo 'Student number not valid.  Must be 9 characters.';
             }
         }
     }
@@ -74,45 +74,43 @@
             die("Error: insert failed" . mysqli_error($connection));
         } else {
             echo "New TA added.";
+            
+            echo "<table>
+                    <tr>
+                        <td>Picture:</td>
+                        <td><img src= '$TApic' height='150' width='120'>; ?></td>
+                    </tr>
+                    <tr>
+                        <td>userid:</td>
+                        <td>$_POST['userid']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>firstname:</td>
+                        <td>
+                            $_POST['firstname']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>lastname:</td>
+                        <td>
+                            $_POST['lastname']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>studentnumber:</td>
+                        <td> $_POST['studentnumber']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>gradtype:</td>
+                        <td> $_POST['type'] </td>
+                    </tr>
+                    <tr>
+                        <td>Head Prof:</td>
+                        <td> $_POST['profuserid'] </td>
+                    </tr>
+                  </table>";
         }
     }
     mysqli_close($connection);
-    ?>
-   <table>
-            <tr>
-            <td>Picture:</td>
-            <td><?php echo '<img src="' . $TApic . '" height="150" width="120">'; ?></td>
-        </tr>
-        <tr>
-            <td>userid:</td>
-            <td><?php echo $_POST["userid"]; ?></td>
-        </tr>
-        <tr>
-            <td>firstname:</td>
-            <td>
-                <?php echo $_POST["firstname"]; ?></td>
-        </tr>
-        <tr>
-            <td>lastname:</td>
-            <td>
-                <?php echo $_POST["lastname"]; ?></td>
-        </tr>
-        <tr>
-            <td>studentnumber:</td>
-            <td><?php echo $_POST["studentnumber"]; ?></td>
-        </tr>
-        <tr>
-            <td>gradtype:</td>
-            <td>
-                <?php echo $_POST["type"]; ?></td>
-        </tr>
-        <tr>
-            <td>Head Prof:</td>
-            <td><?php echo $_POST["profuserid"]; ?></td>
-        </tr>
-    </table>
-
-    <?php
+    
     include 'getTAs2.php';
     ?>
 </body>
