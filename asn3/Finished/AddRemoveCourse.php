@@ -22,6 +22,7 @@
     $courseNumber = $_POST["coursenumber"];
     $courseName   = $_POST["coursename"];
     
+    // must match CS or c, then 4 digits starting with 1234, or 9.
     if (preg_match("/^CS([1-4]|[9])([0-9]{3})/i", $courseNumber) && strlen($courseName))
     {
         //echo $courseName;
