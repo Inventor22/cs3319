@@ -59,7 +59,7 @@
                 //AND   coursename   = '$courseName'";
                 
                 if (!mysqli_query($connection, $removeCourse)) {
-                    echo '<br>Removing course failed!<br>';
+                    echo '<br>Removing course failed!  May be linked to a TA.  Delete TA first.<br>';
                 }
                 else if (mysqli_query($connection, $courseExists)) {
                     echo '<br>Something went wrong.  Course not removed.<br>';
