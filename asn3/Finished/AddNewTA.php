@@ -82,29 +82,27 @@
                     </tr>
                     <tr>
                         <td>userid:</td>
-                        <td>$_POST['userid']; ?></td>
+                        <td>$_POST['userid']</td>
                     </tr>
                     <tr>
                         <td>firstname:</td>
-                        <td>
-                            $_POST['firstname']; ?></td>
+                        <td>$_POST['firstname']</td>
                     </tr>
                     <tr>
                         <td>lastname:</td>
-                        <td>
-                            $_POST['lastname']; ?></td>
+                        <td>$_POST['lastname']</td>
                     </tr>
                     <tr>
                         <td>studentnumber:</td>
-                        <td> $_POST['studentnumber']; ?></td>
+                        <td>$_POST['studentnumber']</td>
                     </tr>
                     <tr>
                         <td>gradtype:</td>
-                        <td> $_POST['type'] </td>
+                        <td>$_POST['type'] </td>
                     </tr>
                     <tr>
                         <td>Head Prof:</td>
-                        <td> $_POST['profuserid'] </td>
+                        <td>$_POST['profuserid'] </td>
                     </tr>
                   </table>";
         }
