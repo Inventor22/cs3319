@@ -71,14 +71,14 @@
         //echo '<br>TA pic: '.$TApic.'<br>';
         
         if (!mysqli_query($connection, $query)) {
-            die("Error: insert failed" . mysqli_error($connection));
+            die("Error: insert failed.<br>" . mysqli_error($connection));
         } else {
             echo "New TA added.";
             
             echo "<table>
                     <tr>
                         <td>Picture:</td>
-                        <td><img src= '$TApic' height='150' width='120'>; ?></td>
+                        <td><img src= '$TApic' height='150' width='120'></td>
                     </tr>
                     <tr>
                         <td>userid:</td>
