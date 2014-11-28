@@ -39,12 +39,16 @@
     $result = mysqli_query($connection, $findTA0);
     
     if (!$result) {
-        echo "TA table invalid!";
+        echo "<br>TA table invalid!";
     } else {
         if (mysqli_num_rows($result)>0) {
-            echo "TA already exists in TEACHINGASSISTANTS database.";
+            echo "<br>TA already exists in TEACHINGASSISTANTS database.";
         } else {
-            $addTA = true;
+            if (strlen($studentnumber) == 9) {
+                $addTA = true;
+            } else {
+                echo '<br>Student number not valid.  Must be 9 characters.';
+            }
         }
     }
     
