@@ -82,7 +82,7 @@
                     </tr>
                     <tr>
                         <td>userid:</td>
-                        <td><?php $_POST[\"userid\"] ?></td>
+                        <td> $_POST[\"userid\"] </td>
                     </tr>
                     <tr>
                         <td>firstname:</td>
